@@ -13,6 +13,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #afzal {
+  height: 100%;
   display: flex;
   flex-direction: column;
+}
+#header {
+
+}
+
+#main {
+  
+}
+#footer {
+  margin-top: auto;
 }

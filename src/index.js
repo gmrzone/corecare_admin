@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './style/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Router } from 'react-router-dom'
+import history from './utils/history'
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router history={history}>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('afzal')
 );

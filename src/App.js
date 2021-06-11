@@ -1,28 +1,15 @@
 
-import css from 'styled-jsx/macro'
-const desktop_size = 40;
-const mobile_size = 20
-const { className, styles } = css.resolve`
-  .saiyed { color: green }
+import Index from './pages/index'
+import User from './pages/users'
+import { Route, Switch } from 'react-router-dom'
 
-  .surname {
-    font-size: ${mobile_size}px;
-  }
-
-  @media (min-width: 992px) {
-    .surname {
-      font-size: ${desktop_size}px;
-    }
-  }
-`
 
 function App() {
   return (
-    <div>
-      <h1 className={className + " saiyed"}>Afzal</h1>
-      <p className={className + " surname"}>Saiyed</p>
-      {styles}
-    </div>
+      <Switch>
+        <Route component={Index} path="/" exact/>
+        <Route component={User} pathj="/users" exact />
+      </Switch>
   );
 }
 
