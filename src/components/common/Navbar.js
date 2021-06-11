@@ -1,9 +1,5 @@
-const Navbar  = () => {
-    return (
-        <nav>
-            
-        </nav>
-    )
-}
+const Navbar = () => {
+  return <nav></nav>;
+};
 
-export default Navbar
+export default Navbar;

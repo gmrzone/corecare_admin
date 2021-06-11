@@ -1,9 +1,5 @@
 const ProfileBox = () => {
-    return (
-        <div>
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default ProfileBox
+export default ProfileBox;
