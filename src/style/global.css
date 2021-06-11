@@ -25,5 +25,10 @@ body {
   
 }
 #footer {
-  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  padding: 10px;
+  color: #fff;
+  margin-top: auto!important;
 }
