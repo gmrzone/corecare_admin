@@ -1,5 +1,4 @@
 
-import style from './App.module.css'
 import css from 'styled-jsx/macro'
 const desktop_size = 40;
 const mobile_size = 20
@@ -19,7 +18,7 @@ const { className, styles } = css.resolve`
 
 function App() {
   return (
-    <div className={style.App}>
+    <div>
       <h1 className={className + " saiyed"}>Afzal</h1>
       <p className={className + " surname"}>Saiyed</p>
       {styles}
