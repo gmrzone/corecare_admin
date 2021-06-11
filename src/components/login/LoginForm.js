@@ -1,7 +1,9 @@
 import style from '../../style/login.module.scss'
+import { BASE_API_URL } from '../../utils/variables'
 const LoginForm = () => {
     return (
         <>
+            {console.log(BASE_API_URL)}
             <form className={`ui big form ${style['login-form']}`}>
                 <h1>Sign in</h1>
                 <div className="field">
@@ -19,7 +21,7 @@ const LoginForm = () => {
             </form>
             
             <div className={style['login-form-extra']}>
-                <p>Not an admin? <a href="https://www.dev.corecare.in/">Login</a> to Corecare for Customers and Employees.</p>
+                <p>Not an admin? <a href="https://www.dev.corecare.in/login">Login</a> to Corecare for Customers and Employees.</p>
             </div>
         </>
     )

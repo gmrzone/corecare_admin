@@ -5,6 +5,11 @@ const Login = () => {
     return (
         <LoginLayout>
             <div className={style['login-form-container']}>
+                <div className={style['logo-container']}>
+                    <img src="/logo-mobile-black.svg" alt="logo" />
+                    <div className={style.text}>Admin Login</div>
+                </div>
+                
                 <LoginForm />
             </div>
         </LoginLayout>

@@ -3,7 +3,26 @@
     margin: 0 auto 20px auto;
     
     
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
 
+        img {
+            width: 60px;
+            margin-bottom: 10px;
+
+            @media (min-width: 992px){
+                width: 100px;
+            }
+        }
+        .text {
+            font-size: 30px;
+            font-weight: 600;
+        }
+    }
 
     .login-form {
         padding: 10px;
