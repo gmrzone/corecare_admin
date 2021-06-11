@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+
+import style from './App.module.css'
+import css from 'styled-jsx/macro'
+const desktop_size = 40;
+const mobile_size = 20
+const { className, styles } = css.resolve`
+  .saiyed { color: green }
+
+  .surname {
+    font-size: ${mobile_size}px;
+  }
+
+  @media (min-width: 992px) {
+    .surname {
+      font-size: ${desktop_size}px;
+    }
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.App}>
+      <h1 className={className + " saiyed"}>Afzal</h1>
+      <p className={className + " surname"}>Saiyed</p>
+      {styles}
     </div>
   );
 }
