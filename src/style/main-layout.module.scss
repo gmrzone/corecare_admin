@@ -91,15 +91,16 @@
                     top: 80px;
                     width: 65px;
                     transition: width 0.3s ease-in-out;
-                    transform: translateX(0);
+                    transform: translateX(0px);
                     height: calc(100% - 65px - 80px);
                 }
 
                 &.slider-active {
                     transform: translateX(0);
+
                     @media (min-width: 768px){
                         width: 256px;
-                        left: 0;
+
                     }
                 }
             }
@@ -215,10 +216,20 @@
 }
 
 .main {
-    margin-left: 0px;
+    margin-left: 10px;
+    transition: margin-left 0.3s ease-in-out;
 
     @media (min-width: 768px) {
-        margin-left: 65px;
+        margin-left: 75px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    &.drawer-active {
+        margin-left: 230px;
+
+        @media (min-width: 768px) {
+            margin-left: 266px;
+        }
     }
 }
 

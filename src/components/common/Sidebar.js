@@ -1,16 +1,17 @@
 import style from '../../style/main-layout.module.scss';
-import { useState } from 'react'
 import {Link} from 'react-router-dom'
+import { useContext } from 'react';
+import { SideDrawerContext } from '../../context/SideDrawerContext'
 const Sidebar = () => {
-    const [sideBarActive, setSideBarActive] = useState(false);
+    const { sideDrawerActive, toggleSideDrawer } = useContext(SideDrawerContext)
     return (
         <div className={style.sidebar}>
-            <div className={`${style['sidebar-opener']} ${sideBarActive && style.active}`} onClick={() => setSideBarActive(a => !a)}>
+            <div className={`${style['sidebar-opener']} ${sideDrawerActive && style.active}`} onClick={toggleSideDrawer}>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div className={`${style.slider} ${sideBarActive && style['slider-active']}`}>
+            <div className={`${style.slider} ${sideDrawerActive && style['slider-active']}`}>
                 <ul className={style['slider-items-list']}>
                     <li>
                         <Link className={`${style['slider-item']} ${style['active-item']}`} to="/">

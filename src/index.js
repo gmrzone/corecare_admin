@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Router } from "react-router-dom";
 import history from "./utils/history";
+
 ReactDOM.render(
     <React.StrictMode>
         <Router history={history}>
