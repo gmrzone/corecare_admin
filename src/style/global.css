@@ -1,27 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
 
 html {
-  height: 100%;
+    height: 100%;
 }
 body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    margin: 0;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 #afzal {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-  font-weight: 600 !important;
+    font-weight: 600 !important;
 }
 
 a {
-  color: #0073b1;
-  font-weight: 600;
+    color: #0073b1;
+    font-weight: 600;
 }
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .ui.container {
+        width: auto !important;
+        margin-left: 1.5em!important;
+        margin-right: 1.5em!important;
+    }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .ui.container {
+        width: auto !important;
+        margin-left: 2em!important;
+        margin-right: 2em!important;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px){
+    .ui.container {
+        width: auto !important;
+        margin-left: 2.5em!important;
+        margin-right: 2.5em!important;
+    }
+}
+

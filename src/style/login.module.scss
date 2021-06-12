@@ -1,67 +1,68 @@
 .login-form-container {
-  width: 600px;
-  margin: 0 auto 20px auto;
+    width: 600px;
+    margin: 0 auto 20px auto;
 
-  .logo-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        margin-top: 10px;
 
-    img {
-      width: 60px;
-      margin-bottom: 10px;
+        img {
+            width: 60px;
+            margin-bottom: 10px;
 
-      @media (min-width: 992px) {
-        width: 100px;
-      }
-    }
-    .text {
-      font-size: 30px;
-      font-weight: 600;
-    }
-  }
-
-  .login-form {
-    padding: 10px;
-    margin-bottom: 10px;
-
-    @media (min-width: 992px) {
-      padding: 50px;
-      margin-bottom: 40px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+            @media (min-width: 992px) {
+                width: 100px;
+            }
+        }
+        .text {
+            font-size: 30px;
+            font-weight: 600;
+        }
     }
 
-    .login-button {
-      font: inherit;
-      width: 100%;
-      padding: 12px;
-      font-weight: 600;
-      font-size: 16px;
-      border: none;
-      color: white;
-      background-color: black;
-      transition: background-color 0.1s ease-in-out;
-      border-radius: 28px !important;
-      cursor: pointer;
+    .login-form {
+        padding: 10px;
+        margin-bottom: 10px;
 
-      &:hover {
-        background-color: lighten(black, 20%);
-      }
+        @media (min-width: 992px) {
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+        }
 
-      @media (min-width: 992px) {
-        padding: 18px;
-        font-size: 20px;
-      }
+        .login-button {
+            font: inherit;
+            width: 100%;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            color: white;
+            background-color: black;
+            transition: background-color 0.1s ease-in-out;
+            border-radius: 28px !important;
+            cursor: pointer;
+
+            &:hover {
+                background-color: lighten(black, 20%);
+            }
+
+            @media (min-width: 992px) {
+                padding: 18px;
+                font-size: 20px;
+            }
+        }
     }
-  }
-  .login-form-extra {
-    text-align: center;
-    font-size: 14px;
+    .login-form-extra {
+        text-align: center;
+        font-size: 14px;
 
-    @media (min-width: 992px) {
-      font-size: 18px;
+        @media (min-width: 992px) {
+            font-size: 18px;
+        }
     }
-  }
 }
