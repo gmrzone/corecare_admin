@@ -70,7 +70,9 @@
             }
             .slider {
                 max-width: 256px;
+                overflow-y: auto;
                 width: 220px;
+                overflow-y: auto;
                 height: calc(100% - 61px - 66px);
                 position: absolute;
                 left: 0;
@@ -80,7 +82,7 @@
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
                 transform: translateX(-220px);
                 transition: transform 0.2s ease-in-out;
-                overflow: hidden;
+                // overflow: hidden;
 
                 @media (min-width: 768px) {
                     top: 80px;

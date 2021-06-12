@@ -3,6 +3,8 @@ import User from "./pages/users";
 import Login from "./pages/login";
 import Employee from './pages/employees'
 import Orders from './pages/orders'
+import Coupons from './pages/coupons'
+import Services from './pages/services'
 import { Route, Switch } from "react-router-dom";
 import { SideDrawerProvider } from "./context/SideDrawerContext";
 function App() {
@@ -13,6 +15,8 @@ function App() {
                 <Route component={User} path="/users" exact />
                 <Route component={Employee} path="/employees" exact />
                 <Route component={Orders} path="/orders" exact />
+                <Route component={Services} path="/services" exact />
+                <Route component={Coupons} path="/coupons" exact />
                 <Route component={Login} path="/login" exact />
             </SideDrawerProvider>
         </Switch>

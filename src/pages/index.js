@@ -24,7 +24,7 @@ const Index = () => {
         <MainLayout>
             <div>
                 <h1 className={className + " saiyed"}>Afzal</h1>
-                <p className={className + " surname"}>Saiyed</p>
+                <p className={className + " surname"}>Dashboard</p>
                 {styles}
             </div>
         </MainLayout>
