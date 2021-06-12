@@ -1,3 +1,4 @@
+@import './variables';
 .header {
     background-color: white;
     width: 100%;
@@ -21,9 +22,9 @@
                 display: inline-block;
     
                 span {
-                    width: 30px;
+                    width: 28px;
                     height: 3px;
-                    background: #666666;
+                    background: map-get($map: $text, $key: secondary);
                     display: block;
                     margin-bottom: 6px;
                     border-radius: 4px;
@@ -82,9 +83,35 @@
             .slider-items-list {
                 list-style: none;
                 padding: 0;
+                margin: 0;
 
                 .slider-item {
-                    padding: 10px;
+                    padding: 15px;
+                    padding-left: 2.5em;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    color: map-get($map: $text, $key: secondary);
+
+                    &:hover {
+                        background-color: map-get($map: $colors, $key: background);
+                    }
+
+                    i {
+                        font-size: 20px;
+                        margin-right: 10px;
+                        color: map-get($map: $text, $key: secondary);
+                    }
+
+                    &.active-item {
+                        color: map-get($map: $text, $key: active);
+                        background: map-get($map: $colors, $key: active);
+
+
+                        i {
+                            color: map-get($map: $text, $key: active);
+                        }
+                    }
                 }
             }
         }
@@ -95,7 +122,7 @@
 .footer {
     width: 100%;
     text-align: center;
-    background-color: #000;
+    background-color: map-get($map: $colors, $key: main);
     padding: 10px;
     z-index: 1001;
     color: #fff;

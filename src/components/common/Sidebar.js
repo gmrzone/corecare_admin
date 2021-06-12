@@ -1,5 +1,6 @@
 import style from '../../style/main-layout.module.scss';
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 const Sidebar = () => {
     const [sideBarActive, setSideBarActive] = useState(false);
     return (
@@ -11,29 +12,41 @@ const Sidebar = () => {
             </div>
             <div className={style.slider}>
                 <ul className={style['slider-items-list']}>
-                    <li className={style['slider-item']}>
-                        <i class="home icon" />
-                        <span>DashBoard</span>
+                    <li>
+                        <Link className={`${style['slider-item']} ${style['active-item']}`} to="/">
+                            <i class="home icon" />
+                            <span>DashBoard</span>
+                        </Link>
                     </li>
-                    <li className={style['slider-item']}>
-                        <i class="briefcase icon" />
-                        <span>Employees</span>
+                    <li>
+                        <Link className={style['slider-item']}>
+                            <i class="briefcase icon" />
+                            <span>Employees</span>
+                        </Link>
                     </li>
-                    <li className={style['slider-item']}>
-                    <i class="users icon" />
-                        <span>Users</span>
+                    <li>
+                        <Link className={style['slider-item']}>
+                            <i class="users icon" />
+                            <span>Users</span>
+                        </Link>
                     </li>
-                    <li className={style['slider-item']}>
-                        <i class="phone icon" />
-                        <span>Orders</span>
+                    <li>
+                        <Link className={style['slider-item']}>
+                            <i class="phone icon" />
+                            <span>Orders</span>
+                        </Link>
                     </li>
-                    <li className={style['slider-item']}>
-                        <i class="dashcube icon" />
-                        <span>Orders</span>
+                    <li>
+                        <Link className={style['slider-item']}>
+                            <i class="dashcube icon" />
+                            <span>Orders</span>
+                        </Link>
                     </li>
-                    <li className={style['slider-item']}>
-                        <i class="blogger icon" />
-                        <span>Blog</span>
+                    <li>
+                        <Link className={style['slider-item']}>
+                            <i class="blogger icon" />
+                            <span>Blog</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
