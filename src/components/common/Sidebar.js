@@ -10,7 +10,7 @@ const Sidebar = () => {
                 <span></span>
                 <span></span>
             </div>
-            <div className={style.slider}>
+            <div className={`${style.slider} ${sideBarActive && style['slider-active']}`}>
                 <ul className={style['slider-items-list']}>
                     <li>
                         <Link className={`${style['slider-item']} ${style['active-item']}`} to="/">

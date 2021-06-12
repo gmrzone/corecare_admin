@@ -40,8 +40,8 @@ a {
 @media only screen and (min-width: 992px) and (max-width: 1199px){
     .ui.container {
         width: auto !important;
-        margin-left: 2em!important;
-        margin-right: 2em!important;
+        margin-left: 1.5em!important;
+        margin-right: 1.5em!important;
     }
     
 }
@@ -49,8 +49,8 @@ a {
 @media only screen and (min-width: 1200px){
     .ui.container {
         width: auto !important;
-        margin-left: 2.5em!important;
-        margin-right: 2.5em!important;
+        margin-left: 1.5em!important;
+        margin-right: 1.5em!important;
     }
 }
 

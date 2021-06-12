@@ -74,7 +74,7 @@
             }
             .slider {
                 max-width: 256px;
-                min-width: 256px;
+                width: 220px;
                 height: calc(100% - 61px - 66px);
                 position: absolute;
                 left: 0;
@@ -82,11 +82,25 @@
                 z-index: 1000;
                 background-color: white;
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
+                transform: translateX(-220px);
+                transition: transform 0.3s ease-in-out;
+                overflow: hidden;
                 
                 
                 @media (min-width: 768px) {
                     top: 80px;
+                    width: 65px;
+                    transition: width 0.3s ease-in-out;
+                    transform: translateX(0);
                     height: calc(100% - 65px - 80px);
+                }
+
+                &.slider-active {
+                    transform: translateX(0);
+                    @media (min-width: 768px){
+                        width: 256px;
+                        left: 0;
+                    }
                 }
             }
             .slider-items-list {
@@ -96,11 +110,16 @@
 
                 .slider-item {
                     padding: 15px;
-                    padding-left: 2.5em;
+                    padding-left: 1em;
+
                     display: flex;
                     flex-wrap: nowrap;
                     align-items: center;
                     color: map-get($map: $text, $key: secondary);
+
+                    @media (min-width: 768px){
+                        padding-left: 1.5em;
+                    }
 
                     &:hover {
                         background-color: map-get($map: $colors, $key: background);
@@ -108,8 +127,12 @@
 
                     i {
                         font-size: 20px;
-                        margin-right: 10px;
+                        margin-right: 1em;
                         color: map-get($map: $text, $key: secondary);
+
+                        @media (min-width: 768px){
+                            margin-right: 1.5em;
+                        }
                     }
 
                     &.active-item {
@@ -169,7 +192,7 @@
                             width: 30px;
                             height: 30px;
                             border-radius: 50%;
-                            overflow: hidden;
+                            overflow: hidden    ;
                         }
                         span {
                             width: 22px;
@@ -188,6 +211,14 @@
                 }
             }
         }
+    }
+}
+
+.main {
+    margin-left: 0px;
+
+    @media (min-width: 768px) {
+        margin-left: 65px;
     }
 }
 
