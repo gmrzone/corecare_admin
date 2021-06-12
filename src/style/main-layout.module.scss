@@ -7,10 +7,17 @@
 
     .navbar {
         display: flex;
-        justify-content: space-between;
         align-items: center;
 
+        .logo {
+            display: none;
+           
 
+            @media (min-width: 768px) {
+                display: block;
+                padding: 10px 0;
+            }
+        }
         .sidebar {
             font: inherit;
 
@@ -71,13 +78,15 @@
                 height: calc(100% - 61px - 66px);
                 position: absolute;
                 left: 0;
+                top: 65px;
                 z-index: 1000;
                 background-color: white;
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
                 
-
-                @media (min-width: 992px) {
-                    height: calc(100% - 65px - 66px);
+                
+                @media (min-width: 768px) {
+                    top: 80px;
+                    height: calc(100% - 65px - 80px);
                 }
             }
             .slider-items-list {
@@ -115,7 +124,70 @@
                 }
             }
         }
+        .nav-right-list {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-left: auto;
 
+            .nav-right-item {
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 50%;
+                text-align: center;
+                margin-right: 12px;
+
+                i {
+                    font-size: 20px;
+                    margin: 0;
+                }
+                &:hover {
+                    background-color: darken(map-get($colors, background), 6%);
+                }
+                
+                &.profile-box {
+
+                    margin-right: 0px;
+                    padding: 0;
+                    position: relative;
+
+                    .profile-box-container {
+                        background-color: darken(map-get($colors, background), 6%);
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: center;
+                        justify-content: centers;
+                        border-radius: 50px;
+                        padding: 5px;
+                        .opener-icon {
+                            padding: 4px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                        .profile-image {
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                        }
+                        span {
+                            width: 22px;
+                            height: 3px;
+                            display: block;
+                            margin-bottom: 3px;
+                            border-radius: 4px;
+                            background: map-get($map: $text, $key: secondary);
+                        }
+
+                    }
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
     }
 }
 
