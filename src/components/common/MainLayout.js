@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
             <header id="header" className={style.header}>
                 <Header />
             </header>
-            <main id="main" className={`${style.main} ${sideDrawerActive && style['drawer-active']}`}>
+            <main id="main" className={`ui container main ${ style.main} ${sideDrawerActive && 'drawer-active'}`}>
                 {children}
             </main>
             <footer id="footer" className={style.footer}>

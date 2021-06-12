@@ -7,8 +7,11 @@ const SideDrawerProvider = ({ children }) => {
     const toggleSideDrawer = () => {
         setSideDrawerActive(s => !s)
     }
+    const closeDrawer = () => {
+        setSideDrawerActive(false)
+    }
     return (
-        <SideDrawerContext.Provider value={{ sideDrawerActive, toggleSideDrawer }}>
+        <SideDrawerContext.Provider value={{ sideDrawerActive, toggleSideDrawer, closeDrawer }}>
             { children }
         </SideDrawerContext.Provider>
     )

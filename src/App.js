@@ -9,8 +9,8 @@ function App() {
             <SideDrawerProvider>
                 <Route component={Index} path="/" exact />
                 <Route component={User} path="/users" exact />
-            </SideDrawerProvider>
-            <Route component={Login} path="/login" exact />
+                <Route component={Login} path="/login" exact />
+            </SideDrawerProvider>      
         </Switch>
     );
 }

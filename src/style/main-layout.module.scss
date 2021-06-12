@@ -35,7 +35,7 @@
                     display: block;
                     margin-bottom: 6px;
                     border-radius: 4px;
-                    transition: .3s ease-in-out;
+                    transition: .2s ease-in-out;
     
     
                     &:last-of-type {
@@ -83,14 +83,14 @@
                 background-color: white;
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
                 transform: translateX(-220px);
-                transition: transform 0.3s ease-in-out;
+                transition: transform 0.2s ease-in-out;
                 overflow: hidden;
                 
                 
                 @media (min-width: 768px) {
                     top: 80px;
                     width: 65px;
-                    transition: width 0.3s ease-in-out;
+                    transition: width 0.2s ease-in-out;
                     transform: translateX(0px);
                     height: calc(100% - 65px - 80px);
                 }
@@ -215,23 +215,23 @@
     }
 }
 
-.main {
-    margin-left: 10px;
-    transition: margin-left 0.3s ease-in-out;
+// .main {
+//     margin-left: 10px;
+//     transition: margin-left 0.3s ease-in-out;
 
-    @media (min-width: 768px) {
-        margin-left: 75px;
-        transition: margin-left 0.3s ease-in-out;
-    }
+//     @media (min-width: 768px) {
+//         margin-left: 75px;
+//         transition: margin-left 0.3s ease-in-out;
+//     }
 
-    &.drawer-active {
-        margin-left: 230px;
+//     &.drawer-active {
+//         margin-left: 230px;
 
-        @media (min-width: 768px) {
-            margin-left: 266px;
-        }
-    }
-}
+//         @media (min-width: 768px) {
+//             margin-left: 266px;
+//         }
+//     }
+// }
 
 .footer {
     width: 100%;
