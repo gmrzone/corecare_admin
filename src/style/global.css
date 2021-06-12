@@ -26,13 +26,11 @@ a {
     font-weight: 600;
 }
 
-
-
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px) {
     .ui.container {
-        width: auto!important;
-        margin-left: 1em!important;
-        margin-right: 1em!important;
+        width: auto !important;
+        margin-left: 1em !important;
+        margin-right: 1em !important;
         transition: margin-left 0.2s ease-in-out;
     }
     .ui.container.drawer-active {
@@ -40,12 +38,11 @@ a {
     }
 }
 
-
-@media only screen and (min-width: 768px) and (max-width: 991px){
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     .ui.container {
         width: auto !important;
-        margin-left: 1.5em!important;
-        margin-right: 1.5em!important;
+        margin-left: 1.5em !important;
+        margin-right: 1.5em !important;
         transition: margin-left 0.2s ease-in-out;
     }
     .ui.container.main {
@@ -55,27 +52,11 @@ a {
         margin-left: calc(1.5em + 256px) !important;
     }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px){
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
     .ui.container {
         width: auto !important;
-        margin-left: 1.5em!important;
-        margin-right: 1.5em!important;
-        transition: margin-left 0.2s ease-in-out;
-    }
-    .ui.container.main {
-        margin-left: calc(1.5em + 65px) !important;
-    }
-    .ui.container.main.drawer-active {
-        margin-left: calc(1.5em + 256px) !important;
-    }
-    
-}
-
-@media only screen and (min-width: 1200px){
-    .ui.container {
-        width: auto !important;
-        margin-left: 1.5em!important;
-        margin-right: 1.5em!important;
+        margin-left: 1.5em !important;
+        margin-right: 1.5em !important;
         transition: margin-left 0.2s ease-in-out;
     }
     .ui.container.main {
@@ -86,3 +67,17 @@ a {
     }
 }
 
+@media only screen and (min-width: 1200px) {
+    .ui.container {
+        width: auto !important;
+        margin-left: 1.5em !important;
+        margin-right: 1.5em !important;
+        transition: margin-left 0.2s ease-in-out;
+    }
+    .ui.container.main {
+        margin-left: calc(1.5em + 65px) !important;
+    }
+    .ui.container.main.drawer-active {
+        margin-left: calc(1.5em + 256px) !important;
+    }
+}

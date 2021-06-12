@@ -7,7 +7,7 @@ const LoginForm = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const [formError, ] = useState(null);
+    const [formError] = useState(null);
     const onSubmit = (formData, e) => {
         //  reset form on submit
         e.target.reset();
