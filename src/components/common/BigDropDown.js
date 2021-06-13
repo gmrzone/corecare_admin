@@ -22,6 +22,7 @@ const BigDropDown = ({ iconClass, type, data }) => {
                          <img src="./default-profile.png" alt="small_profile_pic" width={40} />
                         <p className={style['notification-item-text']}>
                             <span>{x.from}</span> {x.msg} <span>{x.to ? x.to : ""}</span>
+                            &nbsp;<span className={style['notification-created']}>{x.created}</span>
                         </p>
                     </div>
                 )
@@ -38,6 +39,7 @@ const BigDropDown = ({ iconClass, type, data }) => {
                 return (
                     <div key={x.id} className={style['message-item']}>
                         <img src="./default-profile.png" alt="small_profile_pic" width={40} />
+                        <span className={style['message-created']}>{x.created}</span>
                         <div className={style['message-item-text']}>
                             <div className={style['sender-name']}>{x.name}</div>
                             <div className={style['sender-message']}>{x.msg.substring(0, 70) + "...."}</div>

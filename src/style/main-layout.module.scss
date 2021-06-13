@@ -249,7 +249,7 @@
                     .dropdown-body {
                         overflow-y: auto;
                         overflow-x: hidden;
-                        text-align: left;
+                        text-align: left;   
 
                         .notification-item,
                         .message-item {
@@ -257,6 +257,7 @@
                             flex-wrap: nowrap;
                             align-items: center;
                             padding: 15px;
+                            position: relative;
 
                             &:hover {
                                 background-color: map-get($map: $colors, $key: background);
@@ -272,6 +273,18 @@
                             .sender-name {
                                 color: map-get($map: $text, $key: active);
                                 font-weight: 600;
+                            }
+                            .message-created {
+                                color: map-get($map: $text, $key: secondary);
+                                font-size: 12px;
+                                position: absolute;
+                                right: 30px;
+                                top: 14px;
+                            }
+                            .notification-created {
+                                color: map-get($map: $text, $key: secondary);
+                                font-size: 12px;
+                                display: block;
                             }
                             
                         }
@@ -289,6 +302,7 @@
 
                         @media (min-width: 768px){
                             display: flex;
+                            width: 350px;
 
                         }
                     }
