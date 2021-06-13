@@ -73,7 +73,6 @@
                 overflow-y: auto;
                 overflow-x: hidden;
                 width: 220px;
-                overflow-y: auto;
                 height: calc(100% - 61px - 66px);
                 position: absolute;
                 left: 0;
@@ -180,14 +179,14 @@
                 .nav-right-dropdown {
                     position: absolute;
                     top: 0px;
-                    bottom: 0;
                     height: 100%;
-                    display: block;
                     overflow-y: auto;
                     right: 0;
-                    width: 300px;
-                    transform: translateX(300px);
-                    transition: transform .3s ease-in-out;
+                    width: 0px;
+                    display: block;
+                    // transform: translateX(300px);
+                    // transition: transform .3s ease-in-out;
+                    transition: width .3s ease-in-out;
                     border: 1px solid #ccc;
                     border-color: rgba(0, 0, 0, 0.2);
                     background: white;
@@ -196,6 +195,7 @@
 
 
                     @media (min-width: 768px){
+                        
                         display: none;
                         flex-direction: column;
                         right: 0;
@@ -248,6 +248,7 @@
                     }
                     .dropdown-body {
                         overflow-y: auto;
+                        overflow-x: hidden;
                         text-align: left;
 
                         .notification-item,
@@ -283,7 +284,8 @@
 
                     &.nav-right-dd__active {
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    
-                        transform: translateX(0);
+                        // transform: translateX(0);
+                        width: 300px;
 
                         @media (min-width: 768px){
                             display: flex;
