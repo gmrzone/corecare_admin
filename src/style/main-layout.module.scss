@@ -72,7 +72,7 @@
                 max-width: 256px;
                 overflow-y: auto;
                 overflow-x: hidden;
-                width: 220px;
+                width: 230px;
                 height: calc(100% - 61px - 66px);
                 position: absolute;
                 left: 0;
@@ -80,7 +80,7 @@
                 z-index: 1000;
                 background-color: white;
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
-                transform: translateX(-220px);
+                transform: translateX(-230px);
                 transition: transform 0.2s ease-in-out;
                 // overflow: hidden;
 
@@ -151,7 +151,7 @@
 
                     .dropdown-icon {
                         font-size: 14px;
-                        margin-left: 80px;
+                        align-self: flex-end;
                     }
                     .slider-item--text {
                         font-weight: 600;
@@ -173,6 +173,14 @@
                         &.slider-dropdown-margin {
                             margin-left: 50px;
                         }
+                    }
+                    .slider-item-title {
+                        display: flex;
+                        flex-wrap: nowrap;
+                    }
+                    .dropdown-slider-item {
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
                     }
                 }
             }

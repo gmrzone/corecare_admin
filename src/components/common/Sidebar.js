@@ -45,13 +45,27 @@ const Sidebar = () => {
                             <span className={style["slider-item--text"]}>Orders</span>
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link className={`${style["slider-item"]} ${history.location.pathname === "/services" && style["active-item"]}`} to="/services">
                             <i className="wrench icon" />
                             <span className={style["slider-item--text"]}>Services</span>
                         </Link>
-                    </li>
-                    <SliderDropDownItem name="Blog" activeTab={history.location.pathname === "/posts" || history.location.pathname === "/comments"} sideDrawerActive={sideDrawerActive}>
+                    </li> */}
+                    <SliderDropDownItem name="Products" activeTab={history.location.pathname === "/services" || history.location.pathname === "/subcategory"} sideDrawerActive={sideDrawerActive} iconClass="wrench icon">
+                            <li onClick={itemClick}>
+                                <Link className={style["slider-item"]} to="/posts">
+                                    <i className="sitemap icon" />
+                                    <span className={style["slider-item--text"]}>Subcategory</span>
+                                </Link>
+                            </li>
+                            <li onClick={itemClick}>
+                                <Link className={style["slider-item"]} to="/services">
+                                <i className="comment icon" />
+                                    <span className={style["slider-item--text"]}>Service</span>
+                                </Link>
+                            </li>
+                    </SliderDropDownItem>
+                    <SliderDropDownItem name="Blog" activeTab={history.location.pathname === "/posts" || history.location.pathname === "/comments"} sideDrawerActive={sideDrawerActive} iconClass="blogger icon">
                             <li onClick={itemClick}>
                                 <Link className={style["slider-item"]} to="/posts">
                                     <i className="edit icon" />
