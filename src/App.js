@@ -7,6 +7,7 @@ import Coupons from './pages/coupons'
 import Comments from './pages/comments'
 import Services from './pages/services'
 import Posts from './pages/posts'
+import Subcategory from './pages/subcategory'
 import { Route, Switch } from "react-router-dom";
 import { SideDrawerProvider } from "./context/SideDrawerContext";
 
@@ -22,6 +23,7 @@ function App() {
                 <Route component={Coupons} path="/coupons" exact />
                 <Route component={Comments} path="/comments" exact />
                 <Route component={Posts} path="/posts" exact />
+                <Route component={Subcategory} path="/subcategory" exact />
                 <Route component={Login} path="/login" exact />
             </SideDrawerProvider>
         </Switch>

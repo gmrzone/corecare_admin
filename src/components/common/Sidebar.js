@@ -24,6 +24,7 @@ const Sidebar = () => {
                     <li>
                         <Link className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/" >
                             <i className="home icon" />
+                            {/* <i className="chart pie icon" /> */}
                             <span className={style["slider-item--text"]}>DashBoard</span>
                         </Link>
                     </li>
@@ -51,16 +52,16 @@ const Sidebar = () => {
                             <span className={style["slider-item--text"]}>Services</span>
                         </Link>
                     </li> */}
-                    <SliderDropDownItem name="Products" activeTab={history.location.pathname === "/services" || history.location.pathname === "/subcategory"} sideDrawerActive={sideDrawerActive} iconClass="wrench icon">
+                    <SliderDropDownItem name="Products" activeTab={history.location.pathname === "/services" || history.location.pathname === "/subcategory"} sideDrawerActive={sideDrawerActive} iconClass="truck icon">
                             <li onClick={itemClick}>
-                                <Link className={style["slider-item"]} to="/posts">
+                                <Link className={style["slider-item"]} to="/subcategory">
                                     <i className="sitemap icon" />
                                     <span className={style["slider-item--text"]}>Subcategory</span>
                                 </Link>
                             </li>
                             <li onClick={itemClick}>
                                 <Link className={style["slider-item"]} to="/services">
-                                <i className="comment icon" />
+                                <i className="wrench icon" />
                                     <span className={style["slider-item--text"]}>Service</span>
                                 </Link>
                             </li>

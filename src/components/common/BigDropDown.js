@@ -54,6 +54,9 @@ const BigDropDown = ({ iconClass, type, data }) => {
     return (
         <div className={style["nav-right-item"]}>
              <div className={style['nav-right-item__icon']} onClick={() => setDropDownActive(s => !s)}>
+                <div className={style['notification-count']}>
+                    {data.length}
+                </div>
                 <i className={iconClass} />
              </div>
              <div className={`${style['nav-right-dropdown']} ${dropDownActive && style['nav-right-dd__active']}`}>

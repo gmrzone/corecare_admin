@@ -111,6 +111,7 @@
                 list-style: none;
                 padding: 0;
                 margin: 0;
+
                 
 
                 .slider-item {
@@ -181,6 +182,7 @@
                     .dropdown-slider-item {
                         flex-wrap: nowrap;
                         justify-content: space-between;
+                        cursor: pointer;
                     }
                 }
             }
@@ -199,9 +201,22 @@
                 margin-right: 12px;
                 position: static;
 
-                i {
+                .nav-right-item__icon {
                     font-size: 20px;
                     margin: 0;
+                    position: relative;
+
+                    .notification-count {
+                        position: absolute;
+                        font-size: 12px;
+                        padding: 0 4px;
+                        color: white;
+                        border-radius: 10px;
+                        top: -12px;
+                        left: 15px;
+                        font-weight: 600;
+                        background-color: map-get($map: $text, $key: active);
+                    }   
                 }
                 &:hover {
                     background-color: darken(map-get($colors, background), 6%);
@@ -336,7 +351,7 @@
 
                         @media (min-width: 768px){
                             display: flex;
-                            width: 350px;
+                            width: 400px;
 
                         }
                     }
