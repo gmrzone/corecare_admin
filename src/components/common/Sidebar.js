@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext, useRef } from "react";
 import { SideDrawerContext } from "../../context/SideDrawerContext";
 import { useHistory } from 'react-router-dom'
+import SliderDropDownItem from './SliderDropDownItem'
 const Sidebar = () => {
     const { sideDrawerActive, toggleSideDrawer, closeDrawer, openDrawer } = useContext(SideDrawerContext);
     const sliderList = useRef()
@@ -58,24 +59,27 @@ const Sidebar = () => {
                             <span className={style["slider-item--text"]}>Coupons</span>
                         </Link>
                     </li>
-                    <li onClick={(e) => e.stopPropagation()}>
+                    <SliderDropDownItem name="Blog">
+                            <li onClick={itemClick}>
+                                <Link className={style["slider-item"]} to="/posts">
+                                    <i className="edit icon" />
+                                    <span className={style["slider-item--text"]}>Posts</span>
+                                </Link>
+                            </li>
+                            <li onClick={itemClick}>
+                                <Link className={style["slider-item"]} to="/comments">
+                                <i className="comment icon" />
+                                    <span className={style["slider-item--text"]}>Comments</span>
+                                </Link>
+                            </li>
+                    </SliderDropDownItem>
+                    {/* <li onClick={(e) => e.stopPropagation()}>
                         <span className={style["slider-item"]}>
                             <i className="blogger icon" />
                             <span className={style["slider-item--text"]}>Blog</span>
+                            <i className={`angle down icon ${style["dropdown-icon"]}`} />
                         </span>
-                    </li>
-                    <li onClick={(e) => e.stopPropagation()}>
-                        <span className={style["slider-item"]}>
-                        <i className="comment icon" />
-                            <span className={style["slider-item--text"]}>Posts</span>
-                        </span>
-                    </li>
-                    <li onClick={(e) => e.stopPropagation()}>
-                        <span className={style["slider-item"]}>
-                        <i className="comment icon" />
-                            <span className={style["slider-item--text"]}>Comments</span>
-                        </span>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </div>

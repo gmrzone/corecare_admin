@@ -13,6 +13,7 @@ const BigDropDown = ({ iconClass, type, data }) => {
             document.body.removeEventListener('click', deactivateDropDown)
         }
     }, [dropDownActive])
+    
     const renderNotification = () => {
         let notifications;
         if (type === "Notification"){
@@ -30,7 +31,6 @@ const BigDropDown = ({ iconClass, type, data }) => {
             return notifications
         }
         return null
-        
     }
     const renderMessages = () => {
         let messages;
@@ -76,3 +76,4 @@ const BigDropDown = ({ iconClass, type, data }) => {
 }
 
 export default BigDropDown
+

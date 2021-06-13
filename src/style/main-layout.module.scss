@@ -148,6 +148,28 @@
                             color: map-get($map: $text, $key: active);
                         }
                     }
+
+                    .dropdown-icon {
+                        font-size: 14px;
+                        margin-left: 60px;
+                    }
+                    .slider-item--text {
+                        font-weight: 600;
+                    }
+                }
+                .slider-dropdown {
+                    position: relative;
+
+                    .slider-dropdown-list {
+                        margin-left: 40px;
+                        height: 0px;
+                        overflow: hidden;
+                        transition: height .2s ease-in-out;
+
+                        &.slider-dropdown-list__active {
+                            height: auto;
+                        }
+                    }
                 }
             }
         }
