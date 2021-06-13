@@ -151,7 +151,7 @@
 
                     .dropdown-icon {
                         font-size: 14px;
-                        margin-left: 60px;
+                        margin-left: 80px;
                     }
                     .slider-item--text {
                         font-weight: 600;
@@ -161,13 +161,17 @@
                     position: relative;
 
                     .slider-dropdown-list {
-                        margin-left: 40px;
+                        margin-left: 0px;
                         height: 0px;
+                        transition: height .2s ease-in-out, margin-left .2s ease-in-out;
                         overflow: hidden;
-                        transition: height .2s ease-in-out;
+                        
 
                         &.slider-dropdown-list__active {
                             height: auto;
+                        }
+                        &.slider-dropdown-margin {
+                            margin-left: 50px;
                         }
                     }
                 }

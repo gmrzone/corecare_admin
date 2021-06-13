@@ -1,14 +1,12 @@
 import style from "../../style/main-layout.module.scss";
 import { Link } from "react-router-dom";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { SideDrawerContext } from "../../context/SideDrawerContext";
 import { useHistory } from 'react-router-dom'
 import SliderDropDownItem from './SliderDropDownItem'
 const Sidebar = () => {
     const { sideDrawerActive, toggleSideDrawer, closeDrawer, openDrawer } = useContext(SideDrawerContext);
-    const sliderList = useRef()
     const history = useHistory()
-    console.log(history.location.pathname)
     const itemClick = () => {
         if (document.body.clientWidth < 768){
             setTimeout(closeDrawer, 100)
@@ -21,7 +19,7 @@ const Sidebar = () => {
                 <span></span>
                 <span></span>
             </div>
-            <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`} ref={sliderList}>
+            <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`}>
                 <ul className={style["slider-items-list"]} onMouseOver={openDrawer} onMouseOut={closeDrawer} onClick={itemClick}>
                     <li>
                         <Link className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/" >
@@ -53,13 +51,7 @@ const Sidebar = () => {
                             <span className={style["slider-item--text"]}>Services</span>
                         </Link>
                     </li>
-                    <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/coupons" && style["active-item"]}`} to="/coupons">
-                            <i className="gift icon" />
-                            <span className={style["slider-item--text"]}>Coupons</span>
-                        </Link>
-                    </li>
-                    <SliderDropDownItem name="Blog">
+                    <SliderDropDownItem name="Blog" activeTab={history.location.pathname === "/posts" || history.location.pathname === "/comments"} sideDrawerActive={sideDrawerActive}>
                             <li onClick={itemClick}>
                                 <Link className={style["slider-item"]} to="/posts">
                                     <i className="edit icon" />
@@ -73,13 +65,12 @@ const Sidebar = () => {
                                 </Link>
                             </li>
                     </SliderDropDownItem>
-                    {/* <li onClick={(e) => e.stopPropagation()}>
-                        <span className={style["slider-item"]}>
-                            <i className="blogger icon" />
-                            <span className={style["slider-item--text"]}>Blog</span>
-                            <i className={`angle down icon ${style["dropdown-icon"]}`} />
-                        </span>
-                    </li> */}
+                    <li>
+                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/coupons" && style["active-item"]}`} to="/coupons">
+                            <i className="gift icon" />
+                            <span className={style["slider-item--text"]}>Coupons</span>
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>
