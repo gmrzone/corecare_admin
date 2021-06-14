@@ -5,7 +5,7 @@ const {className, styles} = css.resolve`
         margin: 20px 0px;
         overflow-x: auto;
         scrollbar-width: thin;          
-        scrollbar-color: black; 
+        scrollbar-color: #595959; 
     }
     .component-wrapper::-webkit-scrollbar {
         
@@ -16,8 +16,8 @@ const {className, styles} = css.resolve`
         border-radius: 20px;
     }
     .component-wrapper::-webkit-scrollbar-thumb {
-        background-color: black;  
-        border-radius: 20px;      
+        background-color: #595959; 
+        border-radius: 30px;    
         
     }
 `

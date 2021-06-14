@@ -15,7 +15,7 @@ $text: (
 @mixin scrollbar($type) {
 
     scrollbar-width: thin;          
-    scrollbar-color: black;
+    scrollbar-color: #595959;
     @if $type == 'horizontal' {
         &::-webkit-scrollbar {
         
@@ -32,8 +32,8 @@ $text: (
         border-radius: 20px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: black;  
-        border-radius: 20px; 
+        background-color: #595959;  
+        border-radius: 30px; 
     }
 
 }
