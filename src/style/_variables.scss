@@ -11,3 +11,30 @@ $text: (
     link: #4d85ff,
     active: #d93025,
 );
+
+@mixin scrollbar($type) {
+
+    scrollbar-width: thin;          
+    scrollbar-color: black;
+    @if $type == 'horizontal' {
+        &::-webkit-scrollbar {
+        
+            height: 6px;
+        }
+    } @else {
+        &::-webkit-scrollbar {
+        
+            width: 6px;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background: #e6e6e6;
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: black;  
+        border-radius: 20px; 
+    }
+
+}
+    

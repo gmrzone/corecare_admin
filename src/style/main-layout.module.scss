@@ -79,12 +79,13 @@
                 position: fixed;
                 left: 0;
                 top: 65px;
-                z-index: 1000;
+                // z-index: 1000;
                 background-color: white;
                 box-shadow: inset -1px 0 0 rgb(100 121 143 / 20%);
                 transform: translateX(-230px);
                 transition: transform 0.2s ease-in-out;
                 // overflow: hidden;
+                @include scrollbar('vertical');
 
                 @media (min-width: 768px) {
                     top: 80px;
@@ -236,7 +237,7 @@
                     left: 0;
                     top: 0;
                     background: rgba($color: #000000, $alpha: 0.5);
-                    z-index: 1;
+                    // z-index: 1;
                     transition: opacity .3s ease-in-out;
 
                     @media(min-width: 768px){
@@ -267,6 +268,7 @@
                     background: white;
                     z-index: 1002;
                     
+                    @include scrollbar('vertical');
 
 
                     @media (min-width: 768px){
@@ -324,7 +326,8 @@
                     .dropdown-body {
                         overflow-y: auto;
                         overflow-x: hidden;
-                        text-align: left;   
+                        text-align: left;
+                        @include scrollbar('vertical'); 
 
                         .notification-item,
                         .message-item {

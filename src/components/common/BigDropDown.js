@@ -36,7 +36,9 @@ const BigDropDown = ({ iconClass, type, data }) => {
     const toggleDropDown = () => {
         const deactivateBackdrop = () => backDrop.current.classList.remove(style['make-block'])
         const activateBackBrop= () => backDrop.current.classList.add(style['make-visible'])
+        console.log("before", dropDownActive)
         setDropDownActive(s => !s)
+        console.log("after", dropDownActive)
         if (window.innerWidth < 768){
             if (dropDownActive){
                 backDrop.current.classList.remove(style['make-visible'])
