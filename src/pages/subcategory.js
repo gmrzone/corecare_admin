@@ -1,8 +1,9 @@
 import MainLayout from "../components/common/MainLayout";
+import CreateAction from '../components/common/CreateAction'
 const Subcategory = () => {
     return (
         <MainLayout>
-            <h1>Subcategory</h1>
+            <CreateAction forPage="Subcategory"/>
         </MainLayout>
     )
 }

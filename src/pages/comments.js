@@ -1,8 +1,9 @@
 import MainLayout from "../components/common/MainLayout";
+import CreateAction from '../components/common/CreateAction'
 const Comments = () => {
     return (
         <MainLayout>
-            <h1>Comments</h1>
+            <CreateAction forPage="Comment"/>
         </MainLayout>
     )
 }

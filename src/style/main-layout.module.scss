@@ -437,6 +437,27 @@
     }
 }
 
+.main {
+    font: inherit;
+
+
+    .action-Container {
+        display: flex;
+        justify-content: center;
+
+        @media (min-width: 470px) {
+            justify-content: flex-end;
+        }
+
+        button {
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+}
 
 .footer {
     width: 100%;
