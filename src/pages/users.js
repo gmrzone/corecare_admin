@@ -13,7 +13,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 2,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -21,7 +21,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 3,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -29,7 +29,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 4,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -37,7 +37,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 5,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -45,7 +45,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 6,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -53,7 +53,7 @@ const Users = () => {
             
         },
         {
-            id: 1,
+            id: 7,
             number: "7208333993",
             email: "saiyedafzalgz@gmail.com",
             name: "AFzal saiyed",
@@ -68,9 +68,9 @@ const Users = () => {
         "Last active"
 
     ]
-    const tableBody = tableData.map(x => {
+    const tableBody = tableData.map((x) => {
         return  (
-            <tr style={{cursor: 'pointer'}}>
+            <tr style={{cursor: 'pointer'}} key={x.id}>
                 <td>{x.number}</td>
                 <td>{x.name}</td>
                 <td>{x.email}</td>

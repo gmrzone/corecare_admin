@@ -5,10 +5,10 @@ const CreateAction = ({ forPage }) => {
         <div className={style['action-Container']}>
             <SearchBar />
             <div className={style['action-buttons']}>
-                <button class="ui secondary button">
+                <button className="ui secondary button">
                     Create {forPage}
                 </button>
-                <button class="ui secondary button">
+                <button className="ui secondary button">
                     Export as CSV
                 </button>
             </div>
