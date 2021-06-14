@@ -1,24 +1,20 @@
-const ListTable = () => {
+
+const ListTable = ({ headData, bodyData}) => {
+    const renderHead = headData.map(x => {
+        return (
+            <th key={x} className="three wide">{x}</th>
+        )
+    })
+
     return (
-        <table className="ui red table unstackable selectable">
+        <table className="ui table striped  padded single line unstackable selectable">
             <thead> 
                 <tr>
-                    <th>Food</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
+                    {renderHead}
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>Apples</td>
-                <td>200</td>
-                <td>0g</td>
-                </tr>
-                <tr>
-                <td>Orange</td>
-                <td>310</td>
-                <td>0g</td>
-                </tr>
+                {bodyData}
             </tbody>
         </table>
     )

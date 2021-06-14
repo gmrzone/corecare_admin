@@ -3,6 +3,7 @@ import css from 'styled-jsx/macro'
 const {className, styles} = css.resolve`
     .component-wrapper {
         margin: 20px 0px;
+        overflow-x: auto;
     }
 `
 const ComponentWrapper = ({ children }) => {
