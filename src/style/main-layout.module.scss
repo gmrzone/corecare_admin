@@ -153,6 +153,7 @@
                     .dropdown-icon {
                         font-size: 14px;
                         align-self: flex-end;
+                        margin-bottom: 5px;
                     }
                     .slider-item--text {
                         font-weight: 600;
@@ -329,11 +330,13 @@
                                 position: absolute;
                                 right: 30px;
                                 top: 14px;
+                                font-weight: 600;
                             }
                             .notification-created {
                                 color: map-get($map: $text, $key: secondary);
                                 font-size: 12px;
                                 display: block;
+                                font-weight: 600;
                             }
                             
                         }

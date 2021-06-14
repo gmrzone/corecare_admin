@@ -1,8 +1,9 @@
 import MainLayout from "../components/common/MainLayout";
+import CreateAction from '../components/common/CreateAction'
 const Employees = () => {
     return (
         <MainLayout>
-            <h1>Employees</h1>
+            <CreateAction forPage="Employee"/>
         </MainLayout>
     )
 }
