@@ -1,10 +1,11 @@
 import style from "../../style/main-layout.module.scss";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 const BigDropDown = ({ iconClass, type, data }) => {
     const [dropDownActive, setDropDownActive] = useState(false)
+    const backDrop = useRef()
     useEffect(() => {
         const deactivateDropDown = () => {
-            if (dropDownActive){
+            if (dropDownActive && window.innerWidth > 768){
                 setDropDownActive(false)
             }
         }
@@ -32,6 +33,21 @@ const BigDropDown = ({ iconClass, type, data }) => {
         }
         return null
     }
+    const toggleDropDown = () => {
+        const deactivateBackdrop = () => backDrop.current.classList.remove(style['make-block'])
+        const activateBackBrop= () => backDrop.current.classList.add(style['make-visible'])
+        setDropDownActive(s => !s)
+        if (window.innerWidth < 768){
+            if (dropDownActive){
+                backDrop.current.classList.remove(style['make-visible'])
+                setTimeout(deactivateBackdrop, 300)
+            }
+            else{
+                backDrop.current.classList.add(style['make-block'])
+                setTimeout(activateBackBrop, 20)
+            }
+        }
+    }
     const renderMessages = () => {
         let messages;
         if (type === "Messages"){
@@ -53,14 +69,17 @@ const BigDropDown = ({ iconClass, type, data }) => {
     } 
     return (
         <div className={style["nav-right-item"]}>
-             <div className={style['nav-right-item__icon']} onClick={() => setDropDownActive(s => !s)}>
+             <div className={style['nav-right-item__icon']} onClick={toggleDropDown}>
                 <div className={style['notification-count']}>
                     {data.length}
                 </div>
                 <i className={iconClass} />
              </div>
+             <div className={style['nav-right-item__backdrop']} ref={backDrop} onClick={toggleDropDown}>
+
+             </div>
              <div className={`${style['nav-right-dropdown']} ${dropDownActive && style['nav-right-dd__active']}`}>
-                <div className={style['dropdown-close-mobile']} onClick={() => setDropDownActive(false)}>
+                <div className={style['dropdown-close-mobile']} onClick={toggleDropDown}>
                     <i className="close icon" />
                     <span>{type}</span>
                 </div>

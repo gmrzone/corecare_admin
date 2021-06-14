@@ -227,15 +227,38 @@
                 @media (min-width: 768px){
                     position: relative;
                 }
+                .nav-right-item__backdrop {
+                    display: none;
+                    opacity: 0;
+                    position: absolute;
+                    width: 100vw;
+                    height: 100vh;
+                    left: 0;
+                    top: 0;
+                    background: rgba($color: #000000, $alpha: 0.5);
+                    z-index: 1;
+                    transition: opacity .3s ease-in-out;
 
+                    @media(min-width: 768px){
+                        opacity: 0;
+                        display: none !important;
+
+                    }
+                    &.make-block {
+                        display: block;
+                    }
+                    &.make-visible {
+                        opacity: 1;
+                    }
+                }
                 .nav-right-dropdown {
                     position: absolute;
                     top: 0px;
-                    height: 100%;
                     overflow-y: auto;
                     right: 0;
                     width: 0px;
                     display: block;
+                    height: 100vh;
                     // transform: translateX(300px);
                     // transition: transform .3s ease-in-out;
                     transition: width .3s ease-in-out;

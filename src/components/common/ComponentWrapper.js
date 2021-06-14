@@ -12,8 +12,7 @@ const {className, styles} = css.resolve`
         height: 6px;
     }
     .component-wrapper::-webkit-scrollbar-track {
-        background: white;
-        border: 1px solid black;
+        background: #e6e6e6;
         border-radius: 20px;
     }
     .component-wrapper::-webkit-scrollbar-thumb {
