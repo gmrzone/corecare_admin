@@ -1,10 +1,10 @@
 import {useEffect, useRef} from 'react'
 import style from '../../../style/charts/chart.module.scss';
-const AreaChart = ({ heading }) => {
+const AreaChart = ({ heading, data, target, chartBG, chartBorder, LineColor }) => {
     const ctx = useRef()
 
     useEffect(() => {
-        const data = [300, 295, 200, 300, 600, 800, 100, 400, 300, 250, 560, 196]
+        
         new window.Chart(ctx.current.getContext('2d'), {
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun', "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -13,13 +13,13 @@ const AreaChart = ({ heading }) => {
                         type: "line",
                         label: "Target",
                         // data: new Array(12).fill(250),
-                        data:new Array(12).fill(250),
+                        data:new Array(12).fill(target),
                         tension: 0.1,
                         backgroundColor:  [
-                            'rgba(0, 0, 0, 1)'
+                            LineColor
                         ],
                         borderColor: [  
-                            'rgba(0, 0, 0, 1)',
+                            LineColor
                         ],
                         borderWidth: 1
                     }, {
@@ -29,11 +29,11 @@ const AreaChart = ({ heading }) => {
                     type: "line",
                     
                     backgroundColor: [
-                        'rgba(54, 162, 235, 0.4)',
+                        chartBG,
                         
                     ],  
                     borderColor: [  
-                        'rgba(0, 7, 102, 0.8)',
+                        chartBorder,
                     ],
                     borderWidth: 1
                 }]
@@ -41,15 +41,16 @@ const AreaChart = ({ heading }) => {
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        display: window.innerWidth > 768 ? true : false
                     }
                 }
             }
         });
 
-    }, [])
+    }, [data, LineColor, chartBG, chartBorder, target])
     return (
-        <div className={style['sales-chart-container']}>
+        <div className={style['area-chart-container']}>
             <h2>{heading}</h2>
             <canvas id="orders-chart" width="700" height="400" ref={ctx} aria-label="Hello ARIA World"/>
         </div>
