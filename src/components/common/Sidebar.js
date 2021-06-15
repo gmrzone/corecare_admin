@@ -12,6 +12,16 @@ const Sidebar = () => {
             setTimeout(closeDrawer, 100)
         }
     }
+    const DesktopSliderMouseOver = () => {
+        if (window.innerWidth > 768){
+            openDrawer()
+        }
+    }
+    const DesktopSliderMouseOut = () => {
+        if (window.innerWidth > 768){
+            closeDrawer()
+        }
+    }
     return (
         <div className={style.sidebar}>
             <div className={`${style["sidebar-opener"]} ${sideDrawerActive && style.active}`} onClick={toggleSideDrawer}>
@@ -20,7 +30,7 @@ const Sidebar = () => {
                 <span></span>
             </div>
             <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`}>
-                <ul className={style["slider-items-list"]} onMouseOver={openDrawer} onMouseOut={closeDrawer} onClick={itemClick}>
+                <ul className={style["slider-items-list"]} onMouseOver={DesktopSliderMouseOver} onMouseOut={DesktopSliderMouseOut} onClick={itemClick}>
                     <li>
                         <Link className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/" >
                             <i className="home icon" />

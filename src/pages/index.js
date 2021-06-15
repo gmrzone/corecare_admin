@@ -1,6 +1,5 @@
 import css from "styled-jsx/macro";
 import MainLayout from "../components/common/MainLayout";
-
 const desktop_size = 40;
 const mobile_size = 20;
 
