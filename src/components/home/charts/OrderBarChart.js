@@ -42,7 +42,8 @@ const TempChart = () => {
     }, [])
     return (
         <div className={style['sales-chart-container']}>
-            <canvas id="myChart" width="700" height="400" ref={ctx} aria-label="Hello ARIA World"/>
+            <h2>Monthly Order Chart</h2>
+            <canvas id="orders-chart" width="700" height="400" ref={ctx} aria-label="Hello ARIA World"/>
         </div>
     )
 }
