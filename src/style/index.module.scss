@@ -12,5 +12,19 @@
             flex-direction: row;
         }
     }
+    .orders-stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        & > div {
+            margin-bottom: 10px !important;
+
+            @media (min-width: 623px){
+                margin-right: 10px !important;
+            }
+        }
+    }
 
 }

@@ -11,6 +11,7 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color:rgba(242, 242, 242, 0.4);
 }
 #afzal {
     height: 100%;
@@ -112,4 +113,12 @@ a {
         /* margin-left: calc(1.5em + 256px) !important; */
         transform: translateX(calc(256px - 65px));
     }
+}
+
+.ui.card {
+    margin: 0;
+}
+
+.ui.card:first-child {
+    margin: 0;
 }
