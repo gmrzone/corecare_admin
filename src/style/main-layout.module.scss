@@ -1,6 +1,6 @@
 @import "./variables";
 .header {
-    background-color: white;
+    background-color: map-get($map: $colors, $key: main);
     width: 100%;
     box-shadow: inset 0 -1px 0 rgb(100 121 143 / 16%);
     position: absolute;
@@ -32,7 +32,7 @@
                 span {
                     width: 28px;
                     height: 3px;
-                    background: map-get($map: $text, $key: secondary);
+                    background: map-get($map: $colors, $key: secondary);
                     display: block;
                     margin-bottom: 6px;
                     border-radius: 4px;
@@ -209,6 +209,7 @@
                     font-size: 20px;
                     margin: 0;
                     position: relative;
+                    color: map-get($map: $colors, $key: secondary);
 
                     .notification-count {
                         position: absolute;
@@ -223,7 +224,7 @@
                     }   
                 }
                 &:hover {
-                    background-color: darken(map-get($colors, background), 6%);
+                    background-color: darken(map-get($colors, background), 80%);
                 }
                 @media (min-width: 768px){
                     position: relative;
@@ -396,7 +397,8 @@
                     
 
                     .profile-box-container {
-                        background-color: darken(map-get($colors, background), 6%);
+                        // background-color: darken(map-get($colors, background), 6%);
+                        background-color: map-get($map: $colors, $key: secondary);
                         display: flex;
                         flex-wrap: nowrap;
                         align-items: center;

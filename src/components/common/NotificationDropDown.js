@@ -55,7 +55,7 @@ const NotificationDropDown = () => {
 
     ]
     return (
-        <BigDropDown iconClass="bell outline icon" type="Notification" data={fakeData}/>
+        <BigDropDown iconClass="bell icon" type="Notification" data={fakeData}/>
     )
 }
 

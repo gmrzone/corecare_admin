@@ -8,7 +8,7 @@ const Navbar = () => {
         <nav className={`${style.navbar} ui container`}>
             <Sidebar />
             <div className={style.logo}>
-                <img src="/logo-full-black.svg" alt="logo" width={176} />
+                <img src="/logo-full.svg" alt="logo" width={176} />
             </div>
             <div className={style["nav-right-list"]}>
                 {/* <div className={style["nav-right-item"]}>

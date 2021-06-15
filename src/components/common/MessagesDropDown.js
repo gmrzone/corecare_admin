@@ -51,7 +51,7 @@ const MessageDropDown = () => {
         },
     ]
     return (
-        <BigDropDown iconClass="envelope outline icon" type="Messages" data={fakeData}/>
+        <BigDropDown iconClass="envelope icon" type="Messages" data={fakeData}/>
     )
 }
 
