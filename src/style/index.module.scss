@@ -1,0 +1,16 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    
+    .double-component {
+        display: flex;
+        flex-direction: column  ;
+        width: 100%;
+        margin: 20px 0;
+
+        @media (min-width: 992px){
+            flex-direction: row;
+        }
+    }
+
+}

@@ -4,7 +4,7 @@ const TempChart = () => {
     const ctx = useRef()
 
     useEffect(() => {
-        const data = [300, 295, 200, 300, 600, 900, 100, 400, 300, 250, 560, 196]
+        const data = [300, 295, 200, 300, 600, 800, 100, 400, 300, 250, 560, 196]
         new window.Chart(ctx.current.getContext('2d'), {
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun', "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],

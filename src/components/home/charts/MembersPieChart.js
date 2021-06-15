@@ -33,7 +33,7 @@ const MembersPieChart = () => {
 
     }, [])
     return (
-        <div className={style['member-chart-container']}>
+        <div className={style['user-chart-container']}>
             <h2>Members Stats</h2>
              <canvas id="members-chart" width="700" height="400" ref={ctx} />
         </div>
