@@ -1,3 +1,4 @@
+import SmallLineChart from "./charts/smallLineChart";
 const Card = ({ head, text }) => {
     return (
         <div className="ui card">
@@ -9,7 +10,7 @@ const Card = ({ head, text }) => {
             </div>
             <div className="extra content">
                 <div className="center aligned author">
-                    {/* Add Small Chart */}
+                    <SmallLineChart />
                 </div>
             </div>
         </div>

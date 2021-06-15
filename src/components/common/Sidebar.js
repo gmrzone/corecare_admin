@@ -1,9 +1,9 @@
 import style from "../../style/main-layout.module.scss";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { SideDrawerContext } from "../../context/SideDrawerContext";
 import { useHistory } from 'react-router-dom'
 import SliderDropDownItem from './SliderDropDownItem'
+import NewLink from './Link';
 const Sidebar = () => {
     const { sideDrawerActive, toggleSideDrawer, closeDrawer, openDrawer } = useContext(SideDrawerContext);
     const history = useHistory()
@@ -32,29 +32,29 @@ const Sidebar = () => {
             <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`}>
                 <ul className={style["slider-items-list"]} onMouseOver={DesktopSliderMouseOver} onMouseOut={DesktopSliderMouseOut} onClick={itemClick}>
                     <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/" >
+                        <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/" >
                             <i className="home icon" />
                             {/* <i className="chart pie icon" /> */}
                             <span className={style["slider-item--text"]}>DashBoard</span>
-                        </Link>
+                        </NewLink>
                     </li>
                     <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/employees" && style["active-item"]}`} to="/employees">
+                        <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/employees" && style["active-item"]}`} to="/employees">
                             <i className="briefcase icon" />
                             <span className={style["slider-item--text"]}>Employees</span>
-                        </Link>
+                        </NewLink>
                     </li>
                     <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/users" && style["active-item"]}`} to="/users">
+                        <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/users" && style["active-item"]}`} to="/users">
                             <i className="users icon" />
                             <span className={style["slider-item--text"]}>Users</span>
-                        </Link>
+                        </NewLink>
                     </li>
                     <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/orders" && style["active-item"]}`} to="/orders">
+                        <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/orders" && style["active-item"]}`} to="/orders">
                             <i className="phone icon" />
                             <span className={style["slider-item--text"]}>Orders</span>
-                        </Link>
+                        </NewLink>
                     </li>
                     {/* <li>
                         <Link className={`${style["slider-item"]} ${history.location.pathname === "/services" && style["active-item"]}`} to="/services">
@@ -64,37 +64,37 @@ const Sidebar = () => {
                     </li> */}
                     <SliderDropDownItem name="Products" activeTab={history.location.pathname === "/services" || history.location.pathname === "/subcategory"} sideDrawerActive={sideDrawerActive} iconClass="truck icon">
                             <li onClick={itemClick}>
-                                <Link className={style["slider-item"]} to="/subcategory">
+                                <NewLink className={style["slider-item"]} to="/subcategory">
                                     <i className="sitemap icon" />
                                     <span className={style["slider-item--text"]}>Subcategory</span>
-                                </Link>
+                                </NewLink>
                             </li>
                             <li onClick={itemClick}>
-                                <Link className={style["slider-item"]} to="/services">
+                                <NewLink className={style["slider-item"]} to="/services">
                                 <i className="wrench icon" />
                                     <span className={style["slider-item--text"]}>Service</span>
-                                </Link>
+                                </NewLink>
                             </li>
                     </SliderDropDownItem>
                     <SliderDropDownItem name="Blog" activeTab={history.location.pathname === "/posts" || history.location.pathname === "/comments"} sideDrawerActive={sideDrawerActive} iconClass="blogger icon">
                             <li onClick={itemClick}>
-                                <Link className={style["slider-item"]} to="/posts">
+                                <NewLink className={style["slider-item"]} to="/posts">
                                     <i className="edit icon" />
                                     <span className={style["slider-item--text"]}>Posts</span>
-                                </Link>
+                                </NewLink>
                             </li>
                             <li onClick={itemClick}>
-                                <Link className={style["slider-item"]} to="/comments">
+                                <NewLink className={style["slider-item"]} to="/comments">
                                 <i className="comment icon" />
                                     <span className={style["slider-item--text"]}>Comments</span>
-                                </Link>
+                                </NewLink>
                             </li>
                     </SliderDropDownItem>
                     <li>
-                        <Link className={`${style["slider-item"]} ${history.location.pathname === "/coupons" && style["active-item"]}`} to="/coupons">
+                        <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/coupons" && style["active-item"]}`} to="/coupons">
                             <i className="gift icon" />
                             <span className={style["slider-item--text"]}>Coupons</span>
-                        </Link>
+                        </NewLink>
                     </li>
                 </ul>
             </div>
