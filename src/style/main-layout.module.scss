@@ -75,7 +75,7 @@
                 overflow-y: auto;
                 overflow-x: hidden;
                 width: 230px;
-                height: calc(100% - 61px - 66px);
+                height: calc(100% - 66px);
                 position: fixed;
                 left: 0;
                 top: 65px;
@@ -92,7 +92,7 @@
                     width: 65px;
                     transition: width 0.2s ease-in-out;
                     transform: translateX(0px);
-                    height: calc(100% - 65px - 80px);
+                    height: calc(100% - 80px);
                 }
 
                 &.slider-active {

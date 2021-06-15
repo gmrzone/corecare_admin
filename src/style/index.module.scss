@@ -18,11 +18,23 @@
         justify-content: center;
         align-items: center;
 
+        @media (min-width: 1621px){
+            justify-content: space-between;
+        }
+
         & > div {
+            align-self: center;
             margin-bottom: 10px !important;
 
             @media (min-width: 623px){
                 margin-right: 10px !important;
+            }
+        }
+        .card-fluid {
+            width: 100% !important;
+
+            @media (min-width: 642px){
+                width: 290px !important;
             }
         }
     }

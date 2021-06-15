@@ -1,5 +1,5 @@
 import Header from "../common/Header";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import style from "../../style/main-layout.module.scss";
 import { useContext } from "react";
 import { SideDrawerContext } from "../../context/SideDrawerContext";
@@ -14,9 +14,9 @@ const Layout = ({ children }) => {
             <main id="main" className={`ui container main ${style.main} ${sideDrawerActive && "drawer-active"}`}>
                 {children}
             </main>
-            <footer id="footer" className={style.footer}>
+            {/* <footer id="footer" className={style.footer}>
                 <Footer />
-            </footer>
+            </footer> */}
         </>
     );
 };

@@ -101,6 +101,7 @@ a {
         margin-left: 1.5em !important;
         margin-right: 1.5em !important;
         
+        
     }
     .ui.container.main {
         margin-left: calc(1.5em + 65px) !important;
@@ -108,6 +109,7 @@ a {
         transition: transform 0.2s ease-in-out;
         margin-top: 100px;
         margin-bottom: 20px;
+        
     }
     .ui.container.main.drawer-active {
         /* margin-left: calc(1.5em + 256px) !important; */

@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react'
 import style from '../../../style/charts/chart.module.scss';
-const SmallLineChart = () => {
+const SmallLineChart = ({ data }) => {
     const ctx = useRef()
     useEffect(() => {
         new window.Chart(ctx.current.getContext('2d'), {
@@ -9,18 +9,18 @@ const SmallLineChart = () => {
                 labels: [
                   'Mon',
                   'Tue',
-                  'Wednesday',
-                  "thursday",
-                  "friday",
-                  "saturday",
+                  'Wed',
+                  "Thr",
+                  "Fri",
+                  "Today",
                 ],
                 datasets: [{
-                  data: [150, 50, 75, 45, 60, 160],
+                  data: data,
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.8)',
+                    '#fce8e6',
                   ],
                   borderColor : [
-
+                    '#d93025'
                   ],
                 }]
             },
@@ -41,7 +41,7 @@ const SmallLineChart = () => {
             }
         });
 
-    }, [])
+    }, [data])
     return (
         <div className={style['small-line-chart-container']}>
             <canvas id="orders-chart" width="width" height="100" ref={ctx} aria-label="Hello ARIA World"/>
