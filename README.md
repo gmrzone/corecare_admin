@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live Deployment
+<a href="https://www.admin.corecare.in">![CoreCare](https://img.shields.io/badge/CoreCare-Live%20Demo-ff4a77?style=for-the-badge)</a>
+
 ## Available Scripts
 
 In the project directory, you can run:
