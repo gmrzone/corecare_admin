@@ -7,7 +7,6 @@ const Layout = ({ children }) => {
     const { sideDrawerActive } = useContext(SideDrawerContext);
     return (
         <>
-            <div id="modal" className={style.modal}></div>
             <header id="header" className={style.header}>
                 <Header />
             </header>

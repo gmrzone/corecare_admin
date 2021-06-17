@@ -1,4 +1,6 @@
 @import "./variables";
+
+
 .header {
     background-color: map-get($map: $colors, $key: main);
     width: 100%;
