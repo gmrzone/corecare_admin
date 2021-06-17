@@ -2,7 +2,12 @@ import MainLayout from "../components/common/MainLayout";
 import CreateAction from '../components/common/CreateAction'
 import ListTable from '../components/common/ListTable'
 import ComponentWrapper from '../components/common/ComponentWrapper'
+import useSWR from 'swr';
+import axios from '../utils/variables'
 const Users = () => {
+    const fetcher = (...args) => axios.get(...args).then(response => response.data);
+    const {data: userData} = useSWR('administrator/get_all_user/', fetcher)
+    console.log(userData)
     const tableData = [
         {
             id: 1,
@@ -78,13 +83,23 @@ const Users = () => {
             </tr>
         )
     })
+    const dbData = userData?.map(x => {
+        return (
+            <tr style={{cursor: 'pointer'}} key={x.id}>
+                <td>{x.number}</td>
+                <td>{x.first_name + " " + x.last_name || x.username}</td>
+                <td>{x.email || "-----"}</td>
+                <td>{x.last_login || x.date_joined}</td>
+            </tr>
+        )
+    })
     return (
         <MainLayout>
             <ComponentWrapper>
                 <CreateAction forPage="User"/>
             </ComponentWrapper>
             <ComponentWrapper>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={dbData || tableBody}/>
             </ComponentWrapper>
         </MainLayout>
     );
