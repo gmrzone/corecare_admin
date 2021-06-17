@@ -4,22 +4,17 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth }) => {
         <div className={style['date-picker-dropdown']}>
             <div className={style['selected-year']}>
                 <i className="angle left icon" />
-                    <span>{selectedYear}</span>
+                    <span>{selectedMonth.toUpperCase()} {selectedYear}</span>
                 <i className="angle right icon" />
             </div>  
-            <div className={style['selected-month']}>
-                <i className="angle left icon" />
-                    <span>{selectedMonth}</span>
-                <i className="angle right icon" />
-            </div>
             <div className={style['dropdown-options']}>
-                <span><strong>S</strong></span>
-                <span><strong>M</strong></span>
-                <span><strong>T</strong></span>
-                <span><strong>W</strong></span>
-                <span><strong>T</strong></span>
-                <span><strong>F</strong></span>
-                <span><strong>S</strong></span>
+                <span>S</span>
+                <span>M</span>
+                <span>T</span>
+                <span>W</span>
+                <span>T</span>  
+                <span>F</span>
+                <span>S</span>
                 <span></span>
                 <span></span>
                 <span></span>

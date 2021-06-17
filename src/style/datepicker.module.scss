@@ -59,9 +59,15 @@
                 padding: 10px;
                 font-weight: 400;
             }
-            .dropdown-item:hover {
-                background: map-get($map: $colors, $key: active);
+            .dropdown-item{
+
+                cursor: pointer;
+                &:hover {
+                    background: map-get($map: $colors, $key: active);
+                }
+    
             }
+            
 
         }
     }
