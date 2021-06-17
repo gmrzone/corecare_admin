@@ -53,9 +53,9 @@ const Subcategory = () => {
         "Created"
 
     ]
-    const tableBody = tableData.map((x) => {
+    const tableBody = tableData.map((x, i) => {
         return  (
-            <tr style={{cursor: 'pointer'}} key={x.order_id}>
+            <tr style={{cursor: 'pointer'}} key={i}>
                 <td>{x.name}</td>
                 <td>{x.category}</td>
                 <td>{x.created}</td>

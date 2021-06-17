@@ -5,77 +5,77 @@ import ComponentWrapper from '../components/common/ComponentWrapper'
 const Services = () => {
     const tableData = [
         {
-            order_id: 1234546,
-            status: "Fullfilled",
-            user: "AFzal saiyed",
-            total: "1000.93",
+            name: "Window AC Service",
+            subcategory: "AC Service",
+            price: "449.00",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 2234596,
-            status: "Pending",
-            total: "2600.56",
-            user: "AFzal saiyed",
+            name: "Wallpaper / Stencils Consultation",
+            subcategory: "Wallpaper / Stencils",
+            price: "2600.56",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 3123654,
-            status: "Fullfilled",
-            total: "1100.00",
-            user: "AFzal saiyed",
+            name: "Wood Polishing Consultation",
+            subcategory: "Wood Polishing",
+            price: "999.00",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 4456321,
-            status: "Fullfilled",
-            total: "4300.93",
-            user: "AFzal saiyed",
+            name: "Drill and Hang",
+            subcategory: "Drill/Hang",
+            price: "256.00",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 5856324,
-            status: "Pending",
-            total: "934.34",
-            user: "AFzal saiyed",
+            name: "Channel Repair",
+            subcategory: "Cupboard / Drawer",
+            price: "149.00",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 6963254,
-            status: "Fullfilled",
-            total: "53000.50",
-            user: "AFzal saiyed",
+            name: "AC Switchbox Installation",
+            subcategory: "Switch/Socket",
+            price: "319.00",
+            active: "true",
             created: "1 Day ago",
             
         },
         {
-            order_id: 7963254,
-            status: "Fullfilled",
-            total: "3890.02",
-            user: "AFzal saiyed",
+            name: "Geyser Installation",
+            subcategory: "Appliances",
+            price: "650.00",
+            active: "true",
             created: "1 Day ago",
             
         }
     ]
     const tableHead = [
-        "Order ID",
-        "User",
-        "Status",
-        "Total",
+        "Name",
+        "Category",
+        "Price",
+        "Active",
         "Created"
 
     ]
-    const tableBody = tableData.map((x) => {
+    const tableBody = tableData.map((x, i) => {
         return  (
-            <tr style={{cursor: 'pointer'}} key={x.order_id}>
-                <td>{x.order_id}</td>
-                <td>{x.user}</td>
-                <td>{x.status}</td>
-                <td>{x.total}</td>
+            <tr style={{cursor: 'pointer'}} key={i}>
+                <td>{x.name}</td>
+                <td>{x.subcategory}</td>
+                <td>{x.price}</td>
+                <td>{x.active}</td>
                 <td>{x.created}</td>
             </tr>
         )
