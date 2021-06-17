@@ -4,7 +4,8 @@ import DatePickerDropDown from './Dropdown';
 const DatePicker = () => {
     const date = new Date()
     const [selectedDate, setSelectedDate] = useState({day: date.getDate(), month: date.getMonth(), year: date.getFullYear()})
-    const weekdays = ['Sunday', "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const [dropDownActive, setDropDownActive] = useState(false)
+    // const weekdays = ['Sunday', "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     const getPreviousMonth = () => {
         setSelectedDate(s => {
@@ -26,9 +27,12 @@ const DatePicker = () => {
             }
         })
     }
-    const selectDate = (day, month, year) => {
+    const selectDate = (day, month, year, close) => {
        
         setSelectedDate({day, month, year})
+        if (close){
+            setDropDownActive(false)
+        }
     }
     const getAvailableDays = (year, month) => {
         let date = new Date(year, month, 1)
@@ -44,13 +48,20 @@ const DatePicker = () => {
         }
         return days
     }
+    const toggleDropdown = () => {
+        console.log("A")
+        setDropDownActive(s => !s)
+    }
+    const closeDropDown = () => {
+        setDropDownActive(false)
+    }
     return (
         <div className={style['date-picker-input']}>
-            <div className={style['selected-date']}>
+            <div className={style['selected-date']} onClick={toggleDropdown}>
                 <div className={style['selected-date-text']}>{`${selectedDate.day || "--"} / ${selectedDate.month + 1 || "--"} / ${selectedDate.year || "--"}`}</div>
                 <i className="calendar alternate icon" />
             </div>
-            <DatePickerDropDown selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate}/>
+            <DatePickerDropDown active={dropDownActive} closeDropDown={closeDropDown} selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate}/>
         </div>
     )
 }

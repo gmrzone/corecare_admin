@@ -1,6 +1,6 @@
 import style from '../../../style/datepicker.module.scss';
 import {useState} from 'react'
-const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate }) => {
+const DatePickerDropDown = ({ active , closeDropDown, setDropdown, selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate }) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const getavailableYears = () => {
         const startyear = 2019
@@ -23,7 +23,7 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, ge
                 render.push(<span className={`${style['dropdown-item']} ${style['active-item']}`} key={c}>{i}</span>)
             }
             else{
-                render.push(<span className={style['dropdown-item']} key={c} onClick={() => selectDate(i, selectedMonth, selectedYear)}>{i}</span>)
+                render.push(<span className={style['dropdown-item']} key={c} onClick={() => selectDate(i, selectedMonth, selectedYear, true)}>{i}</span>)
             }
             c++
         }
@@ -64,7 +64,7 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, ge
    }
     // console.log(renderDays)
     return (
-        <div className={style['date-picker-dropdown']}>
+        <div className={`${style['date-picker-dropdown']} ${active && style['dropdown-active']}`}>
             <div className={style['selected-year']}>
                 <i className="angle left icon" onClick={getPreviousMonth}/>
                     <span onClick={getyearsOptions}>{months[selectedMonth].toUpperCase()} {selectedYear}</span>
