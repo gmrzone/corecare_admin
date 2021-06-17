@@ -1,6 +1,17 @@
 import style from '../../../style/datepicker.module.scss';
-const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth }) => {
-
+import {useState} from 'react'
+const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate }) => {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const getavailableYears = () => {
+        const startyear = 2019
+        const currentYear = new Date().getFullYear()
+        const years = []
+        for (let i=startyear; i <= currentYear; i++){
+            years.push(i)
+        }
+        return years
+    }
+    const [selectMonthYear, setSelectMonthyear] = useState({status: false, yearSelected: false})
     const renderDays = () => {
         const render = []
         let c = 0
@@ -12,22 +23,56 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, ge
                 render.push(<span className={`${style['dropdown-item']} ${style['active-item']}`} key={c}>{i}</span>)
             }
             else{
-                render.push(<span className={style['dropdown-item']} key={c}>{i}</span>)
+                render.push(<span className={style['dropdown-item']} key={c} onClick={() => selectDate(i, selectedMonth, selectedYear)}>{i}</span>)
             }
             c++
         }
         return render
     }
-
+    const getMonthOptionsAndSelectYear = (selectedYearNew) => {
+        selectDate(selectedDay, selectedMonth, selectedYearNew)
+        setSelectMonthyear(s => {
+            return {...s, yearSelected: true}
+        })
+    }    
+    const getDaysOptionAndSelectMonth = (selectedMonthNew) => {
+        selectDate(selectedDay, selectedMonthNew, selectedYear)
+        setSelectMonthyear({status: false})
+    }
+   const renderMonth = months.map((x, i) => {
+       if (i === selectedMonth){
+           return <span className={`${style['dropdown-item']} ${style['active-item']}`} key={i} onClick={() => getDaysOptionAndSelectMonth(i)}>{x}</span>
+       }
+       else{
+           return <span className={style['dropdown-item']} key={i} onClick={() => getDaysOptionAndSelectMonth(i)}>{x}</span>
+       }
+   })
+   const renderYears = getavailableYears().map((x, i) => {
+       
+        if(x === selectedYear){
+            return <span className={`${style['dropdown-item']} ${style['active-item']}`} key={i} onClick={() => getMonthOptionsAndSelectYear(x)}>{x}</span>
+        }
+        else{
+            return <span className={style['dropdown-item']} key={i} onClick={() => getMonthOptionsAndSelectYear(x)}>{x}</span>
+        }
+       
+   })
+   const getyearsOptions = () => {
+    setSelectMonthyear(s => {
+        return {...s, status: true}
+    })
+   }
     // console.log(renderDays)
     return (
         <div className={style['date-picker-dropdown']}>
             <div className={style['selected-year']}>
                 <i className="angle left icon" onClick={getPreviousMonth}/>
-                    <span>{selectedMonth.toUpperCase()} {selectedYear}</span>
+                    <span onClick={getyearsOptions}>{months[selectedMonth].toUpperCase()} {selectedYear}</span>
                 <i className="angle right icon" onClick={getNextMonth}/>
             </div>  
-            <div className={style['dropdown-options']}>
+            <div className={`${style['dropdown-options']} ${selectMonthYear.status ? selectMonthYear.yearSelected ? style['dropdown-option-month'] : style['dropdown-option-year'] : ""}`}>
+                {selectMonthYear.status ? "" : (
+                <>
                 <span>S</span>
                 <span>M</span>
                 <span>T</span>
@@ -35,48 +80,9 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, ge
                 <span>T</span>  
                 <span>F</span>
                 <span>S</span>
-                {/* <span></span>
-                <span></span>
-                <span></span>
-                <span className={style['dropdown-item']}>1</span>
-                <span className={style['dropdown-item']}>2</span>
-                <span className={style['dropdown-item']}>3</span>
-                <span className={style['dropdown-item']}>4</span>
-                <span className={style['dropdown-item']}>5</span>
-                <span className={style['dropdown-item']}>6</span>
-                <span className={style['dropdown-item']}>7</span>
-                <span className={style['dropdown-item']}>8</span>
-                <span className={style['dropdown-item']}>9</span>
-                <span className={style['dropdown-item']}>10</span>
-                <span className={style['dropdown-item']}>11</span>
-                <span className={style['dropdown-item']}>12</span>
-                <span className={style['dropdown-item']}>13</span>
-                <span className={style['dropdown-item']}>14</span>
-                <span className={style['dropdown-item']}>15</span>
-                <span className={style['dropdown-item']}>16</span>
-                <span className={style['dropdown-item']}>17</span>
-                <span className={style['dropdown-item']}>18</span>
-                <span className={style['dropdown-item']}>19</span>
-                <span className={style['dropdown-item']}>20</span>
-                <span className={style['dropdown-item']}>21</span>
-                <span className={style['dropdown-item']}>22</span>
-                <span className={style['dropdown-item']}>23</span>
-                <span className={style['dropdown-item']}>24</span>
-                <span className={style['dropdown-item']}>25</span>
-                <span className={style['dropdown-item']}>26</span>
-                <span className={style['dropdown-item']}>27</span>
-                <span className={style['dropdown-item']}>28</span>
-                <span className={style['dropdown-item']}>29</span>
-                <span className={style['dropdown-item']}>30</span>
-                <span className={style['dropdown-item']}>31</span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span> */}
-                {renderDays()}
+                </>
+                )}
+                {selectMonthYear.status ? selectMonthYear.yearSelected ? renderMonth : renderYears : renderDays()}
             </div>
         </div>
     )

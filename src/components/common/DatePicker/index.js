@@ -4,37 +4,31 @@ import DatePickerDropDown from './Dropdown';
 const DatePicker = () => {
     const date = new Date()
     const [selectedDate, setSelectedDate] = useState({day: date.getDate(), month: date.getMonth(), year: date.getFullYear()})
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const weekdays = ['Sunday', "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    
-    const getavailableYears = () => {
-        const startyear = 2019
-        const currentYear = new Date().getFullYear()
-        const years = []
-        for (let i=startyear; i <= currentYear; i++){
-            years.push(i)
-        }
-        return years
-    }
+
     const getPreviousMonth = () => {
         setSelectedDate(s => {
             if (selectedDate.month === 0){
-                return {...s, month: 11, year: selectedDate.year - 1}
+                return {day: null, month: 11, year: selectedDate.year - 1}
             }
             else{
-                return {...s, month: selectedDate.month - 1}
+                return {...s, month: selectedDate.month - 1, day: null}
             }
         })
     }
     const getNextMonth = () => {
         setSelectedDate(s => {
             if (selectedDate.month === 11){
-                return {...s, month: 0, year: selectedDate.year + 1}
+                return {day: null, month: 0, year: selectedDate.year + 1}
             }
             else{
-                return {...s, month: selectedDate.month + 1}
+                return {...s, month: selectedDate.month + 1, day: null}
             }
         })
+    }
+    const selectDate = (day, month, year) => {
+       
+        setSelectedDate({day, month, year})
     }
     const getAvailableDays = (year, month) => {
         let date = new Date(year, month, 1)
@@ -53,10 +47,10 @@ const DatePicker = () => {
     return (
         <div className={style['date-picker-input']}>
             <div className={style['selected-date']}>
-                <div className={style['selected-date-text']}>{`${selectedDate.day} / ${selectedDate.month} / ${selectedDate.year}`}</div>
+                <div className={style['selected-date-text']}>{`${selectedDate.day || "--"} / ${selectedDate.month + 1 || "--"} / ${selectedDate.year || "--"}`}</div>
                 <i className="calendar alternate icon" />
             </div>
-            <DatePickerDropDown selectedYear={selectedDate.year} selectedMonth={months[selectedDate.month]} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth}/>
+            <DatePickerDropDown selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate}/>
         </div>
     )
 }
