@@ -1,11 +1,31 @@
 import style from '../../../style/datepicker.module.scss';
-const DatePickerDropDown = ({ selectedYear, selectedMonth }) => {
+const DatePickerDropDown = ({ selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth }) => {
+
+    const renderDays = () => {
+        const render = []
+        let c = 0
+        for (let i of days){
+            if (i === undefined){
+                render.push(<span key={c}></span>)
+            }
+            else if (i === selectedDay){
+                render.push(<span className={`${style['dropdown-item']} ${style['active-item']}`} key={c}>{i}</span>)
+            }
+            else{
+                render.push(<span className={style['dropdown-item']} key={c}>{i}</span>)
+            }
+            c++
+        }
+        return render
+    }
+
+    // console.log(renderDays)
     return (
         <div className={style['date-picker-dropdown']}>
             <div className={style['selected-year']}>
-                <i className="angle left icon" />
+                <i className="angle left icon" onClick={getPreviousMonth}/>
                     <span>{selectedMonth.toUpperCase()} {selectedYear}</span>
-                <i className="angle right icon" />
+                <i className="angle right icon" onClick={getNextMonth}/>
             </div>  
             <div className={style['dropdown-options']}>
                 <span>S</span>
@@ -15,7 +35,7 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth }) => {
                 <span>T</span>  
                 <span>F</span>
                 <span>S</span>
-                <span></span>
+                {/* <span></span>
                 <span></span>
                 <span></span>
                 <span className={style['dropdown-item']}>1</span>
@@ -55,7 +75,8 @@ const DatePickerDropDown = ({ selectedYear, selectedMonth }) => {
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
+                <span></span> */}
+                {renderDays()}
             </div>
         </div>
     )
