@@ -58,7 +58,7 @@ const DatePicker = () => {
     return (
         <div className={style['date-picker-input']}>
             <div className={style['selected-date']} onClick={toggleDropdown}>
-                <div className={style['selected-date-text']}>{`${selectedDate.day || "--"} / ${months[selectedDate.month] || "--"} / ${selectedDate.year || "--"}`}</div>
+                <div className={style['selected-date-text']}>{`${months[selectedDate.month] || "--"} ${selectedDate.day || "--"}, ${selectedDate.year || "--"}`}</div>
                 <i className="calendar alternate icon" />
             </div>
             <DatePickerDropDown active={dropDownActive} closeDropDown={closeDropDown} selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate}/>
