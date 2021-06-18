@@ -1,7 +1,6 @@
 import style from '../../../style/datePicker/daterange.module.scss'
 import { useState, useEffect } from 'react'
 import DropDown from './DropDown'
-import { getAvailableDays } from '../DatePicker/utils'
 const DateRangeFilter = () => {
     const endDate = new Date()
     const startDate = new Date(2019, 8, 1)
@@ -95,7 +94,7 @@ const DateRangeFilter = () => {
                 <div className={style['selected-range-text']}>{months[fromDate.month] || "--"} {fromDate.day || "--"}, {fromDate.year || "--"} - {months[toDate.month] || "--"} {toDate.day || "--"}, {toDate.year || "--"}</div>
                 <i className={`angle ${dropDownActive ? "up" : "down"} icon`} />
             </div>
-            <DropDown active={dropDownActive} options={dropDownOptions} />
+            <DropDown active={dropDownActive} options={dropDownOptions} months={months} selectedFromDate={fromDate} selectedToDate={toDate} />
         </div>
     )
 }

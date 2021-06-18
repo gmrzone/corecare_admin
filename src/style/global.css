@@ -12,9 +12,15 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color:rgba(242, 242, 242, 0.4);
+    font-weight: 400;
     
 }
-
+h1, h2 {
+    font-weight: 800;
+}
+h3, h4 {
+    font-weight: 600;
+}
 #afzal {
     height: 100%;
     display: flex;
