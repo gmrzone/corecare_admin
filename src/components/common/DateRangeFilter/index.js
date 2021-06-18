@@ -3,7 +3,7 @@ import { useState } from 'react'
 import DropDown from './DropDown'
 import { getAvailableDays } from '../DatePicker/utils'
 const DateRangeFilter = () => {
-    const endDate = new Date(2022, 0, 1)
+    const endDate = new Date()
     const startDate = new Date(2019, 8, 1)
     const [fromDate, setFromDate] = useState({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
     const [toDate, setToDate] = useState({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
@@ -26,6 +26,10 @@ const DateRangeFilter = () => {
         setToDate({day: newEndDate.getDate(), month: newEndDate.getMonth(), year: newEndDate.getFullYear()})
         setFromDate({day: newStartDate.getDate(), month: newStartDate.getMonth(), year: newStartDate.getFullYear()})
 
+    }
+    const selectThisYearData = () => {
+        setFromDate({day: 1, month: 0, year: endDate.getFullYear()})
+        setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
     }
     const selectSevenDaysData = () => {
         const newEndDate = new Date(endDate)
@@ -53,6 +57,11 @@ const DateRangeFilter = () => {
         {
             name: "Previous Month",
             action: selectPreviousMonthData,
+            active: ""
+        },
+        {
+            name: "This Year",
+            action: selectThisYearData,
             active: ""
         },
         {
