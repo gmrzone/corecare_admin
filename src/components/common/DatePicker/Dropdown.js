@@ -64,7 +64,7 @@ const DatePickerDropDown = ({ active , selectedYear, selectedMonth, selectedDay,
    }
     // console.log(renderDays)
     return (
-        <div className={`${style['date-picker-dropdown']} ${active && style['dropdown-active']}`}>
+        <div className={`${style['date-picker-dropdown']} ${active && style['dropdown-active']}`} onClick={(e) => e.stopPropagation()}>
             <div className={style['selected-year']}>
                 <i className="angle left icon" onClick={getPreviousMonth}/>
                     <span onClick={getyearsOptions}>{months[selectedMonth].toUpperCase()} {selectedYear}</span>

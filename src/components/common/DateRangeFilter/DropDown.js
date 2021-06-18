@@ -11,7 +11,7 @@ const DropDown = ({active, options }) => {
         )
     })
     return (
-        <div className={`${style['range-dropdown']} ${active && style['dropdown-active']}`}>
+        <div className={`${style['range-dropdown']} ${active && style['dropdown-active']}`} onClick={(e) => e.stopPropagation()}>
                 {renderOptions}
         </div>
     )

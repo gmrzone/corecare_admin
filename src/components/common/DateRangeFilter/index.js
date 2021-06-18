@@ -1,5 +1,5 @@
 import style from '../../../style/datePicker/daterange.module.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DropDown from './DropDown'
 import { getAvailableDays } from '../DatePicker/utils'
 const DateRangeFilter = () => {
@@ -7,8 +7,19 @@ const DateRangeFilter = () => {
     const startDate = new Date(2019, 8, 1)
     const [fromDate, setFromDate] = useState({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
     const [toDate, setToDate] = useState({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
-    const [dropDownActive, setDropDownActive] = useState(true)
+    const [dropDownActive, setDropDownActive] = useState(false)
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    useEffect(() => {
+        const disableDropDown = () => {
+            if (dropDownActive){
+                setDropDownActive(false)
+            }
+        }
+        document.body.addEventListener('click', disableDropDown)
+        return () => {
+            document.body.removeEventListener('click', disableDropDown)
+        }
+    }, [dropDownActive])
     const SelectAllData = () => {
         setFromDate({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
         setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
@@ -18,6 +29,7 @@ const DateRangeFilter = () => {
         setFromDate(s => {
             return {...s, day: 1, month: endDate.getMonth(), year: endDate.getFullYear()}
         })
+        setDropDownActive(false)
         
     }
     const selectPreviousMonthData =() => {
@@ -25,17 +37,20 @@ const DateRangeFilter = () => {
         const newStartDate = new Date(new Date(newEndDate).setDate(1))
         setToDate({day: newEndDate.getDate(), month: newEndDate.getMonth(), year: newEndDate.getFullYear()})
         setFromDate({day: newStartDate.getDate(), month: newStartDate.getMonth(), year: newStartDate.getFullYear()})
+        setDropDownActive(false)
 
     }
     const selectThisYearData = () => {
         setFromDate({day: 1, month: 0, year: endDate.getFullYear()})
         setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
+        setDropDownActive(false)
     }
     const selectSevenDaysData = () => {
         const newEndDate = new Date(endDate)
         const newStartDate = new Date(new Date(newEndDate).setDate(endDate.getDate() - 6))
         setFromDate({day: newStartDate.getDate(), month: newStartDate.getMonth(), year: newStartDate.getFullYear()})
         setToDate({day: newEndDate.getDate(), month: newEndDate.getMonth(), year: newEndDate.getFullYear()})
+        setDropDownActive(false)
     }
     const dropDownOptions = [
         {
@@ -69,15 +84,18 @@ const DateRangeFilter = () => {
         }
 
     ]
+    const toggleDropDown = () => {
+        setDropDownActive(s => !s)
+    }
 
     return (
         <div className={style['date-range-input']}>
-            <div className={style['selected-range']}>
+            <div className={style['selected-range']} onClick={toggleDropDown}>
                 <i className="calendar alternate icon" />
                 <div className={style['selected-range-text']}>{months[fromDate.month] || "--"} {fromDate.day || "--"}, {fromDate.year || "--"} - {months[toDate.month] || "--"} {toDate.day || "--"}, {toDate.year || "--"}</div>
                 <i className={`angle ${dropDownActive ? "up" : "down"} icon`} />
             </div>
-            <DropDown active={setDropDownActive} options={dropDownOptions} />
+            <DropDown active={dropDownActive} options={dropDownOptions} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import style from '../../../style/datePicker/datepicker.module.scss';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import DatePickerDropDown from './Dropdown';
 import { getAvailableDays } from './utils'
 const DatePicker = () => {
@@ -7,7 +7,17 @@ const DatePicker = () => {
     const [selectedDate, setSelectedDate] = useState({day: date.getDate(), month: date.getMonth(), year: date.getFullYear()})
     const [dropDownActive, setDropDownActive] = useState(false)
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
+    useEffect(() => {
+        const disableDropDown = () => {
+            if (dropDownActive){
+                setDropDownActive(false)
+            }
+        }
+        document.body.addEventListener('click', disableDropDown)
+        return () => {
+            document.body.removeEventListener('click', disableDropDown)
+        }
+    }, [dropDownActive])
     const getPreviousMonth = () => {
         setSelectedDate(s => {
             if (selectedDate.month === 0){
@@ -37,7 +47,6 @@ const DatePicker = () => {
     }
 
     const toggleDropdown = () => {
-        console.log("A")
         setDropDownActive(s => !s)
     }
     const closeDropDown = () => {

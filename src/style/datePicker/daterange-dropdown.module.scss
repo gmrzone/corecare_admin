@@ -28,7 +28,7 @@
         &.active-item {
             background: map-get($map: $colors, $key: main);
             color: white;
-        }
+        }   
     }
     &.dropdown-active {
         display: flex;
