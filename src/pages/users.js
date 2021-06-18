@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import axios from '../utils/variables'
 const Users = () => {
     const fetcher = (...args) => axios.get(...args).then(response => response.data);
-    const {data: userData} = useSWR('administrator/get_all_user/', fetcher)
+    const {data: userData} = useSWR('administrator/get_all_user/', fetcher, {shouldRetryOnError: false})
     console.log(userData)
     const tableData = [
         {
