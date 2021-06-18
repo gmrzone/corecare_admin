@@ -2,7 +2,7 @@
 
 .date-range-input {
     position: relative;
-    width: calc(100% - 20px);
+    width: 100%;
    
     @media (min-width: 360px){
         width: 300px;
@@ -16,9 +16,11 @@
         cursor: pointer;
         display: flex;
         flex-wrap: nowrap;
+        justify-content: space-between;
 
         .selected-range-text {
             margin-left: 8px;
+            white-space: nowrap;
         }
     }
 }
