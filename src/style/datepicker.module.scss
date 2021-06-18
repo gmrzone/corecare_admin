@@ -11,6 +11,9 @@
     @media (min-width: 360px){
         width: 300px;
     }
+    &:focus-within {
+        background: red;
+    }
 
 
     .selected-date {
