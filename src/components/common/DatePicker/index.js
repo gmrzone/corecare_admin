@@ -1,6 +1,7 @@
-import style from '../../../style/datepicker.module.scss';
+import style from '../../../style/datePicker/datepicker.module.scss';
 import { useState } from 'react'
 import DatePickerDropDown from './Dropdown';
+import { getAvailableDays } from './utils'
 const DatePicker = () => {
     const date = new Date()
     const [selectedDate, setSelectedDate] = useState({day: date.getDate(), month: date.getMonth(), year: date.getFullYear()})
@@ -34,20 +35,7 @@ const DatePicker = () => {
             setDropDownActive(false)
         }
     }
-    const getAvailableDays = (year, month) => {
-        let date = new Date(year, month, 1)
-        const days = new Array(42)
-        let count = 1
-        let weekdayNum = date.getDay()
-        while (date.getMonth() === month){
-            days[weekdayNum] = count
-            // const weekday = weekdays[date.getDay()]
-            date.setDate(date.getDate() + 1)
-            count += 1
-            weekdayNum += 1
-        }
-        return days
-    }
+
     const toggleDropdown = () => {
         console.log("A")
         setDropDownActive(s => !s)
@@ -61,7 +49,7 @@ const DatePicker = () => {
                 <div className={style['selected-date-text']}>{`${months[selectedDate.month] || "--"} ${selectedDate.day || "--"}, ${selectedDate.year || "--"}`}</div>
                 <i className="calendar alternate icon" />
             </div>
-            <DatePickerDropDown active={dropDownActive} closeDropDown={closeDropDown} selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate}/>
+            <DatePickerDropDown active={dropDownActive} closeDropDown={closeDropDown} selectedYear={selectedDate.year} selectedMonth={selectedDate.month} selectedDay={selectedDate.day} days={getAvailableDays(selectedDate.year, selectedDate.month)} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} selectDate={selectDate} months={months}/>
         </div>
     )
 }

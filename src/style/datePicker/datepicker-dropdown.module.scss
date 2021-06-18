@@ -1,0 +1,83 @@
+@import "../variables";
+.date-picker-dropdown {
+    position: absolute;
+    background: white;
+    right: 0;
+    left: 0;
+    top: 50px;
+    height: auto;
+    display: none;
+    min-height: 300px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+    .selected-year,
+    .selected-month  {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        font-weight: 600;
+        
+
+        i {
+            font-size: 20px;
+            cursor: pointer;
+            color: map-get($map: $colors, $key: main);
+            transition: color .1s ease-in-out ;
+
+            &:hover {
+                color: lighten(map-get($colors, main), 40%);
+            }
+        }
+        span {
+            cursor: pointer;
+        }
+    }
+    .dropdown-options {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        grid-template-rows: repeat(5, minmax(0, 1fr));
+        text-align: center;
+
+        span {
+            padding: 10px;
+            font-weight: 400;
+           
+        }
+        .dropdown-item{
+
+            cursor: pointer;
+            &:hover {
+                background: map-get($map: $colors, $key: active);
+            }
+
+            &.active-item {
+                background-color: map-get($map: $colors, $key: main);
+                color: white;
+                font-weight: 600;
+            }
+        }
+
+        &.dropdown-option-year {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+        &.dropdown-option-month {
+            display: flex;
+            flex-wrap: wrap;
+
+            .dropdown-item {
+                width: 98px
+            
+            }
+        }
+
+    }
+
+    &.dropdown-active {
+        display: block;
+    }
+
+}

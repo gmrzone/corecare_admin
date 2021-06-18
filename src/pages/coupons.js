@@ -3,6 +3,7 @@ import CreateAction from '../components/common/CreateAction'
 import ListTable from '../components/common/ListTable'
 import ComponentWrapper from '../components/common/ComponentWrapper'
 import DatePicker from '../components/common/DatePicker'
+import DateRangePicker from "../components/common/DateRangeFilter";
 const Coupons = () => {
     const tableData = [
         {
@@ -96,7 +97,8 @@ const Coupons = () => {
             <ComponentWrapper>
                 <ListTable headData={tableHead} bodyData={tableBody}/>
             </ComponentWrapper>
-                <DatePicker />
+                {/* <DatePicker /> */}
+                <DateRangePicker />
         </MainLayout>
     )
 }

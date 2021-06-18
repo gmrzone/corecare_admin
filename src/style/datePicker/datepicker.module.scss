@@ -1,0 +1,29 @@
+@import '../variables';
+.date-picker-input {
+    position: relative;
+    
+    
+
+    margin: 0 10px;
+
+    width: calc(100% - 20px);
+   
+    @media (min-width: 360px){
+        width: 300px;
+    }
+    &:focus-within {
+        background: red;
+    }
+
+
+    .selected-date {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid map-get($map: $text, $key: secondary);
+        padding: 10px;
+        border-radius: 2px;
+        background: white;
+        cursor: pointer;
+        
+    }
+}

@@ -1,7 +1,7 @@
-import style from '../../../style/datepicker.module.scss';
+import style from '../../../style/datePicker/datepicker-dropdown.module.scss';
 import {useState} from 'react'
-const DatePickerDropDown = ({ active , closeDropDown, setDropdown, selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate }) => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const DatePickerDropDown = ({ active , selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate, months }) => {
+    
     const getavailableYears = () => {
         const startyear = 2019
         const currentYear = new Date().getFullYear()
