@@ -2,7 +2,8 @@ import MainLayout from "../components/common/MainLayout";
 import CreateAction from '../components/common/CreateAction'
 import ListTable from '../components/common/ListTable'
 import ComponentWrapper from '../components/common/ComponentWrapper'
-import useSWR from 'swr';
+import useSWR from 'swr'
+import DateRangePicker from "../components/common/DateRangeFilter";
 import axios from '../utils/variables'
 const Users = () => {
     const fetcher = (...args) => axios.get(...args).then(response => response.data);
@@ -99,6 +100,7 @@ const Users = () => {
             <ComponentWrapper>
                 <CreateAction forPage="User"/>
             </ComponentWrapper>
+            <DateRangePicker />
             <ComponentWrapper>
                 <ListTable headData={tableHead} bodyData={dbData || tableBody}/>
             </ComponentWrapper>

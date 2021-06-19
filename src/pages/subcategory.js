@@ -2,6 +2,7 @@ import MainLayout from "../components/common/MainLayout";
 import CreateAction from '../components/common/CreateAction'
 import ListTable from '../components/common/ListTable'
 import ComponentWrapper from '../components/common/ComponentWrapper'
+import DateRangePicker from "../components/common/DateRangeFilter";
 const Subcategory = () => {
     const tableData = [
         {
@@ -67,6 +68,7 @@ const Subcategory = () => {
              <ComponentWrapper>
                 <CreateAction forPage="Subcategory"/>
              </ComponentWrapper>
+             <DateRangePicker />
              <ComponentWrapper>
                 <ListTable headData={tableHead} bodyData={tableBody}/>
              </ComponentWrapper>

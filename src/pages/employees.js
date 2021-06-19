@@ -2,6 +2,7 @@ import MainLayout from "../components/common/MainLayout";
 import CreateAction from '../components/common/CreateAction'
 import ListTable from '../components/common/ListTable'
 import ComponentWrapper from '../components/common/ComponentWrapper'
+import DateRangePicker from "../components/common/DateRangeFilter";
 const Employees = () => {
     const tableData = [
         {
@@ -83,6 +84,7 @@ const Employees = () => {
             <ComponentWrapper>
                 <CreateAction forPage="Employee"/>
             </ComponentWrapper>
+            <DateRangePicker />
             <ComponentWrapper>
                 <ListTable headData={tableHead} bodyData={tableBody}/>
             </ComponentWrapper>
