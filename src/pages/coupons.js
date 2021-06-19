@@ -93,11 +93,11 @@ const Coupons = () => {
             <ComponentWrapper>
                 <CreateAction forPage="Coupon"/>
             </ComponentWrapper>
+            <DateRangePicker />
             <ComponentWrapper>
                 <ListTable headData={tableHead} bodyData={tableBody}/>
             </ComponentWrapper>
                 {/* <DatePicker /> */}
-                <DateRangePicker />
         </MainLayout>
     )
 }

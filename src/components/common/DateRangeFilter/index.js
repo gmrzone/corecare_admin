@@ -51,6 +51,28 @@ const DateRangeFilter = () => {
         setToDate({day: newEndDate.getDate(), month: newEndDate.getMonth(), year: newEndDate.getFullYear()})
         setDropDownActive(false)
     }
+    const getPreviousMonth  = (setState) => {
+        
+        setState(s => {
+            if (s.month === 0){
+                return {...s, day: null, month: 11, year: s.year - 1}
+            }
+            else{
+                return {...s, day: null, month: s.month - 1}
+            }
+        })
+    }
+    const getNextMonth = (setState) => {
+        setState(s => {
+            if (s.month === 11){
+                return {...s, day: null, month: 0, year: s.year + 1}
+            }
+            else{
+                return {...s, day: null, month: s.month + 1}
+            }
+        })
+    }
+
     const dropDownOptions = [
         {
             name: "All",
@@ -86,7 +108,9 @@ const DateRangeFilter = () => {
     const toggleDropDown = () => {
         setDropDownActive(s => !s)
     }
-
+    const closeDropDown = () => {
+        setDropDownActive(false)
+    }
     return (
         <div className={style['date-range-input']}>
             <div className={style['selected-range']} onClick={toggleDropDown}>
@@ -94,7 +118,7 @@ const DateRangeFilter = () => {
                 <div className={style['selected-range-text']}>{months[fromDate.month] || "--"} {fromDate.day || "--"}, {fromDate.year || "--"} - {months[toDate.month] || "--"} {toDate.day || "--"}, {toDate.year || "--"}</div>
                 <i className={`angle ${dropDownActive ? "up" : "down"} icon`} />
             </div>
-            <DropDown active={dropDownActive} options={dropDownOptions} months={months} selectedFromDate={fromDate} selectedToDate={toDate} />
+            <DropDown active={dropDownActive} options={dropDownOptions} months={months} selectedFromDate={fromDate} selectedToDate={toDate} setFromDate={setFromDate} setToDate={setToDate} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} closeDropDown={closeDropDown}/>
         </div>
     )
 }

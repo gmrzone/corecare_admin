@@ -1,8 +1,10 @@
 import style from '../../../style/datePicker/daterange-dropdown.module.scss'
 import { useState } from 'react'
 import { getAvailableDays } from '../DatePicker/utils'
-const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) => {
+const DropDown = ({active, options, months, selectedFromDate, selectedToDate, setFromDate, setToDate, getPreviousMonth, getNextMonth, closeDropDown }) => {
     const [customRange, setCustomRange] = useState({status: false, fromDateActive: false, toDateActive: false})
+    const [selectMontYear, setSelectMonthYear] = useState({fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}})
+
     const getRangeCalender = () => {
         setCustomRange(s => {
             return {...s, status: true, fromDateActive: true}
@@ -25,6 +27,18 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) 
             return {...s, fromDateActive: false, toDateActive: true}
         })
     }
+    const selectDay = (day) => {
+        if (customRange.fromDateActive){
+            setFromDate(s => {
+                return {...s, day}
+            })
+        }
+        else{
+            setToDate(s => {
+                return {...s, day}
+            })
+        }
+    }
     const renderFromAvailableDays = (date) => {
         const ad = []
         let c = 0
@@ -36,7 +50,7 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) 
                 ad.push(<span key={c} className={`${style['range-dropdown-main-item']} ${style['active-day']}`}>{i}</span>)
             }
             else{
-                ad.push(<span key={c} className={style['range-dropdown-main-item']}>{i}</span>)
+                ad.push(<span key={c} className={style['range-dropdown-main-item']} onClick={() => selectDay(i)}>{i}</span>)
             }
             c++
         }
@@ -50,8 +64,10 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) 
         toDate.setMinutes(toDate.getMinutes() - toDate.getTimezoneOffset());
         return (toDate - fromDate) / milliSecondPerDay + 1
         
-
-
+    }
+    const applyCustomRange = () => {
+        setCustomRange({status: false, fromDateActive: false, toDateActive: false})
+        closeDropDown()
     }
     return (
         <div className={`${style['range-dropdown']} ${active && style['dropdown-active']}`} onClick={(e) => e.stopPropagation()}>
@@ -60,22 +76,22 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) 
             )}
             {customRange.status && (
                 <div className={style['range-dropdown-toggle']}>
-                    <div className={`${style['toggle-item']} ${customRange.fromDateActive && style['active-item']}`} onClick={activateFromCalender}>{months[selectedFromDate.month]} {selectedFromDate.day}, {selectedFromDate.year}</div>
+                    <div className={`${style['toggle-item']} ${customRange.fromDateActive && style['active-item']}`} onClick={activateFromCalender}>{months[selectedFromDate.month] || "---"} {selectedFromDate.day || "--"}, {selectedFromDate.year || "----"}</div>
                     <span>To</span>
-                    <div className={`${style['toggle-item']} ${customRange.toDateActive && style['active-item']}`} onClick={activateToCalender}>{months[selectedToDate.month]} {selectedToDate.day}, {selectedToDate.year}</div>
+                    <div className={`${style['toggle-item']} ${customRange.toDateActive && style['active-item']}`} onClick={activateToCalender}>{months[selectedToDate.month] || "---"} {selectedToDate.day || "--"}, {selectedToDate.year || "----"}</div>
                 </div>
             )}
             {customRange.status && customRange.fromDateActive ? (
                         <div className={style['selected-year']}>
-                            <i className="angle left icon" />
+                            <i className="angle left icon" onClick={() => getPreviousMonth(setFromDate)}/>
                                 <span>{months[selectedFromDate.month].toUpperCase()} {selectedFromDate.year}</span>
-                            <i className="angle right icon" />
+                            <i className="angle right icon" onClick={() => getNextMonth(setFromDate)}/>
                         </div>
                     ) : customRange.status && customRange.toDateActive ? (
                         <div className={style['selected-year']}>
-                            <i className="angle left icon" />
+                            <i className="angle left icon" onClick={() => getPreviousMonth(setToDate)}/>
                                 <span>{months[selectedToDate.month].toUpperCase()} {selectedToDate.year}</span>
-                            <i className="angle right icon" />
+                            <i className="angle right icon" onClick={() => getNextMonth(setToDate)}/>
                         </div>
             ) : ""}
 
@@ -92,6 +108,11 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate }) 
                     {customRange.fromDateActive && renderFromAvailableDays(selectedFromDate)}
                     {customRange.toDateActive && renderFromAvailableDays(selectedToDate)}
                 </div>
+            )}
+            {customRange.status && (
+                <button className={`ui secondary mini button ${style['apply-button']}`} onClick={applyCustomRange}>
+                    Apply
+                </button>
             )}
             {!customRange.status && renderOptions}
         </div>

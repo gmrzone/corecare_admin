@@ -23,7 +23,7 @@
 
 
         &:hover {
-            background: map-get($map: $colors, $key: active);
+            background: lighten(map-get($colors, main), 90%);
         }
         &.active-item {
             background: map-get($map: $colors, $key: main);
@@ -47,7 +47,8 @@
         .toggle-item {
             padding: 8px;
             border: 1px solid map-get($map: $text, $key: secondary);
-            width: 100px;
+            min-width: 100px;
+            width: auto;
             cursor: pointer;
             text-align: center;
 
@@ -98,10 +99,24 @@
             font-weight: 400;
            
         }
+        .range-dropdown-main-item {
+            cursor: pointer;
+
+            &:hover {
+                background: lighten(map-get($colors , main), 90%);
+            }
+        }
         .active-day {
             background-color: map-get($map: $colors, $key: main);
             color: white;
             font-weight: 600;
+
+            &:hover {
+                background-color: map-get($map: $colors, $key: main);
+            }
         }
+    }
+    .apply-button {
+        margin-bottom: 10px;
     }
 }
