@@ -58,12 +58,12 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
         selectDate(null, month, null)
         if (customRange.fromDateActive){
             setSelectMonthYear(s => {
-                return {fromDate: {status: false, yearSelected: false}, toDate: {...s.toDate}}
+                return {fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}}
             })
         }
         else{
             setSelectMonthYear(s => {
-                return {toDate: {status: false, yearSelected: false}, fromDate: {...s.toDate}}
+                return {toDate: {status: false, yearSelected: false}, fromDate: {status: false, yearSelected: false}}
             })
         }
     }
@@ -124,7 +124,7 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
             })
         }
     }
-    console.log(customRange, "customRange")
+    console.log("afzal", selectMonthYear)
     return (
         <div className={`${style['range-dropdown']} ${active && style['dropdown-active']}`} onClick={(e) => e.stopPropagation()}>
             {customRange.status && (
