@@ -22,13 +22,14 @@ const MembersPieChart = () => {
                   hoverOffset: 4
                 }]
             },
-            // options: {
-            //     scales: {
-            //         y: {
-            //             beginAtZero: true
-            //         }
-            //     }
-            // }
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Me mbers Stats",
+                }
+              }
+          }
         });
 
     }, [])

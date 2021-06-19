@@ -32,19 +32,19 @@ const EmployeeChart = () => {
                   hoverOffset: 4
                 }]
             },
-            // options: {
-            //     scales: {
-            //         y: {
-            //             beginAtZero: true
-            //         }
-            //     }
-            // }
+            options: {
+                plugins: {
+                  title: {
+                    display: true,
+                    text: "Employee Stats",
+                  }
+                }
+            }
         });
 
     }, [])
     return (
-        <div className={style['user-chart-container']}>
-            <h2>Employee Stats</h2>
+        <div className={style['user-chart-container']}> 
              <canvas id="members-chart" width="700" height="400" ref={ctx} />
         </div>
     )

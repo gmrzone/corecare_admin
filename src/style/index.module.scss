@@ -41,3 +41,22 @@
     }
 
 }
+
+//  Recent Active Orders
+
+.active-orders-container{
+    background: white;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin: 10px 0; 
+
+    .active-orders-head {
+        text-align: center;
+        padding: 10px 0;
+        h2 {
+            margin: 0;
+        }
+    }
+}

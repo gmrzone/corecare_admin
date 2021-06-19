@@ -14,19 +14,25 @@ const AreaChart = ({ heading, data, target, chartBG, chartBorder, LineColor }) =
                         label: "Target",
                         // data: new Array(12).fill(250),
                         data:new Array(12).fill(target),
-                        tension: 0.1,
+                        cubicInterpolationMode: 'monotone',
+                        tension: 0.4,
                         backgroundColor:  [
                             LineColor
                         ],
                         borderColor: [  
                             LineColor
                         ],
-                        borderWidth: 1
+                        borderWidth: 1,
+                        fill: false,
+                        borderDash: [5, 5],
+                        pointStyle: 'rectRot',
                     }, {
                     label: 'achieved',
                     fill: 'origin',
                     data: data,
                     type: "line",
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
                     
                     backgroundColor: [
                         chartBG,
@@ -35,24 +41,39 @@ const AreaChart = ({ heading, data, target, chartBG, chartBorder, LineColor }) =
                     borderColor: [  
                         chartBorder,
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    
                 }]
             },
             options: {
+                responsive: true,
                 scales: {
                     y: {
                         beginAtZero: true,
                         display: window.innerWidth > 768 ? true : false
                     }
-                }
+                },
+                plugins: {
+                    title : {
+                        display: true,
+                        text: heading,
+                    },
+                    legend : {
+                        labels : {
+                            usePointStyle: true,
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                  },
             }
         });
 
-    }, [data, LineColor, chartBG, chartBorder, target])
+    }, [data, LineColor, chartBG, chartBorder, target, heading])
     return (
         <div className={style['area-chart-container']}>
-            <h2>{heading}</h2>
-            <canvas id="orders-chart" width="700" height="400" ref={ctx} aria-label="Hello ARIA World"/>
+            <canvas id="orders-chart" width="700" height="400" ref={ctx} />
         </div>
     )
 }
