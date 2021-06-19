@@ -22,6 +22,7 @@ const DateRangeFilter = () => {
     const SelectAllData = () => {
         setFromDate({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
         setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
+        setDropDownActive(false)
     }
     const selectThisMonthData = () => {
         setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()}) 
@@ -72,7 +73,21 @@ const DateRangeFilter = () => {
             }
         })
     }
+    const isPreviousMonthActive = () => {
+        const newEndDate = new Date(endDate.getFullYear(), endDate.getMonth(), 0)
+        if (endDate.getMonth() === 0){
+            return fromDate.day === 1 && fromDate.month === newEndDate.getMonth() && fromDate.year === newEndDate.getFullYear() && toDate.day === newEndDate.getDate() && toDate.month === newEndDate.getMonth() && toDate.year === newEndDate.getFullYear()
+        }
+        else{
+            return fromDate.day === 1 && fromDate.month === newEndDate.getMonth() && fromDate.year === newEndDate.getFullYear() && toDate.day === newEndDate.getDate() && toDate.month === newEndDate.getMonth() && toDate.year === newEndDate.getFullYear()
+        }
+    }
+    const isLastSevenDaysActive = () => {
+        const newStartDate = new Date(new Date(endDate).setDate(endDate.getDate() - 6))
 
+        return fromDate.day === newStartDate.getDate() && fromDate.month === newStartDate.getMonth() && fromDate.year === newStartDate.getFullYear() && toDate.day === endDate.getDate() && toDate.month === endDate.getMonth() && toDate.year === endDate.getFullYear()
+        
+    }
     const dropDownOptions = [
         {
             name: "All",
@@ -83,22 +98,22 @@ const DateRangeFilter = () => {
         {
             name: "Last 7 Days",
             action: selectSevenDaysData,
-            active: ""
+            active: isLastSevenDaysActive()
         },
         {
             name: "This Month",
             action: selectThisMonthData,
-            active: ""
+            active: fromDate.day === 1 && fromDate.month === endDate.getMonth() && fromDate.year === endDate.getFullYear() && toDate.day === endDate.getDate() && toDate.month === endDate.getMonth() && toDate.year === endDate.getFullYear()
         },
         {
             name: "Previous Month",
             action: selectPreviousMonthData,
-            active: ""
+            active: isPreviousMonthActive()
         },
         {
             name: "This Year",
             action: selectThisYearData,
-            active: ""
+            active: fromDate.day === 1 && fromDate.month === 0 && fromDate.year === endDate.getFullYear() && toDate.day === endDate.getDate() && toDate.month === endDate.getMonth() && toDate.year === endDate.getFullYear()
         },
         {
             name: "Custom Range"

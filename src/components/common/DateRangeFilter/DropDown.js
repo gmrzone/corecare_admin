@@ -10,9 +10,13 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
             return {...s, status: true, fromDateActive: true}
         })
     }
+    let noActive = true;
     const renderOptions = options.map((x, i) => {
+        if (x.active){
+            noActive = false
+        }
         return (
-            <span key={i} className={`${style['dropdown-item']} ${x.active && style['active-item']}`} onClick={x.action ? x.action : getRangeCalender}>
+            <span key={i} className={`${style['dropdown-item']} ${x.active && style['active-item']} ${i === 5 && noActive && style['active-item']}`} onClick={x.action ? x.action : getRangeCalender}>
                 {x.name}
             </span>
         )
