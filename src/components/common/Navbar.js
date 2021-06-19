@@ -3,12 +3,15 @@ import Sidebar from "./Sidebar";
 import ProfileBox from "./ProfileBox";
 import MessageDropDown from './MessagesDropDown';
 import NotificationDropDown from './NotificationDropDown'
+import NewLink from './Link'
 const Navbar = () => {
     return (
         <nav className={`${style.navbar} ui container`}>
             <Sidebar />
             <div className={style.logo}>
-                <img src="/logo-full.svg" alt="logo" width={176} />
+                <NewLink to="/">
+                    <img src="/logo-full.svg" alt="logo" width={176} />
+                </NewLink>
             </div>
             <div className={style["nav-right-list"]}>
                 {/* <div className={style["nav-right-item"]}>

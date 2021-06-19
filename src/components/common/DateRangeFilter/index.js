@@ -19,6 +19,11 @@ const DateRangeFilter = () => {
             document.body.removeEventListener('click', disableDropDown)
         }
     }, [dropDownActive])
+    const resetDateRange = () => {
+        setToDate({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
+        setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
+        setDropDownActive(false)
+    }
     const SelectAllData = () => {
         setFromDate({day: startDate.getDate(), month: startDate.getMonth(), year: startDate.getFullYear()})
         setToDate({day: endDate.getDate(), month: endDate.getMonth(), year: endDate.getFullYear()})
@@ -133,7 +138,7 @@ const DateRangeFilter = () => {
                 <div className={style['selected-range-text']}>{months[fromDate.month] || "--"} {fromDate.day || "--"}, {fromDate.year || "--"} - {months[toDate.month] || "--"} {toDate.day || "--"}, {toDate.year || "--"}</div>
                 <i className={`angle ${dropDownActive ? "up" : "down"} icon`} />
             </div>
-            <DropDown active={dropDownActive} options={dropDownOptions} months={months} selectedFromDate={fromDate} selectedToDate={toDate} setFromDate={setFromDate} setToDate={setToDate} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} closeDropDown={closeDropDown}/>
+            <DropDown active={dropDownActive} options={dropDownOptions} months={months} selectedFromDate={fromDate} selectedToDate={toDate} setFromDate={setFromDate} setToDate={setToDate} getPreviousMonth={getPreviousMonth} getNextMonth={getNextMonth} closeDropDown={closeDropDown} resetDateRange={resetDateRange}/>
         </div>
     )
 }

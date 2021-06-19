@@ -1,7 +1,7 @@
 import style from '../../../style/datePicker/daterange-dropdown.module.scss'
 import { useState } from 'react'
 import { getAvailableDays, getavailableYears } from '../DatePicker/utils'
-const DropDown = ({active, options, months, selectedFromDate, selectedToDate, setFromDate, setToDate, getPreviousMonth, getNextMonth, closeDropDown }) => {
+const DropDown = ({active, options, months, selectedFromDate, selectedToDate, setFromDate, setToDate, getPreviousMonth, getNextMonth, closeDropDown, resetDateRange }) => {
     const [customRange, setCustomRange] = useState({status: false, fromDateActive: false, toDateActive: false})
     const [selectMonthYear, setSelectMonthYear] = useState({fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}})
 
@@ -21,6 +21,11 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
             </span>
         )
     })
+    const reset = () => {
+        resetDateRange()
+        setCustomRange({status: false, fromDateActive: false, toDateActive: false})
+        setSelectMonthYear({fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}})
+    }
     const activateFromCalender = () => {
         // setSelectMonthYear(s => {
         //     return {fromDate: {...s.fromDate}, toDate: {status: false, yearSelected: false}}
@@ -180,9 +185,14 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
                 </div>
             )}
             {customRange.status && !selectMonthYear.fromDate.status && !selectMonthYear.toDate.status  && (
-                <button className={`ui secondary mini button ${style['apply-button']}`} onClick={applyCustomRange}>
-                    Apply
-                </button>
+                <div>
+                    <button className={`ui secondary mini button ${style['apply-button']}`} onClick={applyCustomRange}>
+                        Apply
+                    </button>
+                    <button className={`ui secondary mini button ${style['apply-button']}`} onClick={reset}>
+                        Reset
+                    </button>
+                </div>
             )}
             {!customRange.status && renderOptions}
         </div>
