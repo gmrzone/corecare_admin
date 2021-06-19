@@ -12,3 +12,13 @@ export const getAvailableDays = (year, month) => {
     }
     return days
 }
+
+export const getavailableYears = (startyear) => {
+    // const startyear = 2019
+    const currentYear = new Date().getFullYear()
+    const years = []
+    for (let i=startyear; i <= currentYear; i++){
+        years.push(i)
+    }
+    return years
+}

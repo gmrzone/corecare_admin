@@ -1,9 +1,9 @@
 import style from '../../../style/datePicker/daterange-dropdown.module.scss'
 import { useState } from 'react'
-import { getAvailableDays } from '../DatePicker/utils'
+import { getAvailableDays, getavailableYears } from '../DatePicker/utils'
 const DropDown = ({active, options, months, selectedFromDate, selectedToDate, setFromDate, setToDate, getPreviousMonth, getNextMonth, closeDropDown }) => {
     const [customRange, setCustomRange] = useState({status: false, fromDateActive: false, toDateActive: false})
-    const [selectMontYear, setSelectMonthYear] = useState({fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}})
+    const [selectMonthYear, setSelectMonthYear] = useState({fromDate: {status: false, yearSelected: false}, toDate: {status: false, yearSelected: false}})
 
     const getRangeCalender = () => {
         setCustomRange(s => {
@@ -18,27 +18,69 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
         )
     })
     const activateFromCalender = () => {
-        setCustomRange(s => {
-            return {...s, fromDateActive: true, toDateActive: false}
-        })
+        // setSelectMonthYear(s => {
+        //     return {fromDate: {...s.fromDate}, toDate: {status: false, yearSelected: false}}
+        // })
+        setCustomRange({status :true, fromDateActive: true, toDateActive: false})
     }
     const activateToCalender = () => {
-        setCustomRange(s => {
-            return {...s, fromDateActive: false, toDateActive: true}
-        })
+        // setSelectMonthYear(s => {
+        //     return {fromDate: {status: false, yearSelected: false}, toDate: {...s.toDate}}
+        // })
+        setCustomRange({status: true, fromDateActive: false, toDateActive: true})
     }
-    const selectDay = (day) => {
+    const selectDate = (day, month, year) => {
         if (customRange.fromDateActive){
             setFromDate(s => {
-                return {...s, day}
+                return {...s, day: day ?? selectedFromDate.day, month: month ?? selectedFromDate.month, year: year ?? selectedFromDate.year}
             })
         }
         else{
             setToDate(s => {
-                return {...s, day}
+                return {...s, day: day ?? selectedToDate.day, month: month ?? selectedToDate.month, year: year ?? selectedToDate.year}
             })
         }
     }
+    const selectYear = (year) => {
+        selectDate(null, null, year)
+        if (customRange.fromDateActive){
+            setSelectMonthYear(s => {
+                return {fromDate: {...s.fromDate, yearSelected: true}, toDate: {...s.toDate}}
+            })
+        }
+        else{
+            setSelectMonthYear(s => {
+                return {toDate: {...s.toDate, yearSelected: true}, fromDate: {...s.fromDate}}
+            })
+        }
+    }
+    const selectMonth = (month) => {
+        selectDate(null, month, null)
+        if (customRange.fromDateActive){
+            setSelectMonthYear(s => {
+                return {fromDate: {status: false, yearSelected: false}, toDate: {...s.toDate}}
+            })
+        }
+        else{
+            setSelectMonthYear(s => {
+                return {toDate: {status: false, yearSelected: false}, fromDate: {...s.toDate}}
+            })
+        }
+    }
+    const renderYears = getavailableYears(2019).map((x) => {
+        return (
+            <span key={x} className={style['range-dropdown-main-item']} onClick={() => selectYear(x)}>
+                {x}
+            </span>
+        )
+    })
+    const renderMonths = months.map((x, i) => {
+        return (
+            <span key={x + i} className={style['range-dropdown-main-item']} onClick={() => selectMonth(i)}>
+                {x}
+            </span>
+            )
+    })
     const renderFromAvailableDays = (date) => {
         const ad = []
         let c = 0
@@ -50,7 +92,7 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
                 ad.push(<span key={c} className={`${style['range-dropdown-main-item']} ${style['active-day']}`}>{i}</span>)
             }
             else{
-                ad.push(<span key={c} className={style['range-dropdown-main-item']} onClick={() => selectDay(i)}>{i}</span>)
+                ad.push(<span key={c} className={style['range-dropdown-main-item']} onClick={() => selectDate(i, )}>{i}</span>)
             }
             c++
         }
@@ -69,6 +111,20 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
         setCustomRange({status: false, fromDateActive: false, toDateActive: false})
         closeDropDown()
     }
+    const activateSelectYearMonth = () => {
+
+        if (customRange.fromDateActive){
+            setSelectMonthYear(s => {
+                return {fromDate: {...s.fromDate, status: true}, toDate: {...s.toDate}}
+            })
+        }
+        else{
+            setSelectMonthYear(s => {
+                return {toDate: {...s.toDateDate, status: true}, fromDate: {...s.fromDate}}
+            })
+        }
+    }
+    console.log(customRange, "customRange")
     return (
         <div className={`${style['range-dropdown']} ${active && style['dropdown-active']}`} onClick={(e) => e.stopPropagation()}>
             {customRange.status && (
@@ -84,32 +140,42 @@ const DropDown = ({active, options, months, selectedFromDate, selectedToDate, se
             {customRange.status && customRange.fromDateActive ? (
                         <div className={style['selected-year']}>
                             <i className="angle left icon" onClick={() => getPreviousMonth(setFromDate)}/>
-                                <span>{months[selectedFromDate.month].toUpperCase()} {selectedFromDate.year}</span>
+                                <span onClick={activateSelectYearMonth}>{months[selectedFromDate.month].toUpperCase()} {selectedFromDate.year}</span>
                             <i className="angle right icon" onClick={() => getNextMonth(setFromDate)}/>
                         </div>
                     ) : customRange.status && customRange.toDateActive ? (
                         <div className={style['selected-year']}>
                             <i className="angle left icon" onClick={() => getPreviousMonth(setToDate)}/>
-                                <span>{months[selectedToDate.month].toUpperCase()} {selectedToDate.year}</span>
+                                <span onClick={activateSelectYearMonth}>{months[selectedToDate.month].toUpperCase()} {selectedToDate.year}</span>
                             <i className="angle right icon" onClick={() => getNextMonth(setToDate)}/>
                         </div>
             ) : ""}
 
             {customRange.status && (
-                <div className={style['range-dropdown-main']}>
-                    <span>S</span>
-                    <span>M</span>
-                    <span>T</span>
-                    <span>W</span>
-                    <span>T</span>
-                    <span>F</span>
-                    <span>S</span>
+                <div className={`${style['range-dropdown-main']} ${(selectMonthYear.fromDate.status || selectMonthYear.toDate.status) && style['range-dropdown-alternate']}`}>
+                    {!selectMonthYear.fromDate.status && !selectMonthYear.toDate.status && (
+                        <>
+                            <span>S</span>
+                            <span>M</span>
+                            <span>T</span>
+                            <span>W</span>
+                            <span>T</span>
+                            <span>F</span>
+                            <span>S</span>
+                        </>
+                    )}
+                    
+                    {(customRange.fromDateActive && !selectMonthYear.fromDate.status ) && renderFromAvailableDays(selectedFromDate)}
+                    {customRange.toDateActive && !selectMonthYear.toDate.status && renderFromAvailableDays(selectedToDate)}
 
-                    {customRange.fromDateActive && renderFromAvailableDays(selectedFromDate)}
-                    {customRange.toDateActive && renderFromAvailableDays(selectedToDate)}
+                    {selectMonthYear.fromDate.status && selectMonthYear.fromDate.yearSelected && customRange.fromDateActive && renderMonths}
+                    {selectMonthYear.fromDate.status && !selectMonthYear.fromDate.yearSelected && customRange.fromDateActive && renderYears}
+
+                    {selectMonthYear.toDate.status && selectMonthYear.toDate.yearSelected && customRange.toDateActive && renderMonths}
+                    {selectMonthYear.toDate.status && !selectMonthYear.toDate.yearSelected && customRange.toDateActive && renderYears}
                 </div>
             )}
-            {customRange.status && (
+            {customRange.status && !selectMonthYear.fromDate.status && !selectMonthYear.toDate.status  && (
                 <button className={`ui secondary mini button ${style['apply-button']}`} onClick={applyCustomRange}>
                     Apply
                 </button>

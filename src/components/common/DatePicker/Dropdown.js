@@ -1,16 +1,8 @@
 import style from '../../../style/datePicker/datepicker-dropdown.module.scss';
 import {useState} from 'react'
+import { getavailableYears } from './index'
 const DatePickerDropDown = ({ active , selectedYear, selectedMonth, selectedDay, days, getPreviousMonth, getNextMonth, selectDate, months }) => {
     
-    const getavailableYears = () => {
-        const startyear = 2019
-        const currentYear = new Date().getFullYear()
-        const years = []
-        for (let i=startyear; i <= currentYear; i++){
-            years.push(i)
-        }
-        return years
-    }
     const [selectMonthYear, setSelectMonthyear] = useState({status: false, yearSelected: false})
     const renderDays = () => {
         const render = []
@@ -47,7 +39,7 @@ const DatePickerDropDown = ({ active , selectedYear, selectedMonth, selectedDay,
            return <span className={style['dropdown-item']} key={i} onClick={() => getDaysOptionAndSelectMonth(i)}>{x}</span>
        }
    })
-   const renderYears = getavailableYears().map((x, i) => {
+   const renderYears = getavailableYears(2019).map((x, i) => {
        
         if(x === selectedYear){
             return <span className={`${style['dropdown-item']} ${style['active-item']}`} key={i} onClick={() => getMonthOptionsAndSelectYear(x)}>{x}</span>

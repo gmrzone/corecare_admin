@@ -115,6 +115,16 @@
                 background-color: map-get($map: $colors, $key: main);
             }
         }
+
+        &.range-dropdown-alternate {
+            display: flex;
+            flex-wrap: wrap;
+
+            .range-dropdown-main-item {
+                width: 98px;
+            }
+
+        }
     }
     .apply-button {
         margin-bottom: 10px;
