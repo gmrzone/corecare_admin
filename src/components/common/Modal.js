@@ -1,7 +1,7 @@
 import reactDom from "react-dom";
 import style from "../../style/modal.module.scss";
 import { useRef, useEffect } from 'react'
-const Modal = ({ header, children, active, closeModal }) => {
+const Modal = ({ header, children, active, closeModal, submitCreateForm, handleSubmit }) => {
     const backdrop = useRef()
     const makeModalVisible = () => {
         backdrop.current.classList.add(style.visible)
@@ -26,13 +26,13 @@ const Modal = ({ header, children, active, closeModal }) => {
                     <div className={style["header-text"]}>{header}</div>
                     <i className={`close icon ${style["close-icon"]}`} onClick={closeModal}/>
                 </div>
-                <form className={`ui form ${window.innerWidth > 768 && "large"}`}>
+                <form className={`ui form ${window.innerWidth > 768 && "large"}`} onSubmit={handleSubmit(submitCreateForm)}>
                     <div className={style["body"]}>
                         {children}
                     </div>
                     <div className={style.action}>
                         <button className={`ui secondary button`} type="submit">Okay</button>
-                        <button className={`ui secondary button`}>Cancel</button>
+                        <button className={`ui secondary button`} onClick={closeModal}>Cancel</button>
                     </div>
                 </form>
             </div>

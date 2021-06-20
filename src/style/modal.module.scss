@@ -39,6 +39,9 @@
             justify-content: space-between;
             border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 
+            i {
+                cursor: pointer;
+            }
             .header-text {
                 font-size: 24px;
                 font-weight: 600;

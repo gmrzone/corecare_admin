@@ -6,14 +6,19 @@ import DateRangePicker from "../components/common/DateRangeFilter";
 import { useState } from 'react'
 import Modal from '../components/common/Modal';
 import CreateUpdateForm from '../components/employees/CreateUpdateForm'
+import { useForm } from 'react-hook-form'
 const Employees = () => {
     const [createUpdateModal, setCreateUpdateModal] = useState(false)
+    const { register, handleSubmit , formState: {errors: formErrors} } = useForm()
     const closeCreateModal = () => {
         setCreateUpdateModal(false)
     }
 
     const openCreateModal= () => {
         setCreateUpdateModal(true)
+    }
+    const SubmitCreateForm = (formValues) => {
+        console.log(formValues)
     }
     const tableData = [
         {
@@ -79,8 +84,8 @@ const Employees = () => {
     });
     return (
         <MainLayout>
-            <Modal header="Create Employee" active={createUpdateModal} closeModal={closeCreateModal}>
-                <CreateUpdateForm />
+            <Modal header="Create Employee" active={createUpdateModal} closeModal={closeCreateModal} submitCreateForm={SubmitCreateForm} handleSubmit={handleSubmit} formError={formErrors}>
+                <CreateUpdateForm register={register} formErrors={formErrors}/>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Employee" openCreateModal={openCreateModal}/>
