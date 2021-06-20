@@ -3,7 +3,18 @@ import CreateAction from "../components/common/CreateAction";
 import ListTable from "../components/common/ListTable";
 import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
+import { useState } from 'react'
+import Modal from '../components/common/Modal';
+import CreateUpdateForm from '../components/employees/CreateUpdateForm'
 const Employees = () => {
+    const [createUpdateModal, setCreateUpdateModal] = useState(false)
+    const closeCreateModal = () => {
+        setCreateUpdateModal(false)
+    }
+
+    const openCreateModal= () => {
+        setCreateUpdateModal(true)
+    }
     const tableData = [
         {
             id: 1,
@@ -68,8 +79,11 @@ const Employees = () => {
     });
     return (
         <MainLayout>
+            {/* <Modal header="Create Employee">
+                <CreateUpdateForm />
+            </Modal> */}
             <ComponentWrapper>
-                <CreateAction forPage="Employee" />
+                <CreateAction forPage="Employee" openModal={openCreateModal}/>
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
