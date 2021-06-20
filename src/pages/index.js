@@ -1,6 +1,6 @@
 import MainLayout from "../components/common/MainLayout";
 import AreaChart from "../components/home/charts/AreaChart";
-import MembersPieChart from "../components/home/charts/MembersPieChart";
+import OrdersByCategoryPie from "../components/home/charts/OrdersByCategoryPie";
 import EmployeeChart from "../components/home/charts/EmployeeChart";
 import style from "../style/index.module.scss";
 import OrderStatsList from "../components/home/OrderStatsList";
@@ -25,7 +25,7 @@ const Index = () => {
                     <RecentActiveOrders />
                 </div>
                 <div className={style["double-component"]}>
-                    <MembersPieChart />
+                    <OrdersByCategoryPie />
                     <EmployeeChart />
                 </div>
             </div>

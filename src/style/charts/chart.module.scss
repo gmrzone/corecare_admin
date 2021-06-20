@@ -4,6 +4,7 @@
     text-align: center;
     margin: 10px 0;
     padding: 0px;
+    overflow: auto;
     background: white;
     border-radius: 4px;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -33,6 +34,9 @@
         padding: 50px;
         padding-top: 0px;
         padding-bottom: 0px;
+    }
+    .main-container {
+        min-width: 700px;
     }
 }
 .small-line-chart-container {

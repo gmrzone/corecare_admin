@@ -29,7 +29,7 @@ const EmployeeChart = () => {
                 plugins: {
                     title: {
                         display: true,
-                        text: "Employee Stats",
+                        text: "Employee Count",
                     },
                 },
             },
