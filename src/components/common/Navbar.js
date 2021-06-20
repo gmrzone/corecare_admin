@@ -1,9 +1,9 @@
 import style from "../../style/main-layout.module.scss";
 import Sidebar from "./Sidebar";
 import ProfileBox from "./ProfileBox";
-import MessageDropDown from './MessagesDropDown';
-import NotificationDropDown from './NotificationDropDown'
-import NewLink from './Link'
+import MessageDropDown from "./MessagesDropDown";
+import NotificationDropDown from "./NotificationDropDown";
+import NewLink from "./Link";
 const Navbar = () => {
     return (
         <nav className={`${style.navbar} ui container`}>

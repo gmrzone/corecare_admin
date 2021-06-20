@@ -12,8 +12,12 @@ const SideDrawerProvider = ({ children }) => {
     };
     const openDrawer = () => {
         setSideDrawerActive(true);
-    }
-    return <SideDrawerContext.Provider value={{ sideDrawerActive, toggleSideDrawer, closeDrawer, openDrawer }}>{children}</SideDrawerContext.Provider>;
+    };
+    return (
+        <SideDrawerContext.Provider value={{ sideDrawerActive, toggleSideDrawer, closeDrawer, openDrawer }}>
+            {children}
+        </SideDrawerContext.Provider>
+    );
 };
 
 export { SideDrawerContext, SideDrawerProvider };

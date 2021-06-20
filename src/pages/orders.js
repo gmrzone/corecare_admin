@@ -1,7 +1,7 @@
 import MainLayout from "../components/common/MainLayout";
-import CreateAction from '../components/common/CreateAction'
-import ListTable from '../components/common/ListTable'
-import ComponentWrapper from '../components/common/ComponentWrapper'
+import CreateAction from "../components/common/CreateAction";
+import ListTable from "../components/common/ListTable";
+import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
 const Orders = () => {
     const tableData = [
@@ -11,7 +11,6 @@ const Orders = () => {
             user: "AFzal saiyed",
             total: "1000.93",
             created: "1 Day ago",
-            
         },
         {
             order_id: 2234596,
@@ -19,7 +18,6 @@ const Orders = () => {
             total: "2600.56",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
         },
         {
             order_id: 3123654,
@@ -27,7 +25,6 @@ const Orders = () => {
             total: "1100.00",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
         },
         {
             order_id: 4456321,
@@ -35,7 +32,6 @@ const Orders = () => {
             total: "4300.93",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
         },
         {
             order_id: 5856324,
@@ -43,7 +39,6 @@ const Orders = () => {
             total: "934.34",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
         },
         {
             order_id: 6963254,
@@ -51,7 +46,6 @@ const Orders = () => {
             total: "53000.50",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
         },
         {
             order_id: 7963254,
@@ -59,38 +53,30 @@ const Orders = () => {
             total: "3890.02",
             user: "AFzal saiyed",
             created: "1 Day ago",
-            
-        }
-    ]
-    const tableHead = [
-        "Order ID",
-        "User",
-        "Status",
-        "Total",
-        "Created"
-
-    ]
+        },
+    ];
+    const tableHead = ["Order ID", "User", "Status", "Total", "Created"];
     const tableBody = tableData.map((x) => {
-        return  (
-            <tr style={{cursor: 'pointer'}} key={x.order_id}>
+        return (
+            <tr style={{ cursor: "pointer" }} key={x.order_id}>
                 <td>{x.order_id}</td>
                 <td>{x.user}</td>
                 <td>{x.status}</td>
                 <td>{x.total}</td>
                 <td>{x.created}</td>
             </tr>
-        )
-    })
+        );
+    });
     return (
         <MainLayout>
             <ComponentWrapper>
-                <CreateAction forPage="Order"/>
+                <CreateAction forPage="Order" />
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={tableBody} />
             </ComponentWrapper>
         </MainLayout>
-    )
-}
-export default Orders
+    );
+};
+export default Orders;

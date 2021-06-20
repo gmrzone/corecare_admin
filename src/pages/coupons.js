@@ -1,7 +1,7 @@
 import MainLayout from "../components/common/MainLayout";
-import CreateAction from '../components/common/CreateAction'
-import ListTable from '../components/common/ListTable'
-import ComponentWrapper from '../components/common/ComponentWrapper'
+import CreateAction from "../components/common/CreateAction";
+import ListTable from "../components/common/ListTable";
+import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
 const Coupons = () => {
     const tableData = [
@@ -12,7 +12,6 @@ const Coupons = () => {
             discount: "21%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 2234596,
@@ -21,7 +20,6 @@ const Coupons = () => {
             discount: "20%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 3123654,
@@ -30,7 +28,6 @@ const Coupons = () => {
             discount: "10%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 4456321,
@@ -39,7 +36,6 @@ const Coupons = () => {
             discount: "21%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 5856324,
@@ -48,7 +44,6 @@ const Coupons = () => {
             discount: "21%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 6963254,
@@ -57,7 +52,6 @@ const Coupons = () => {
             discount: "21%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
         },
         {
             id: 7963254,
@@ -66,39 +60,31 @@ const Coupons = () => {
             discount: "21%",
             from: "Jun 14 2021",
             to: "Jun 14 2022",
-            
-        }
-    ]
-    const tableHead = [
-        "Code",
-        "Category",
-        "Discount",
-        "Valid from",
-        "Valid to"
-
-    ]
+        },
+    ];
+    const tableHead = ["Code", "Category", "Discount", "Valid from", "Valid to"];
     const tableBody = tableData.map((x) => {
-        return  (
-            <tr style={{cursor: 'pointer'}} key={x.id}>
+        return (
+            <tr style={{ cursor: "pointer" }} key={x.id}>
                 <td>{x.code}</td>
                 <td>{x.category}</td>
                 <td>{x.discount}</td>
                 <td>{x.from}</td>
                 <td>{x.to}</td>
             </tr>
-        )
-    })
+        );
+    });
     return (
         <MainLayout>
             <ComponentWrapper>
-                <CreateAction forPage="Coupon"/>
+                <CreateAction forPage="Coupon" />
             </ComponentWrapper>
-                <DateRangePicker />
+            <DateRangePicker />
             <ComponentWrapper>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={tableBody} />
             </ComponentWrapper>
         </MainLayout>
-    )
-}
+    );
+};
 
-export default Coupons
+export default Coupons;

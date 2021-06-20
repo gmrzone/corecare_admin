@@ -11,20 +11,19 @@
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
     .selected-year,
-    .selected-month  {
+    .selected-month {
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
         padding: 10px;
         font-weight: 600;
-        
 
         i {
             font-size: 20px;
             cursor: pointer;
             color: map-get($map: $colors, $key: main);
-            transition: color .1s ease-in-out ;
+            transition: color 0.1s ease-in-out;
 
             &:hover {
                 color: lighten(map-get($colors, main), 40%);
@@ -43,10 +42,8 @@
         span {
             padding: 10px;
             font-weight: 400;
-           
         }
-        .dropdown-item{
-
+        .dropdown-item {
             cursor: pointer;
             &:hover {
                 background: map-get($map: $colors, $key: active);
@@ -62,22 +59,18 @@
         &.dropdown-option-year {
             display: flex;
             flex-wrap: wrap;
-
         }
         &.dropdown-option-month {
             display: flex;
             flex-wrap: wrap;
 
             .dropdown-item {
-                width: 98px
-            
+                width: 98px;
             }
         }
-
     }
 
     &.dropdown-active {
         display: block;
     }
-
 }

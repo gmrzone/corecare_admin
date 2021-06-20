@@ -8,7 +8,7 @@
     background: white;
     align-items: center;
     height: auto;
-    min-height:300px;
+    min-height: 300px;
     z-index: 1000;
     left: 0;
     right: 0;
@@ -22,14 +22,13 @@
         text-align: center;
         cursor: pointer;
 
-
         &:hover {
             background: lighten(map-get($colors, main), 90%);
         }
         &.active-item {
             background: map-get($map: $colors, $key: main);
             color: white;
-        }   
+        }
     }
     &.dropdown-active {
         display: flex;
@@ -44,7 +43,7 @@
         align-items: center;
         // margin: 10px 0;
         margin-bottom: 10px;
-        
+
         .toggle-item {
             padding: 8px;
             border: 1px solid map-get($map: $text, $key: secondary);
@@ -98,13 +97,12 @@
         span {
             padding: 10px;
             font-weight: 400;
-           
         }
         .range-dropdown-main-item {
             cursor: pointer;
 
             &:hover {
-                background: lighten(map-get($colors , main), 90%);
+                background: lighten(map-get($colors, main), 90%);
             }
         }
         .active-day {
@@ -124,7 +122,6 @@
             .range-dropdown-main-item {
                 width: 98px;
             }
-
         }
     }
     .apply-button {

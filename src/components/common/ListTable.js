@@ -1,23 +1,20 @@
-
-const ListTable = ({ headData, bodyData}) => {
-    const renderHead = headData.map(x => {
+const ListTable = ({ headData, bodyData }) => {
+    const renderHead = headData.map((x) => {
         return (
-            <th key={x} className="three wide">{x}</th>
-        )
-    })
+            <th key={x} className="three wide">
+                {x}
+            </th>
+        );
+    });
 
     return (
         <table className="ui table striped  padded single line unstackable selectable">
-            <thead> 
-                <tr>
-                    {renderHead}
-                </tr>
+            <thead>
+                <tr>{renderHead}</tr>
             </thead>
-            <tbody>
-                {bodyData}
-            </tbody>
+            <tbody>{bodyData}</tbody>
         </table>
-    )
-}
+    );
+};
 
-export default ListTable
+export default ListTable;

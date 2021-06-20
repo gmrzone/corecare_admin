@@ -11,14 +11,15 @@ body {
         "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color:rgba(242, 242, 242, 0.4);
+    background-color: rgba(242, 242, 242, 0.4);
     font-weight: 400;
-    
 }
-h1, h2 {
+h1,
+h2 {
     font-weight: 800;
 }
-h3, h4 {
+h3,
+h4 {
     font-weight: 600;
 }
 #afzal {
@@ -41,11 +42,9 @@ a {
         width: auto !important;
         margin-left: 1em !important;
         margin-right: 1em !important;
-       
-
     }
     .ui.container.main {
-         /* transition: margin-left 0.2s ease-in-out; */
+        /* transition: margin-left 0.2s ease-in-out; */
         transform: translateX(0);
         transition: transform 0.2s ease-in-out;
         margin-top: 76px;
@@ -62,10 +61,6 @@ a {
         width: auto !important;
         margin-left: 1.5em !important;
         margin-right: 1.5em !important;
-
-        
-        
-
     }
     .ui.container.main {
         /* transition: margin-left 0.2s ease-in-out; */
@@ -87,7 +82,6 @@ a {
         width: auto !important;
         margin-left: 1.5em !important;
         margin-right: 1.5em !important;
-
     }
     .ui.container.main {
         margin-left: calc(1.5em + 65px) !important;
@@ -108,8 +102,6 @@ a {
         width: auto !important;
         margin-left: 1.5em !important;
         margin-right: 1.5em !important;
-        
-        
     }
     .ui.container.main {
         margin-left: calc(1.5em + 65px) !important;
@@ -117,7 +109,6 @@ a {
         transition: transform 0.2s ease-in-out;
         margin-top: 100px;
         margin-bottom: 20px;
-        
     }
     .ui.container.main.drawer-active {
         /* margin-left: calc(1.5em + 256px) !important; */

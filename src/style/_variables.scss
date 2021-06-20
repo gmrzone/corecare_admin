@@ -13,17 +13,14 @@ $text: (
 );
 
 @mixin scrollbar($type) {
-
-    scrollbar-width: thin;          
+    scrollbar-width: thin;
     scrollbar-color: #595959;
-    @if $type == 'horizontal' {
+    @if $type == "horizontal" {
         &::-webkit-scrollbar {
-        
             height: 6px;
         }
     } @else {
         &::-webkit-scrollbar {
-        
             width: 6px;
         }
     }
@@ -32,9 +29,7 @@ $text: (
         border-radius: 20px;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #595959;  
-        border-radius: 30px; 
+        background-color: #595959;
+        border-radius: 30px;
     }
-
 }
-    

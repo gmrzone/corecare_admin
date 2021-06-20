@@ -1,14 +1,14 @@
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    
+
     .double-component {
         display: flex;
-        flex-direction: column  ;
+        flex-direction: column;
         width: 100%;
         margin: 20px 0;
 
-        @media (min-width: 992px){
+        @media (min-width: 992px) {
             flex-direction: row;
         }
     }
@@ -18,7 +18,7 @@
         justify-content: center;
         align-items: center;
 
-        @media (min-width: 1621px){
+        @media (min-width: 1621px) {
             justify-content: space-between;
         }
 
@@ -26,37 +26,46 @@
             align-self: center;
             margin-bottom: 10px !important;
 
-            @media (min-width: 623px){
+            @media (min-width: 623px) {
                 margin-right: 10px !important;
             }
         }
         .card-fluid {
             width: 100% !important;
 
-            @media (min-width: 642px){
+            @media (min-width: 642px) {
                 width: 290px !important;
             }
-            
         }
     }
-
 }
 
 //  Recent Active Orders
 
-.active-orders-container{
+.active-orders-container {
     background: white;
-    width: 100%;
     height: auto;
     border-radius: 4px;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    margin: 10px 0; 
+    margin: 10px 0;
+    width: 100%;
+    @media (min-width: 992px) {
+        width: 50%;
+    }
 
     .active-orders-head {
         text-align: center;
         padding: 10px 0;
-        h2 {
+        h3 {
             margin: 0;
         }
+    }
+    .active-orders-body {
+        padding: 10px;
+        overflow: auto;
+    }
+    .active-orders-footer {
+        text-align: center;
+        margin-bottom: 10px;
     }
 }

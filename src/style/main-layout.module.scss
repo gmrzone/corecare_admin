@@ -1,6 +1,5 @@
 @import "./variables";
 
-
 .header {
     background-color: map-get($map: $colors, $key: main);
     width: 100%;
@@ -87,7 +86,7 @@
                 transform: translateX(-230px);
                 transition: transform 0.2s ease-in-out;
                 // overflow: hidden;
-                @include scrollbar('vertical');
+                @include scrollbar("vertical");
 
                 @media (min-width: 768px) {
                     top: 80px;
@@ -107,7 +106,7 @@
                 &.slider-click {
                     transform: translateX(-220px);
 
-                    @media (min-width: 768px){
+                    @media (min-width: 768px) {
                         transform: translateX(0px);
                     }
                 }
@@ -116,8 +115,6 @@
                 list-style: none;
                 padding: 0;
                 margin: 0;
-
-                
 
                 .slider-item {
                     padding: 15px;
@@ -170,9 +167,8 @@
                     .slider-dropdown-list {
                         margin-left: 0px;
                         height: 0px;
-                        transition: height .2s ease-in-out, margin-left .2s ease-in-out;
+                        transition: height 0.2s ease-in-out, margin-left 0.2s ease-in-out;
                         overflow: hidden;
-                        
 
                         &.slider-dropdown-list__active {
                             height: auto;
@@ -223,12 +219,12 @@
                         left: 15px;
                         font-weight: 600;
                         background-color: map-get($map: $text, $key: active);
-                    }   
+                    }
                 }
                 &:hover {
                     background-color: darken(map-get($colors, background), 80%);
                 }
-                @media (min-width: 768px){
+                @media (min-width: 768px) {
                     position: relative;
                 }
                 .nav-right-item__backdrop {
@@ -241,12 +237,11 @@
                     top: 0;
                     background: rgba($color: #000000, $alpha: 0.5);
                     // z-index: 1;
-                    transition: opacity .3s ease-in-out;
+                    transition: opacity 0.3s ease-in-out;
 
-                    @media(min-width: 768px){
+                    @media (min-width: 768px) {
                         opacity: 0;
                         display: none !important;
-
                     }
                     &.make-block {
                         display: block;
@@ -265,17 +260,15 @@
                     height: 100vh;
                     // transform: translateX(300px);
                     // transition: transform .3s ease-in-out;
-                    transition: width .3s ease-in-out;
+                    transition: width 0.3s ease-in-out;
                     border: 1px solid #ccc;
                     border-color: rgba(0, 0, 0, 0.2);
                     background: white;
                     z-index: 1002;
-                    
-                    @include scrollbar('vertical');
 
+                    @include scrollbar("vertical");
 
-                    @media (min-width: 768px){
-                        
+                    @media (min-width: 768px) {
                         display: none;
                         flex-direction: column;
                         right: 0;
@@ -288,7 +281,6 @@
                         border-radius: 6px;
                     }
                     .dropdown-close-mobile {
-
                         text-align: left;
                         padding: 10px;
                         display: block;
@@ -302,7 +294,7 @@
                             font-size: 18px;
                         }
 
-                        @media (min-width: 768px){
+                        @media (min-width: 768px) {
                             display: none;
                         }
                     }
@@ -311,12 +303,11 @@
                         display: none;
                         box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 
-
-                        @media (min-width: 768px){
+                        @media (min-width: 768px) {
                             display: block;
                             text-align: center;
                             padding: 10px;
-                            
+
                             span {
                                 font-size: 18px;
                             }
@@ -330,7 +321,7 @@
                         overflow-y: auto;
                         overflow-x: hidden;
                         text-align: left;
-                        @include scrollbar('vertical'); 
+                        @include scrollbar("vertical");
 
                         .notification-item,
                         .message-item {
@@ -369,7 +360,6 @@
                                 display: block;
                                 font-weight: 600;
                             }
-                            
                         }
                     }
                     .dropdown-footer-desktop {
@@ -379,24 +369,21 @@
                     }
 
                     &.nav-right-dd__active {
-                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;    
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                         // transform: translateX(0);
                         width: 300px;
 
-                        @media (min-width: 768px){
+                        @media (min-width: 768px) {
                             display: flex;
                             width: 400px;
-
                         }
                     }
-
                 }
 
                 &.profile-box {
                     position: relative;
                     margin-right: 0px;
                     padding: 0;
-                    
 
                     .profile-box-container {
                         // background-color: darken(map-get($colors, background), 6%);
@@ -471,8 +458,6 @@
 
 .main {
     font: inherit;
-    
-
 
     .action-Container {
         display: flex;
@@ -492,7 +477,7 @@
             margin-left: 0;
             margin-top: 20px;
             width: 100%;
-            @media (min-width: 768px){
+            @media (min-width: 768px) {
                 width: auto;
                 margin-top: 0px;
                 margin-left: 20px;
@@ -505,7 +490,7 @@
             &:last-child {
                 margin-right: 0px;
             }
-            @media (min-width: 768px){
+            @media (min-width: 768px) {
                 margin-right: 20px;
 
                 &:last-child {

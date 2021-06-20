@@ -1,12 +1,12 @@
-import css from 'styled-jsx/macro';
+import css from "styled-jsx/macro";
 
-const { className, styles} = css.resolve`
+const { className, styles } = css.resolve`
     .search-bar {
         width: 100%;
         max-width: 800px;
         flex-basis: 1;
     }
-`
+`;
 
 export const SearchBar = () => {
     return (
@@ -17,7 +17,7 @@ export const SearchBar = () => {
             </button>
             {styles}
         </div>
-    )
-}
+    );
+};
 
-export default SearchBar
+export default SearchBar;

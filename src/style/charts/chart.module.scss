@@ -7,13 +7,13 @@
     background: white;
     border-radius: 4px;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         padding: 15px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
 
-    @media (min-width: 992px){
+    @media (min-width: 992px) {
         width: 50%;
         margin-right: 20px;
         padding: 10px;
@@ -24,17 +24,16 @@
             margin-right: 0px;
         }
     }
-    @media (min-width: 1600px){
+    @media (min-width: 1600px) {
         padding: 30px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    @media (min-width: 1800px){
+    @media (min-width: 1800px) {
         padding: 50px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    
 }
 .small-line-chart-container {
     width: 200px;
@@ -50,13 +49,13 @@
     background: white;
     border-radius: 4px;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         padding: 60px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
 
-    @media (min-width: 992px){
+    @media (min-width: 992px) {
         width: 50%;
         margin-right: 20px;
         padding: 30px;
@@ -67,15 +66,14 @@
             margin-right: 0px;
         }
     }
-    @media (min-width: 1600px){
+    @media (min-width: 1600px) {
         padding: 120px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    @media (min-width: 1800px){
+    @media (min-width: 1800px) {
         padding: 180px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    
 }

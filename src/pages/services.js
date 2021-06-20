@@ -1,7 +1,7 @@
 import MainLayout from "../components/common/MainLayout";
-import CreateAction from '../components/common/CreateAction'
-import ListTable from '../components/common/ListTable'
-import ComponentWrapper from '../components/common/ComponentWrapper'
+import CreateAction from "../components/common/CreateAction";
+import ListTable from "../components/common/ListTable";
+import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
 const Services = () => {
     const tableData = [
@@ -11,7 +11,6 @@ const Services = () => {
             price: "449.00",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "Wallpaper / Stencils Consultation",
@@ -19,7 +18,6 @@ const Services = () => {
             price: "2600.56",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "Wood Polishing Consultation",
@@ -27,7 +25,6 @@ const Services = () => {
             price: "999.00",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "Drill and Hang",
@@ -35,7 +32,6 @@ const Services = () => {
             price: "256.00",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "Channel Repair",
@@ -43,7 +39,6 @@ const Services = () => {
             price: "149.00",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "AC Switchbox Installation",
@@ -51,7 +46,6 @@ const Services = () => {
             price: "319.00",
             active: "true",
             created: "1 Day ago",
-            
         },
         {
             name: "Geyser Installation",
@@ -59,39 +53,31 @@ const Services = () => {
             price: "650.00",
             active: "true",
             created: "1 Day ago",
-            
-        }
-    ]
-    const tableHead = [
-        "Name",
-        "Category",
-        "Price",
-        "Active",
-        "Created"
-
-    ]
+        },
+    ];
+    const tableHead = ["Name", "Category", "Price", "Active", "Created"];
     const tableBody = tableData.map((x, i) => {
-        return  (
-            <tr style={{cursor: 'pointer'}} key={i}>
+        return (
+            <tr style={{ cursor: "pointer" }} key={i}>
                 <td>{x.name}</td>
                 <td>{x.subcategory}</td>
                 <td>{x.price}</td>
                 <td>{x.active}</td>
                 <td>{x.created}</td>
             </tr>
-        )
-    })
+        );
+    });
     return (
         <MainLayout>
             <ComponentWrapper>
-                <CreateAction forPage="Service"/>
+                <CreateAction forPage="Service" />
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={tableBody} />
             </ComponentWrapper>
         </MainLayout>
-    )
-}
+    );
+};
 
-export default Services
+export default Services;

@@ -5,16 +5,16 @@ const Card = ({ head, text, chartData, classRef }) => {
             <div className="content">
                 <div className="center aligned header">{head}</div>
                 <div className="center aligned description">
-                <p>{text}</p>
+                    <p>{text}</p>
                 </div>
             </div>
             <div className="extra content">
                 <div className="center aligned author">
-                    <SmallLineChart data={chartData}/>
+                    <SmallLineChart data={chartData} />
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Card
+export default Card;

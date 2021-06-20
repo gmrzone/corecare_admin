@@ -1,13 +1,13 @@
 import Index from "./pages/index";
 import User from "./pages/users";
 import Login from "./pages/login";
-import Employee from './pages/employees'
-import Orders from './pages/orders'
-import Coupons from './pages/coupons'
-import Comments from './pages/comments'
-import Services from './pages/services'
-import Posts from './pages/posts'
-import Subcategory from './pages/subcategory'
+import Employee from "./pages/employees";
+import Orders from "./pages/orders";
+import Coupons from "./pages/coupons";
+import Comments from "./pages/comments";
+import Services from "./pages/services";
+import Posts from "./pages/posts";
+import Subcategory from "./pages/subcategory";
 import { Route, Switch } from "react-router-dom";
 import { SideDrawerProvider } from "./context/SideDrawerContext";
 
