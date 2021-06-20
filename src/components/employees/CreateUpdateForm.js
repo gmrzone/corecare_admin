@@ -60,7 +60,7 @@ const CreateUpdateForm = ({ register, formErrors }) => {
             </div>
             <div className={`field ${formErrors.email && "error"}`}>
                 <label>Email</label>
-                <input type="email" placeholder="email" {...register('email', {required: {value: true, message: "Email is required to create a Employee"}})}/>
+                <input type="email" placeholder="Email" {...register('email', {required: {value: true, message: "Please enter a email address"}, pattern: {value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/, message: "Please Enter a valid Email Address"}})}/>
             </div>
             <div className="two fields">
                 <div className={`field ${formErrors.address_1 && "error"}`}>
@@ -83,7 +83,7 @@ const CreateUpdateForm = ({ register, formErrors }) => {
                 </div>
                 <div className={`field ${formErrors.pincode && "error"}`}>
                     <label>Pincode</label>
-                    <input type="text" placeholder="Pincode" {...register('pincode', {required: {value: true, message: "Please Enter a zipcode for Employee"}})}/>
+                    <input type="text" placeholder="Pincode" {...register('pincode', {required: {value: true, message: "Please Enter a zipcode for Employee"}, minLength: {value: 6, message: "Pincode need to be exactly 6 characters"}, maxLength: {value: 6, message: "Pincode need to be exactly 6 characters"}})}/>
                 </div>
             </div>
         </>
