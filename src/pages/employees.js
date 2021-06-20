@@ -79,11 +79,11 @@ const Employees = () => {
     });
     return (
         <MainLayout>
-            {/* <Modal header="Create Employee">
+            <Modal header="Create Employee" active={createUpdateModal} closeModal={closeCreateModal}>
                 <CreateUpdateForm />
-            </Modal> */}
+            </Modal>
             <ComponentWrapper>
-                <CreateAction forPage="Employee" openModal={openCreateModal}/>
+                <CreateAction forPage="Employee" openCreateModal={openCreateModal}/>
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
