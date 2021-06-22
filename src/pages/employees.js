@@ -22,25 +22,41 @@ const Employees = () => {
 
     const openCreateModal = () => {
         setFormType({type: 'create', header: "Create Employee"})
+
+        setValue("number", "", { shouldValidate: false });
+        setValue("email", "", { shouldValidate: false });
+        setValue("category", "", { shouldValidate: false });
+        setValue("first_name", "", { shouldValidate: false });
+        setValue("last_name", "", { shouldValidate: false });
+        setValue("username", "", { shouldValidate: false });
+        setValue("address_1", "", { shouldValidate: false });
+        setValue("address_2", "", { shouldValidate: false });
+        setValue("state", "", { shouldValidate: false });
+        setValue("city", "", { shouldValidate: false });
+        setValue("pincode", "", { shouldValidate: false });
+        setValue('is_verified_employee', false, { shouldValidate: false })
+
         setCreateUpdateModal(true);
     };
-    const openUpdateModal = ({ number, email, category, first_name, last_name, username, address_1, address_2, state, city, pincode }) => {
+    const openUpdateModal = ({ number, email, category, first_name, last_name, username, address_1, address_2, state, city, pincode, is_verified_employee }) => {
         setFormType({type: 'update', header: "Update Employee"})
+
         setValue("number", number, { shouldValidate: false });
         setValue("email", email, { shouldValidate: false });
         setValue("category", category.toLowerCase(), { shouldValidate: false });
         setValue("first_name", first_name, { shouldValidate: false });
         setValue("last_name", last_name, { shouldValidate: false });
         setValue("username", username, { shouldValidate: false });
-
         setValue("address_1", address_1, { shouldValidate: false });
         setValue("address_2", address_2, { shouldValidate: false });
         setValue("state", state, { shouldValidate: false });
         setValue("city", city, { shouldValidate: false });
         setValue("pincode", pincode, { shouldValidate: false });
+        setValue('is_verified_employee', is_verified_employee, { shouldValidate: false })
+
         setCreateUpdateModal(true);
     };
-    const SubmitCreateForm = (formValues, e) => {
+    const SubmitForm = (formValues, e) => {
         e.target.reset();
         console.log(formValues);
     };
@@ -114,6 +130,7 @@ const Employees = () => {
                         city: "Mumbai",
                         state: "Maharashtra",
                         pincode: "400070",
+                        is_verified_employee: true
                     })
                 }>
                 <td>{x.number}</td>
@@ -129,7 +146,7 @@ const Employees = () => {
                 header={formType.header}
                 active={createUpdateModal}
                 closeModal={closeCreateModal}
-                submitCreateForm={SubmitCreateForm}
+                submitForm={SubmitForm}
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
                 <CreateUpdateForm register={register} formErrors={formErrors} />

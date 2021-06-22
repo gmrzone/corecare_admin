@@ -1,7 +1,7 @@
-const CreateUpdateForm = ({ register, formErrors }) => {
+const CreateUpdateUserForm = ({ formErrors, register }) => {
     return (
         <>
-            <div className={`field ${formErrors.number && "error"}`}>
+             <div className={`field ${formErrors.number && "error"}`}>
                 <label>Number</label>
                 <input
                     type="text"
@@ -38,25 +38,9 @@ const CreateUpdateForm = ({ register, formErrors }) => {
                     <input type="text" placeholder="last_name" {...register('last_name', {required: {value: true, message: "Last name is required"}})}/>
                 </div>
             </div>
-            <div className="two fields">
-                <div className={`field ${formErrors.username && "error"}`}>
-                    <label>Username</label>
-                    <input type="text" placeholder="username" {...register('username', {required: {value: true, message: "username is required"}})}/>
-                </div>
-                <div className={`field ${formErrors.category && "error"}`}>
-                    <label>Employee Category</label>
-                    <select className="ui fluid dropdown" {...register('category', {required: {value: true, message: "Employee Category is required"}})}>
-                        <option value="">Select Category</option>
-                        <option value="electrician">Electrician</option>
-                        <option value="carpenter">Carpenter</option>
-                        <option value="plumber">Plumber</option>
-                        <option value="cleaner">Cleaner</option>
-                        <option value="painter">Painter</option>
-                        <option value="appliance">Appliance Expert</option>
-                        <option value="pest-control">Pest-Control</option>
-                        <option value="ac-service">AC Expert</option>
-                    </select>
-                </div>
+            <div className={`field ${formErrors.username && "error"}`}>
+                <label>Username</label>
+                <input type="text" placeholder="username" {...register('username', {required: {value: true, message: "username is required"}})}/>
             </div>
             <div className={`field ${formErrors.email && "error"}`}>
                 <label>Email</label>
@@ -88,12 +72,13 @@ const CreateUpdateForm = ({ register, formErrors }) => {
             </div>
             <div className="field">
                 <div className="ui checkbox">
-                <input type="checkbox" {...register('is_verified_employee')}/>
-                <label>Is Verified Employee</label>
+                <input type="checkbox" {...register('is_verified')} />
+                <label>Is Verified</label>
                 </div>
             </div>
         </>
-    );
-};
+    )
 
-export default CreateUpdateForm;
+}
+
+export default CreateUpdateUserForm
