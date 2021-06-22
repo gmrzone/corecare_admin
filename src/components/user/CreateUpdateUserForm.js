@@ -72,7 +72,7 @@ const CreateUpdateUserForm = ({ formErrors, register }) => {
             </div>
             <div className="field">
                 <div className="ui checkbox">
-                <input type="checkbox" {...register('is_verified')} />
+                <input type="checkbox" {...register('verified')} />
                 <label>Is Verified</label>
                 </div>
             </div>
