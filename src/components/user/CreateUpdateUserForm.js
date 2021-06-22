@@ -7,7 +7,7 @@ const CreateUpdateUserForm = ({ formErrors, register }) => {
                     type="text"
                     placeholder="number"
                     {...register("number", {
-                        required: { value: true, message: "Cannot create a employee without number" },
+                        required: { value: true, message: "Cannot create a user without number" },
                         minLength: { value: 10, message: "Number cannot be less then 10 Char" },
                         maxLength: { value: 10, message: "Number cannot be greater then 10 Char" },
                         pattern: {
@@ -23,7 +23,7 @@ const CreateUpdateUserForm = ({ formErrors, register }) => {
                     type="password"
                     placeholder="password"
                     {...register("password", {
-                        required: { value: true, message: "Cannot create employee without password" },
+                        required: { value: true, message: "Cannot create or update user without password" },
                         minLength: { value: 5, message: "Password cannot be less then 5 char." },
                     })}
                 />
@@ -75,6 +75,9 @@ const CreateUpdateUserForm = ({ formErrors, register }) => {
                 <input type="checkbox" {...register('verified')} />
                 <label>Is Verified</label>
                 </div>
+            </div>
+            <div class={`ui red message ${formErrors.number || formErrors.password || formErrors.first_name || formErrors.last_name || formErrors.username || formErrors.email || formErrors.address_1 || formErrors.address_2 || formErrors.city || formErrors.state || formErrors.pincode ? "visible" : "hidden"}`}>
+                    {formErrors.number?.message || formErrors.password?.message || formErrors.first_name?.message || formErrors?.last_name?.message || formErrors.username?.message || formErrors.email?.message || formErrors.address_1?.message || formErrors.address_2?.message || formErrors.city?.message || formErrors.state?.message || formErrors.pincode?.message}
             </div>
         </>
     )

@@ -31,7 +31,7 @@ const Modal = ({ header, children, active, closeModal, submitForm, handleSubmit 
                         {children}
                     </div>
                     <div className={style.action}>
-                        <button className={`ui secondary button`} type="submit">{header === "Create Employee" ? "Create" : "Update" }</button>
+                        <button className={`ui secondary button`} type="submit">{header?.split(" ")[0] === "Create" ? "Create" : "Update" }</button>
                         <button className={`ui secondary button`} onClick={closeModal} type="button">Cancel</button>
                     </div>
                 </form>

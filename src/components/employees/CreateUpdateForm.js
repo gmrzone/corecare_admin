@@ -92,8 +92,11 @@ const CreateUpdateForm = ({ register, formErrors }) => {
                 <label>Is Verified Employee</label>
                 </div>
             </div>
+            <div class={`ui red message ${formErrors.number || formErrors.password || formErrors.first_name || formErrors.last_name || formErrors.username || formErrors.category || formErrors.email || formErrors.address_1 || formErrors.address_2 || formErrors.city || formErrors.state || formErrors.pincode ? "visible" : "hidden"}`}>
+                    {formErrors.number?.message || formErrors.password?.message || formErrors.first_name?.message || formErrors?.last_name?.message || formErrors.username?.message || formErrors.category?.message || formErrors.email?.message || formErrors.address_1?.message || formErrors.address_2?.message || formErrors.city?.message || formErrors.state?.message || formErrors.pincode?.message}
+            </div>
         </>
     );
 };
 
-export default CreateUpdateForm;
+export default CreateUpdateForm;    
