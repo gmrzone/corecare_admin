@@ -60,7 +60,7 @@ const CreateUpdateForm = ({ register, formErrors }) => {
             </div>
             <div className={`field ${formErrors.email && "error"}`}>
                 <label>Email</label>
-                <input type="email" placeholder="Email" {...register('email', {required: {value: true, message: "Please enter a email address"}, pattern: {value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/, message: "Please Enter a valid Email Address"}})}/>
+                <input type="email" placeholder="Email" {...register('email', {required: {value: true, message: "Please enter a email address"}, pattern: {value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/, message: "Please Enter a valid Email Address"}})}/>
             </div>
             <div className="two fields">
                 <div className={`field ${formErrors.address_1 && "error"}`}>
