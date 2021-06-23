@@ -2,9 +2,9 @@ import style from "../../../style/datePicker/datepicker.module.scss";
 import { useState, useEffect } from "react";
 import DatePickerDropDown from "./Dropdown";
 import { getAvailableDays } from "./utils";
-const DatePicker = () => {
-    const date = new Date();
-    const [selectedDate, setSelectedDate] = useState({ day: date.getDate(), month: date.getMonth(), year: date.getFullYear() });
+const DatePicker = ({ selectedDate, setSelectedDate }) => {
+    // const date = new Date();
+    // const [selectedDate, setSelectedDate] = useState({ day: date.getDate(), month: date.getMonth(), year: date.getFullYear() });
     const [dropDownActive, setDropDownActive] = useState(false);
     const months = [
         "January",

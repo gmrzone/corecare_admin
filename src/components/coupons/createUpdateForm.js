@@ -1,5 +1,5 @@
 import DatePicker from '../common/DatePicker'
-const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidity, setCouponValidity }) => {
+const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidityFrom , setCouponValidityFrom, couponValidityTo, setCouponValidityTo }) => {
     return (
         <>
             <div className={`field ${formErrors.CODE && "error"}`}>
@@ -34,6 +34,7 @@ const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidity, 
                 <label>Employee Category</label>
                 <select className="ui fluid dropdown" {...register('category', {required: {value: true, message: "Employee Category is required"}})}>
                     <option value="">Select Category</option>
+                    <option value="all">All</option>
                     <option value="electrician">Electrician</option>
                     <option value="carpenter">Carpenter</option>
                     <option value="plumber">Plumber</option>
@@ -47,11 +48,11 @@ const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidity, 
             <div className="two fields">
                 <div className={`field ${formErrors.first_name && "error"}`}>
                     <label>Valid From</label>
-                    <DatePicker />
+                    <DatePicker selectedDate={couponValidityFrom} setSelectedDate={setCouponValidityFrom} />
                 </div>
                 <div className={`field ${formErrors.last_name && "error"}`}>
                     <label>Valid To</label>
-                    <DatePicker />
+                    <DatePicker selectedDate={couponValidityTo} setSelectedDate={setCouponValidityTo}/>
                 </div>
             </div>  
             <div className="field">
