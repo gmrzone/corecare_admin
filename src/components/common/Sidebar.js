@@ -23,13 +23,13 @@ const Sidebar = () => {
         }
     };
     return (
-        <div className={style.sidebar} onMouseOver={DesktopSliderMouseOver} onMouseOut={DesktopSliderMouseOut}>
+        <div className={style.sidebar}>
             <div className={`${style["sidebar-opener"]} ${sideDrawerActive && style.active}`} onClick={toggleSideDrawer}>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`}>
+            <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`} onMouseOver={DesktopSliderMouseOver} onMouseOut={DesktopSliderMouseOut}>
                 <ul className={style["slider-items-list"]} onClick={itemClick}>
                     <li>
                         <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/">
