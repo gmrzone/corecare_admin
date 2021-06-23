@@ -3,6 +3,11 @@ import CreateAction from "../components/common/CreateAction";
 import ListTable from "../components/common/ListTable";
 import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
+import Modal from '../components/common/Modal';
+import CreateUpdateForm from '../components/coupons/createUpdateForm';
+import { useState } from 'react'
+import {useForm} from 'react-hook-form'
+
 const Coupons = () => {
     const tableData = [
         {
@@ -62,6 +67,19 @@ const Coupons = () => {
             to: "Jun 14 2022",
         },
     ];
+    const [modalActive, setModalActive] = useState(false)
+    const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const { register, handleSubmit, setValue, setError, formState: {errors: formErrors} } = useForm()
+    const closeModal = () => {
+        setModalActive(false)
+    }
+    const openModal = () => {
+        setModalActive(true)
+    }
+    const formSubmit = (formValues, e) => {
+        e.target.reset()
+        console.log(formValues)
+    }
     const tableHead = ["Code", "Category", "Discount", "Valid from", "Valid to"];
     const tableBody = tableData.map((x) => {
         return (
@@ -76,6 +94,9 @@ const Coupons = () => {
     });
     return (
         <MainLayout>
+            <Modal active={modalActive} header={formType.header} closeModal={closeModal} submitForm={formSubmit} handleSubmit={handleSubmit}>
+                <CreateUpdateForm register={register} formErrors={formErrors} submi6tErrors={formType.error}/>
+            </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Coupon" />
             </ComponentWrapper>
