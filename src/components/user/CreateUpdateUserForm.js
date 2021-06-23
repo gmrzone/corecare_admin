@@ -76,7 +76,7 @@ const CreateUpdateUserForm = ({ formErrors, register, serverErrors }) => {
                 <label>Is Verified</label>
                 </div>
             </div>
-            <div class={`ui red message ${formErrors.number || formErrors.password || formErrors.first_name || formErrors.last_name || formErrors.username || formErrors.email || formErrors.address_1 || formErrors.address_2 || formErrors.city || formErrors.state || formErrors.pincode || serverErrors ? "visible" : "hidden"}`}>
+            <div className={`ui red message ${formErrors.number || formErrors.password || formErrors.first_name || formErrors.last_name || formErrors.username || formErrors.email || formErrors.address_1 || formErrors.address_2 || formErrors.city || formErrors.state || formErrors.pincode || serverErrors ? "visible" : "hidden"}`}>
                     {formErrors.number?.message || formErrors.password?.message || formErrors.first_name?.message || formErrors?.last_name?.message || formErrors.username?.message || formErrors.email?.message || formErrors.address_1?.message || formErrors.address_2?.message || formErrors.city?.message || formErrors.state?.message || formErrors.pincode?.message || serverErrors}
             </div>
         </>

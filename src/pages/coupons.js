@@ -69,11 +69,17 @@ const Coupons = () => {
     ];
     const [modalActive, setModalActive] = useState(false)
     const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const [couponValidity, SetCouponValidity] = useState({from: null, to: null})
     const { register, handleSubmit, setValue, setError, formState: {errors: formErrors} } = useForm()
     const closeModal = () => {
         setModalActive(false)
     }
-    const openModal = () => {
+    const openCreateModal = () => {
+        setFormType({type: 'create', header: "Create Coupon", error: null})
+        setModalActive(true)
+    }
+    const openUpdateModal = () => {
+        setFormType({type: 'update', header: "Update Coupon", error: null})
         setModalActive(true)
     }
     const formSubmit = (formValues, e) => {
@@ -83,7 +89,7 @@ const Coupons = () => {
     const tableHead = ["Code", "Category", "Discount", "Valid from", "Valid to"];
     const tableBody = tableData.map((x) => {
         return (
-            <tr style={{ cursor: "pointer" }} key={x.id}>
+            <tr style={{ cursor: "pointer" }} key={x.id} onClick={openUpdateModal}>
                 <td>{x.code}</td>
                 <td>{x.category}</td>
                 <td>{x.discount}</td>
@@ -95,10 +101,10 @@ const Coupons = () => {
     return (
         <MainLayout>
             <Modal active={modalActive} header={formType.header} closeModal={closeModal} submitForm={formSubmit} handleSubmit={handleSubmit}>
-                <CreateUpdateForm register={register} formErrors={formErrors} submi6tErrors={formType.error}/>
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} couponValidity={couponValidity} SetCouponValidity={SetCouponValidity}/>
             </Modal>
             <ComponentWrapper>
-                <CreateAction forPage="Coupon" />
+                <CreateAction forPage="Coupon" openCreateModal={openCreateModal} />
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>

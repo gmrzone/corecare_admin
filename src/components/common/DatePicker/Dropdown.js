@@ -1,6 +1,6 @@
 import style from "../../../style/datePicker/datepicker-dropdown.module.scss";
 import { useState } from "react";
-import { getavailableYears } from "./index";
+import { getavailableYears } from "./utils";
 const DatePickerDropDown = ({
     active,
     selectedYear,
