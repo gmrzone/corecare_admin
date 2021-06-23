@@ -9,7 +9,7 @@ import CreateUpdateForm from "../components/employees/CreateUpdateForm";
 import { useForm } from "react-hook-form";
 const Employees = () => {
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [formType, setFormType] = useState({type: null, header: null})
+    const [formType, setFormType] = useState({type: null, header: null, error: null})
     const {
         register,
         setValue,
@@ -58,6 +58,9 @@ const Employees = () => {
     };
     const SubmitForm = (formValues, e) => {
         e.target.reset();
+        setFormType(s => {
+            return {...s, error: "You are not authorized to use this form please contact Super User."}
+        })
         console.log(formValues);
     };
     const tableData = [
@@ -149,7 +152,7 @@ const Employees = () => {
                 submitForm={SubmitForm}
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
-                <CreateUpdateForm register={register} formErrors={formErrors} />
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Employee" openCreateModal={openCreateModal} />

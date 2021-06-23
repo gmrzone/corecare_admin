@@ -19,7 +19,7 @@ const Users = () => {
         formState: { errors: formErrors },
     } = useForm();
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [formType, setFormType] = useState({ type: null, header: null });
+    const [formType, setFormType] = useState({ type: null, header: null, error: null });
     console.log(userData);
     const openCreateModal = () => {
         setFormType({ type: "create", header: "Create User" });
@@ -59,6 +59,9 @@ const Users = () => {
     };
     const submitForm = (formValues, e) => {
         e.target.reset();
+        setFormType(s => {
+            return {...s, error: "You are not authorized to use this form please contact Super User."}
+        })
         console.log(formValues);
     };
     const tableData = [
@@ -175,7 +178,7 @@ const Users = () => {
                 closeModal={closeCreateModal}
                 submitForm={submitForm}
                 handleSubmit={handleSubmit}>
-                <CreateUpdateUserForm register={register} formErrors={formErrors} />
+                <CreateUpdateUserForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="User" openCreateModal={openCreateModal} />
