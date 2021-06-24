@@ -3,6 +3,10 @@ import CreateAction from "../components/common/CreateAction";
 import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
 import ListTable from "../components/common/ListTable";
+import { useState } from "react";
+import Modal from "../components/common/Modal";
+import { useForm } from "react-hook-form";
+import CreateUpdateForm from "../components/posts/CreateUpdateForm";
 const Posts = () => {
     const tableData = [
         {
@@ -18,7 +22,7 @@ const Posts = () => {
             title: "Luxury Bathrooms: Steal These 7 Clever (And Practical!) Ideas",
             author: "AFzal Saiyed",
             body: "Post Body",
-            category: "Cleaner",
+            category: "Electrician",
             active: true
         },
         {
@@ -26,7 +30,7 @@ const Posts = () => {
             title: "Vastu for Toilets & Bathrooms: 5+ Helpful Tips for Your Indian Home",
             author: "AFzal Saiyed",
             body: "Post Body",
-            category: "Cleaner",
+            category: "",
             active: true
         },
         {
@@ -58,26 +62,72 @@ const Posts = () => {
             title: "How To Purify Your Home & Breathe Healthy",
             author: "AFzal Saiyed",
             body: "Post Body",
-            category: "Cleaner",
+            category: "",
             active: true
         },
     ];
+    const [createUpdateModal, setCreateUpdateModal] = useState(false);
+    const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const openCreateModal = () => {
+        setFormType({type: "create", header: "Create Post", error: null})
+        setValue('title', "", {shouldValidate: false})
+        setValue('author', "", {shouldValidate: false})
+        setValue('body', "", {shouldValidate: false})
+        setValue('category', "" || "others", {shouldValidate: false})
+        setValue('active', "", {shouldValidate: false})
+        setCreateUpdateModal(true)
+    }   
+    const openUpdateModal = (title, author, body, category, active) => {
+        setFormType({type: "update", header: "Update Post", error: null})
+        setValue('title', title, {shouldValidate: false})
+        setValue('author', author, {shouldValidate: false})
+        setValue('body', body, {shouldValidate: false})
+        setValue('category', category || "others", {shouldValidate: false})
+        setValue('active', active, {shouldValidate: false})
+        setCreateUpdateModal(true)
+    }
+    const {
+        register,
+        setValue,
+        handleSubmit,
+        formState: { errors: formErrors },
+    } = useForm();
+
+    const closeCreateModal = () => {
+        setCreateUpdateModal(false);
+    };
+    const SubmitForm = (formValues, e) => {
+        e.target.reset();
+        setFormType(s => {
+            return {...s, error: "You are not authorized to use this form please contact Super User."}
+        })
+        console.log(formValues);
+    };
     const tableHead = ["title", "Author", "Body", "Category", "Active"];
     const tableBody = tableData.map((x, i) => {
         return (
-            <tr key={x.id}>
+            <tr key={x.id} onClick={() => openUpdateModal(x.title, x.author.toLowerCase(), x.body, x.category.toLowerCase(), x.active)}>
                 <td>{x.title.substring(0, 20) + "..."}</td>
                 <td>{x.author}</td>
                 <td>{x.body}</td>
-                <td>{x.category}</td>
+                <td>{x.category || "Others"}</td>
                 <td>{x.active.toString()}</td>
             </tr>
         )
     })
     return (
         <MainLayout>
+            <Modal
+                header={formType.header}
+                active={createUpdateModal}
+                closeModal={closeCreateModal}
+                submitForm={SubmitForm}
+                handleSubmit={handleSubmit}
+                formError={formErrors}>
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+            </Modal>
             <ComponentWrapper>
-                <CreateAction forPage="Post" />
+                <CreateAction forPage="Post" openCreateModal={openCreateModal} />
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
