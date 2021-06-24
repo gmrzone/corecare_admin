@@ -9,7 +9,7 @@ const Posts = () => {
             id: 1,
             title: "Nuxt Auth 'loginWith' function doesn't send data to DRF",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -17,7 +17,7 @@ const Posts = () => {
             id: 2,
             title: "Luxury Bathrooms: Steal These 7 Clever (And Practical!) Ideas",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -25,7 +25,7 @@ const Posts = () => {
             id: 3,
             title: "Vastu for Toilets & Bathrooms: 5+ Helpful Tips for Your Indian Home",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -33,7 +33,7 @@ const Posts = () => {
             id: 4,
             title: "5 Best Places To Install CCTV In Your Home",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -41,7 +41,7 @@ const Posts = () => {
             id: 5,
             title: "7 Ways CCTVs Might Disappoint You",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -49,7 +49,7 @@ const Posts = () => {
             id: 6,
             title: "Top 5 Things to Consider While Hiring A CCTV Camera Dealer",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
@@ -57,7 +57,7 @@ const Posts = () => {
             id: 7,
             title: "How To Purify Your Home & Breathe Healthy",
             author: "AFzal Saiyed",
-            body: "",
+            body: "Post Body",
             category: "Cleaner",
             active: true
         },
