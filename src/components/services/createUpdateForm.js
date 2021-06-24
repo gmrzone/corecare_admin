@@ -42,7 +42,7 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                     <option value="drill/hang">Drill/Hang</option>
                     <option value="wood polishing">Wood Polishing</option>
                     <option value="wallpaper / stencils">Wallpaper / Stencils</option>
-                    <option value="ac-service">AC Service</option>
+                    <option value="ac service">AC Service</option>
                 </select>
             </div>
             <div className="field">

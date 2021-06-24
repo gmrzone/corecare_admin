@@ -73,15 +73,17 @@ const Services = () => {
         setValue('name', "", {shouldValidate: false})
         setValue('subcategory', "", {shouldValidate: false})
         setValue('price', "0.0", {shouldValidate: false})
+        setValue('active', false, {shouldValidate: false})
         setModalActive(true)
     }
 
-    const openUpdateModal = (name, price, subcategory, slug) => {
+    const openUpdateModal = (name, price, subcategory, slug, active) => {
         setFormType({ type: "update", header: "Update Service" });
         setValue('name', name, {shouldValidate: false})
         setValue('subcategory', subcategory, {shouldValidate: false})
         setValue('price', price, {shouldValidate: false})
         setValue('slug', slug, {shouldValidate: false})
+        setValue('active', active, {shouldValidate: false})
         setModalActive(true)
     }
 
@@ -100,7 +102,7 @@ const Services = () => {
     const tableHead = ["Name", "Category", "Price", "Active", "Created"];
     const tableBody = tableData.map((x, i) => {
         return (
-            <tr style={{ cursor: "pointer" }} key={i} onClick={() => openUpdateModal(x.name, x.price, x.subcategory.toLowerCase(), x.name.replace(/(\/)/gi, "-").replaceAll(" ", "-").toLowerCase(),)}>
+            <tr style={{ cursor: "pointer" }} key={i} onClick={() => openUpdateModal(x.name, x.price, x.subcategory.toLowerCase(), x.name.replace(/(\/)/gi, "-").replaceAll(" ", "-").toLowerCase(), true)}>
                 <td>{x.name}</td>
                 <td>{x.subcategory}</td>
                 <td>{x.price}</td>
