@@ -60,6 +60,7 @@ const Subcategory = () => {
         setValue("name", "", { shouldValidate: false });
         setValue("service_specialist", "", { shouldValidate: false });
         setValue("slug", "", { shouldValidate: false });
+        setValue("slug", "", { shouldValidate: false });
         setModalActive(true);
     };
     const openUpdateModal = (name, service_specialist, slug) => {
@@ -90,7 +91,7 @@ const Subcategory = () => {
                     openUpdateModal(
                         x.name,
                         x.service_specialist.toLowerCase(),
-                        x.name.replace(/(\/)/gi, "-").replace(" ", "-").toLowerCase(),
+                        x.name.replace(/(\/)/gi, "-").replaceAll(" ", "-").toLowerCase(),
                     )
                 }>
                 <td>{x.name}</td>

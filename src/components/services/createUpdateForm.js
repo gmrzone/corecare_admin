@@ -33,17 +33,16 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                 <textarea placeholder="Service Description"{...register('description')}/>
             </div>
             <div className={`field ${formErrors.subcategory && "error"}`}>
-                <label>Employee Category</label>
+                <label>SubCategory</label>
                 <select className="ui fluid dropdown" {...register('subcategory', {required: {value: true, message: "Employee Category is required"}})}>
                     <option value="">Select Category</option>
-                    <option value="electrician">Electrician</option>
-                    <option value="carpenter">Carpenter</option>
-                    <option value="plumber">Plumber</option>
-                    <option value="cleaner">Cleaner</option>
-                    <option value="painter">Painter</option>
-                    <option value="appliance">Appliance Expert</option>
-                    <option value="pest-control">Pest-Control</option>
-                    <option value="ac-service">AC Expert</option>
+                    <option value="appliances">Appliances</option>
+                    <option value="switch/socket">Switch/Socket</option>
+                    <option value="cupboard / drawer">Cupboard / Drawer</option>
+                    <option value="drill/hang">Drill/Hang</option>
+                    <option value="wood polishing">Wood Polishing</option>
+                    <option value="wallpaper / stencils">Wallpaper / Stencils</option>
+                    <option value="ac-service">AC Service</option>
                 </select>
             </div>
             <div className="field">
@@ -52,8 +51,8 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                 <label>Active</label>
                 </div>
             </div>
-            <div className={`ui red message ${formErrors.name || formErrors.price || formErrors.subcategory || formErrors.description || serverErrors ? "visible" : "hidden"}`}>
-                    {formErrors.name?.message || formErrors.price?.message || formErrors.subcategory?.message || formErrors.description?.message || serverErrors}
+            <div className={`ui red message ${formErrors.name || formErrors.price || formErrors.subcategory || serverErrors ? "visible" : "hidden"}`}>
+                    {formErrors.name?.message || formErrors.price?.message || formErrors.subcategory?.message || serverErrors}
             </div>
         </>
     )
