@@ -20,9 +20,21 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                     {...register("slug")}
                 />
             </div>
-            <div className={`field ${formErrors.service_specialist && "error"}`}>
+            <div className={`field ${formErrors.price && "error"}`}>
+                <label>Price</label>
+                <input
+                    type="number"
+                    {...register("price", {require: {value: true, message: "Price is required"}})}
+                    step="0.01"
+                />
+            </div>
+            <div className={`field ${formErrors.description && "error"}`}>
+                <label>Description</label>
+                <textarea placeholder="Service Description"{...register('description')}/>
+            </div>
+            <div className={`field ${formErrors.subcategory && "error"}`}>
                 <label>Employee Category</label>
-                <select className="ui fluid dropdown" {...register('service_specialist', {required: {value: true, message: "Employee Category is required"}})}>
+                <select className="ui fluid dropdown" {...register('subcategory', {required: {value: true, message: "Employee Category is required"}})}>
                     <option value="">Select Category</option>
                     <option value="electrician">Electrician</option>
                     <option value="carpenter">Carpenter</option>
@@ -34,8 +46,14 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                     <option value="ac-service">AC Expert</option>
                 </select>
             </div>
-            <div className={`ui red message ${formErrors.name || formErrors.service_specialist || serverErrors ? "visible" : "hidden"}`}>
-                    {formErrors.name?.message || formErrors.service_specialist?.message || serverErrors}
+            <div className="field">
+                <div className="ui checkbox">
+                <input type="checkbox" {...register('active')} />
+                <label>Active</label>
+                </div>
+            </div>
+            <div className={`ui red message ${formErrors.name || formErrors.price || formErrors.subcategory || formErrors.description || serverErrors ? "visible" : "hidden"}`}>
+                    {formErrors.name?.message || formErrors.price?.message || formErrors.subcategory?.message || formErrors.description?.message || serverErrors}
             </div>
         </>
     )
