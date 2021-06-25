@@ -166,6 +166,7 @@ const Employees = () => {
     return (
         <MainLayout>
             <Modal
+                isForm={true}
                 header={formType.header}
                 active={createUpdateModal}
                 closeModal={closeCreateModal}
