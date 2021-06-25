@@ -76,6 +76,7 @@ const Comments = () => {
     ];
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
     const {
         register,
         setValue,
@@ -109,7 +110,21 @@ const Comments = () => {
     const closeModal = () => {
         setCreateUpdateModal(false);
     };
-    const tableHead = ["User", "Post", "Parent", "Comment", "Active"];
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Comment with ID ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
+    const closeDeleteModal = () => {
+        setDeleteModal({ active: false, id: null });
+    };
+    const deleteAction = () => {
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
+        console.log(deleteModal.id);
+    };
+    const tableHead = ["User", "Post", "Parent", "Comment", "Active", "Delete"];
     const tableBody = tableData.map((x) => {
         return (
             <tr
@@ -121,12 +136,18 @@ const Comments = () => {
                 <td>{x.parent || "NULL"}</td>
                 <td>{x.comment}</td>
                 <td>{x.active.toString()}</td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
     return (
         <MainLayout>
             <Modal
+                isForm={true}
                 header={formType.header}
                 active={createUpdateModal}
                 closeModal={closeModal}
@@ -134,6 +155,14 @@ const Comments = () => {
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
                 <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
+            </Modal>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Comment" openCreateModal={openCreateModal} />

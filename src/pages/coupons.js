@@ -165,6 +165,7 @@ const Coupons = () => {
     return (
         <MainLayout>
             <Modal
+                isForm={true}
                 active={modalActive}
                 header={formType.header}
                 closeModal={closeModal}
