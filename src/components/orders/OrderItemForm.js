@@ -1,6 +1,7 @@
+import style from '../../style/orderDetail.module.scss';
 const OrderItemForm = ({ register, formErrors }) => {
     return (
-        <>
+        <div className={style['form-fields']}>
             <div className={`field ${formErrors.service && "error"}`}>
                 <label>Service</label>
                 <select
@@ -29,7 +30,7 @@ const OrderItemForm = ({ register, formErrors }) => {
                     {...register("total")}
                 />
             </div>
-        </>
+        </div>
     )
 }
 

@@ -1,8 +1,9 @@
 
+import style from '../../style/orderDetail.module.scss';
 const OrderForm = ({ register, formErrors }) => {
 
     return (
-        <>
+        <div className={style['form-fields']}>
             <div className={`field ${formErrors.category && "error"}`}>
                 <label>Employee Category</label>
                 <select
@@ -68,7 +69,8 @@ const OrderForm = ({ register, formErrors }) => {
                     <div className={`field ${formErrors.subtotal && "error"}`}>
                         <label>Subtotal</label>
                         <input
-                            type="text"
+                            type="number"
+                            step="0.01"
                             placeholder="Subtotal"
                             {...register("subtotal")}
                         />
@@ -76,7 +78,8 @@ const OrderForm = ({ register, formErrors }) => {
                     <div className={`field ${formErrors.tax && "error"}`}>
                         <label>Tax</label>
                         <input
-                            type="text"
+                            type="number"
+                            step="0.01"
                             placeholder="Tax"
                             {...register("tax")}
                         />
@@ -123,7 +126,7 @@ const OrderForm = ({ register, formErrors }) => {
                     <label>Paid</label>
                 </div>
             </div>
-        </>
+        </div>
     )
 };
 
