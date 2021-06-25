@@ -106,7 +106,7 @@ const Posts = () => {
     const tableHead = ["title", "Author", "Body", "Category", "Active"];
     const tableBody = tableData.map((x, i) => {
         return (
-            <tr key={x.id} onClick={() => openUpdateModal(x.title, x.author.toLowerCase(), x.body, x.category.toLowerCase(), x.active)}>
+            <tr key={x.id} onClick={() => openUpdateModal(x.title, x.author.toLowerCase(), x.body, x.category.toLowerCase(), x.active)} style={{ cursor: "pointer" }}>
                 <td>{x.title.substring(0, 20) + "..."}</td>
                 <td>{x.author}</td>
                 <td>{x.body}</td>
