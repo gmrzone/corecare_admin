@@ -38,10 +38,14 @@
             flex-wrap: nowrap;
             line-height: 1.2;
             justify-content: space-between;
+            position: relative;
             border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 
             i {
                 cursor: pointer;
+                position: absolute;
+                right: 15px;
+                top: 15px;
             }
             .header-text {
                 font-size: 24px;
