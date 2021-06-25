@@ -9,6 +9,7 @@ import CreateUpdateForm from "../components/employees/CreateUpdateForm";
 import { useForm } from "react-hook-form";
 const Employees = () => {
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
+    const [deleteModal, setDeleteModal] = useState({active: false, id: null})
     const [formType, setFormType] = useState({type: null, header: null, error: null})
     const {
         register,
@@ -63,6 +64,24 @@ const Employees = () => {
         })
         console.log(formValues);
     };
+
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation()
+        setFormType({type: "delete", header: `Are you sure you want to delete post with id ${id}`})
+        setDeleteModal({active: true, id: id})
+    }
+    const closeDeleteModal = () => {
+        
+        setDeleteModal({active: false, id: null})
+
+    }
+    const deleteAction = () => {
+        setFormType(s => {
+            return {...s, error: "You are not authorized to to delete any Data."}
+        })
+
+        console.log("delete", deleteModal.id)
+    }
     const tableData = [
         {
             id: 1,
@@ -114,7 +133,7 @@ const Employees = () => {
             last_seen: "1 Day ago",
         },
     ];
-    const tableHead = ["Number", "email", "Type", "Last active"];
+    const tableHead = ["Number", "email", "Type", "Last active", "Delete"];
     const tableBody = tableData.map((x) => {
         return (
             <tr
@@ -140,6 +159,7 @@ const Employees = () => {
                 <td>{x.email}</td>
                 <td>{x.type}</td>
                 <td>{x.last_seen}</td>
+                <td><button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}><i className="trash icon" data-id={x.id}/></button></td>
             </tr>
         );
     });
@@ -153,6 +173,11 @@ const Employees = () => {
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
                 <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+            </Modal>
+            <Modal isForm={false} header={formType.header} active={deleteModal.active} closeModal={closeDeleteModal} handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>
+                    {formType.error}
+                </div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Employee" openCreateModal={openCreateModal} />
