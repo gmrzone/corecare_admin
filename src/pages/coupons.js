@@ -70,6 +70,7 @@ const Coupons = () => {
     ];
     const [modalActive, setModalActive] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
     const [couponValidityFrom, setCouponValidityFrom] = useState({
         day: currentDate.getDate(),
         month: currentDate.getMonth(),
@@ -118,7 +119,21 @@ const Coupons = () => {
         });
         console.log(formValues, couponValidityFrom, couponValidityTo);
     };
-    const tableHead = ["Code", "Category", "Discount", "Valid from", "Valid to"];
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Coupon with ID ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
+    const closeDeleteModal = () => {
+        setDeleteModal({ active: false, id: null });
+    };
+    const deleteAction = () => {
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
+        console.log(deleteModal.id);
+    };
+    const tableHead = ["Code", "Category", "Discount", "Valid from", "Valid to", "Delete"];
     const tableBody = tableData.map((x) => {
         return (
             <tr
@@ -139,6 +154,11 @@ const Coupons = () => {
                 <td>{x.discount}</td>
                 <td>{x.from}</td>
                 <td>{x.to}</td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
@@ -159,6 +179,14 @@ const Coupons = () => {
                     couponValidityTo={couponValidityTo}
                     setCouponValidityTo={setCouponValidityTo}
                 />
+            </Modal>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Coupon" openCreateModal={openCreateModal} />
