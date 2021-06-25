@@ -24,7 +24,7 @@ const Users = () => {
     } = useForm();
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
-    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, title: null, id: null });
     console.log(userData);
     const openCreateModal = () => {
         setFormType({ type: "create", header: "Create User" });
@@ -69,10 +69,10 @@ const Users = () => {
         });
         console.log(formValues);
     };
-    const openDeleteModal = (e, id) => {
+    const openDeleteModal = (e, id, title) => {
         e.stopPropagation();
-        setFormType({ type: "delete", header: `Are you sure you want to delete User with id ${id}` });
-        setDeleteModal({ active: true, id: id });
+        setFormType({ type: "delete", header: `Are you sure you want to delete User with name '${title}'` });
+        setDeleteModal({ active: true, title: title, id: id });
     };
     const closeDeleteModal = () => {
         setDeleteModal({ active: false, id: null });
@@ -161,7 +161,7 @@ const Users = () => {
                 <td>{x.email}</td>
                 <td>{x.last_seen}</td>
                 <td>
-                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id, x.name)} data-id={x.id}>
                         <i className="trash icon" data-id={x.id} />
                     </button>
                 </td>
@@ -193,7 +193,7 @@ const Users = () => {
                 <td>{x.email || "-----"}</td>
                 <td>{x.last_login || x.date_joined}</td>
                 <td>
-                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id, x.first_name + " " + x.last_name)} data-id={x.id}>
                         <i className="trash icon" data-id={x.id} />
                     </button>
                 </td>

@@ -9,7 +9,7 @@ import CreateUpdateForm from "../components/employees/CreateUpdateForm";
 import { useForm } from "react-hook-form";
 const Employees = () => {
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, title: null, id: null });
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
     const {
         register,
@@ -78,9 +78,9 @@ const Employees = () => {
         console.log(formValues);
     };
 
-    const openDeleteModal = (e, id) => {
+    const openDeleteModal = (e, id, title) => {
         e.stopPropagation();
-        setFormType({ type: "delete", header: `Are you sure you want to delete post with id ${id}` });
+        setFormType({ type: "delete", header: `Are you sure you want to delete employee with number '${title}'` });
         setDeleteModal({ active: true, id: id });
     };
     const closeDeleteModal = () => {
@@ -171,7 +171,7 @@ const Employees = () => {
                 <td>{x.type}</td>
                 <td>{x.last_seen}</td>
                 <td>
-                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id, x.number)} data-id={x.id}>
                         <i className="trash icon" data-id={x.id} />
                     </button>
                 </td>

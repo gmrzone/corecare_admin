@@ -68,7 +68,7 @@ const Services = () => {
     ];
     const [modalActive, setModalActive] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
-    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, title: null, id: null });
     const {
         register,
         setValue,
@@ -106,9 +106,9 @@ const Services = () => {
         });
         console.log(formValues);
     };
-    const openDeleteModal = (e, id) => {
+    const openDeleteModal = (e, id, title) => {
         e.stopPropagation();
-        setFormType({ type: "delete", header: `Are you sure you want to Delete Service with ID ${id}` });
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Service '${title}'` });
         setDeleteModal({ active: true, id: id });
     };
     const closeDeleteModal = () => {
@@ -141,7 +141,7 @@ const Services = () => {
                 <td>{x.active}</td>
                 <td>{x.created}</td>
                 <td>
-                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id, x.name)} data-id={x.id}>
                         <i className="trash icon" data-id={x.id} />
                     </button>
                 </td>

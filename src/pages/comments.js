@@ -112,7 +112,7 @@ const Comments = () => {
     };
     const openDeleteModal = (e, id) => {
         e.stopPropagation();
-        setFormType({ type: "delete", header: `Are you sure you want to Delete Comment with ID ${id}` });
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Comment with ID '${id}'` });
         setDeleteModal({ active: true, id: id });
     };
     const closeDeleteModal = () => {
