@@ -11,7 +11,7 @@ const Posts = () => {
     const tableData = [
         {
             id: 1,
-            title: "Nuxt Auth 'loginWith' function doesn't send data to DRF",
+            title: "Nuxt Auth loginWith function doesn't send data to DRF",
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Cleaner",

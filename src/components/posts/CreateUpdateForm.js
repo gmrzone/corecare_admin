@@ -1,7 +1,7 @@
 const CreateUpdateForm = ({ register, formErrors, serverErrors }) =>{
     return (
         <>
-                <div className={`field ${formErrors.category && "error"}`}>
+            <div className={`field ${formErrors.category && "error"}`}>
                     <label>Category</label>
                     <select
                         className="ui fluid dropdown"
@@ -17,8 +17,8 @@ const CreateUpdateForm = ({ register, formErrors, serverErrors }) =>{
                         <option value="ac-service">AC Expert</option>
                         <option value="others">Others</option>
                     </select>
-                </div>
-                <div className={`field ${formErrors.author && "error"}`}>
+            </div>
+                <div className={`field ${formErrors.user && "error"}`}>
                     <label>Author</label>
                     <select
                         className="ui fluid dropdown"
@@ -49,7 +49,7 @@ const CreateUpdateForm = ({ register, formErrors, serverErrors }) =>{
                 </div>
                 <div className={`ui red message ${formErrors.category || formErrors.author || formErrors.title  || formErrors.body || serverErrors ? "visible" : "hidden"}`}>
                     {formErrors.catetgory?.message || formErrors.author?.message || formErrors.title?.message || formErrors.body || serverErrors}
-            </div>
+                </div>
         </>
     )
 }
