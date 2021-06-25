@@ -15,7 +15,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Cleaner",
-            active: true
+            active: true,
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Electrician",
-            active: true
+            active: true,
         },
         {
             id: 3,
@@ -31,7 +31,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "",
-            active: true
+            active: true,
         },
         {
             id: 4,
@@ -39,7 +39,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Cleaner",
-            active: true
+            active: true,
         },
         {
             id: 5,
@@ -47,7 +47,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Cleaner",
-            active: true
+            active: true,
         },
         {
             id: 6,
@@ -55,7 +55,7 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "Cleaner",
-            active: true
+            active: true,
         },
         {
             id: 7,
@@ -63,29 +63,29 @@ const Posts = () => {
             author: "AFzal Saiyed",
             body: "Post Body",
             category: "",
-            active: true
+            active: true,
         },
     ];
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const [formType, setFormType] = useState({ type: null, header: null, error: null });
     const openCreateModal = () => {
-        setFormType({type: "create", header: "Create Post", error: null})
-        setValue('title', "", {shouldValidate: false})
-        setValue('author', "", {shouldValidate: false})
-        setValue('body', "", {shouldValidate: false})
-        setValue('category', "" || "others", {shouldValidate: false})
-        setValue('active', "", {shouldValidate: false})
-        setCreateUpdateModal(true)
-    }   
+        setFormType({ type: "create", header: "Create Post", error: null });
+        setValue("title", "", { shouldValidate: false });
+        setValue("author", "", { shouldValidate: false });
+        setValue("body", "", { shouldValidate: false });
+        setValue("category", "" || "others", { shouldValidate: false });
+        setValue("active", "", { shouldValidate: false });
+        setCreateUpdateModal(true);
+    };
     const openUpdateModal = (title, author, body, category, active) => {
-        setFormType({type: "update", header: "Update Post", error: null})
-        setValue('title', title, {shouldValidate: false})
-        setValue('author', author, {shouldValidate: false})
-        setValue('body', body, {shouldValidate: false})
-        setValue('category', category || "others", {shouldValidate: false})
-        setValue('active', active, {shouldValidate: false})
-        setCreateUpdateModal(true)
-    }
+        setFormType({ type: "update", header: "Update Post", error: null });
+        setValue("title", title, { shouldValidate: false });
+        setValue("author", author, { shouldValidate: false });
+        setValue("body", body, { shouldValidate: false });
+        setValue("category", category || "others", { shouldValidate: false });
+        setValue("active", active, { shouldValidate: false });
+        setCreateUpdateModal(true);
+    };
     const {
         register,
         setValue,
@@ -98,23 +98,26 @@ const Posts = () => {
     };
     const SubmitForm = (formValues, e) => {
         e.target.reset();
-        setFormType(s => {
-            return {...s, error: "You are not authorized to use this form please contact Super User."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to use this form please contact Super User." };
+        });
         console.log(formValues);
     };
     const tableHead = ["title", "Author", "Body", "Category", "Active"];
     const tableBody = tableData.map((x, i) => {
         return (
-            <tr key={x.id} onClick={() => openUpdateModal(x.title, x.author.toLowerCase(), x.body, x.category.toLowerCase(), x.active)} style={{ cursor: "pointer" }}>
+            <tr
+                key={x.id}
+                onClick={() => openUpdateModal(x.title, x.author.toLowerCase(), x.body, x.category.toLowerCase(), x.active)}
+                style={{ cursor: "pointer" }}>
                 <td>{x.title.substring(0, 20) + "..."}</td>
                 <td>{x.author}</td>
                 <td>{x.body}</td>
                 <td>{x.category || "Others"}</td>
                 <td>{x.active.toString()}</td>
             </tr>
-        )
-    })
+        );
+    });
     return (
         <MainLayout>
             <Modal
@@ -124,7 +127,7 @@ const Posts = () => {
                 submitForm={SubmitForm}
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
-                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Post" openCreateModal={openCreateModal} />

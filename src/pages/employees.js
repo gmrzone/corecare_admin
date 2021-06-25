@@ -9,8 +9,8 @@ import CreateUpdateForm from "../components/employees/CreateUpdateForm";
 import { useForm } from "react-hook-form";
 const Employees = () => {
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [deleteModal, setDeleteModal] = useState({active: false, id: null})
-    const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
+    const [formType, setFormType] = useState({ type: null, header: null, error: null });
     const {
         register,
         setValue,
@@ -22,7 +22,7 @@ const Employees = () => {
     };
 
     const openCreateModal = () => {
-        setFormType({type: 'create', header: "Create Employee"})
+        setFormType({ type: "create", header: "Create Employee" });
 
         setValue("number", "", { shouldValidate: false });
         setValue("email", "", { shouldValidate: false });
@@ -35,12 +35,25 @@ const Employees = () => {
         setValue("state", "", { shouldValidate: false });
         setValue("city", "", { shouldValidate: false });
         setValue("pincode", "", { shouldValidate: false });
-        setValue('is_verified_employee', false, { shouldValidate: false })
+        setValue("is_verified_employee", false, { shouldValidate: false });
 
         setCreateUpdateModal(true);
     };
-    const openUpdateModal = ({ number, email, category, first_name, last_name, username, address_1, address_2, state, city, pincode, is_verified_employee }) => {
-        setFormType({type: 'update', header: "Update Employee"})
+    const openUpdateModal = ({
+        number,
+        email,
+        category,
+        first_name,
+        last_name,
+        username,
+        address_1,
+        address_2,
+        state,
+        city,
+        pincode,
+        is_verified_employee,
+    }) => {
+        setFormType({ type: "update", header: "Update Employee" });
 
         setValue("number", number, { shouldValidate: false });
         setValue("email", email, { shouldValidate: false });
@@ -53,35 +66,33 @@ const Employees = () => {
         setValue("state", state, { shouldValidate: false });
         setValue("city", city, { shouldValidate: false });
         setValue("pincode", pincode, { shouldValidate: false });
-        setValue('is_verified_employee', is_verified_employee, { shouldValidate: false })
+        setValue("is_verified_employee", is_verified_employee, { shouldValidate: false });
 
         setCreateUpdateModal(true);
     };
     const SubmitForm = (formValues, e) => {
         e.target.reset();
-        setFormType(s => {
-            return {...s, error: "You are not authorized to use this form please contact Super User."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to use this form please contact Super User." };
+        });
         console.log(formValues);
     };
 
     const openDeleteModal = (e, id) => {
-        e.stopPropagation()
-        setFormType({type: "delete", header: `Are you sure you want to delete post with id ${id}`})
-        setDeleteModal({active: true, id: id})
-    }
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to delete post with id ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
     const closeDeleteModal = () => {
-        
-        setDeleteModal({active: false, id: null})
-
-    }
+        setDeleteModal({ active: false, id: null });
+    };
     const deleteAction = () => {
-        setFormType(s => {
-            return {...s, error: "You are not authorized to to delete any Data."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
 
-        console.log("delete", deleteModal.id)
-    }
+        console.log("delete", deleteModal.id);
+    };
     const tableData = [
         {
             id: 1,
@@ -152,14 +163,18 @@ const Employees = () => {
                         city: "Mumbai",
                         state: "Maharashtra",
                         pincode: "400070",
-                        is_verified_employee: true
+                        is_verified_employee: true,
                     })
                 }>
                 <td>{x.number}</td>
                 <td>{x.email}</td>
                 <td>{x.type}</td>
                 <td>{x.last_seen}</td>
-                <td><button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}><i className="trash icon" data-id={x.id}/></button></td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
@@ -173,12 +188,15 @@ const Employees = () => {
                 submitForm={SubmitForm}
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
-                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
             </Modal>
-            <Modal isForm={false} header={formType.header} active={deleteModal.active} closeModal={closeDeleteModal} handleNoFormClick={deleteAction}>
-                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>
-                    {formType.error}
-                </div>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Employee" openCreateModal={openCreateModal} />

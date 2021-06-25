@@ -15,7 +15,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 8,
@@ -23,7 +23,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment Reply",
             parent: 1,
-            active: true
+            active: true,
         },
         {
             id: 2,
@@ -31,7 +31,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 3,
@@ -39,7 +39,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 4,
@@ -47,7 +47,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 5,
@@ -55,7 +55,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 6,
@@ -63,7 +63,7 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
         {
             id: 7,
@@ -71,11 +71,11 @@ const Comments = () => {
             user: "AFzal Saiyed",
             comment: "Post Comment",
             parent: "",
-            active: true
+            active: true,
         },
     ];
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
-    const [formType, setFormType] = useState({type: null, header: null, error: null})
+    const [formType, setFormType] = useState({ type: null, header: null, error: null });
     const {
         register,
         setValue,
@@ -85,42 +85,45 @@ const Comments = () => {
 
     const SubmitForm = (formValues, e) => {
         e.target.reset();
-        setFormType(s => {
-            return {...s, error: "You are not authorized to use this form please contact Super User."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to use this form please contact Super User." };
+        });
         console.log(formValues);
     };
     const openCreateModal = () => {
-        setFormType({type: "create", header: "Create Comment", error: false})
-        setValue('user', "", {shouldValidate: false})
-        setValue('post', "", {shouldValidate: false})
-        setValue('comment', "", {shouldValidate: false})
-        setValue('active', false, {shouldValidate: false})
-        setCreateUpdateModal(true)
-    }
+        setFormType({ type: "create", header: "Create Comment", error: false });
+        setValue("user", "", { shouldValidate: false });
+        setValue("post", "", { shouldValidate: false });
+        setValue("comment", "", { shouldValidate: false });
+        setValue("active", false, { shouldValidate: false });
+        setCreateUpdateModal(true);
+    };
     const openUpdateModal = (user, post, comment, active) => {
-        setFormType({type: "update", header: "Update Comment", error: false})
-        setValue('user', user, {shouldValidate: false})
-        setValue('post', post, {shouldValidate: false})
-        setValue('comment', comment, {shouldValidate: false})
-        setValue('active', active, {shouldValidate: false})
-        setCreateUpdateModal(true)
-    }
+        setFormType({ type: "update", header: "Update Comment", error: false });
+        setValue("user", user, { shouldValidate: false });
+        setValue("post", post, { shouldValidate: false });
+        setValue("comment", comment, { shouldValidate: false });
+        setValue("active", active, { shouldValidate: false });
+        setCreateUpdateModal(true);
+    };
     const closeModal = () => {
-        setCreateUpdateModal(false)
-    }
+        setCreateUpdateModal(false);
+    };
     const tableHead = ["User", "Post", "Parent", "Comment", "Active"];
-    const tableBody = tableData.map(x => {
+    const tableBody = tableData.map((x) => {
         return (
-            <tr style={{ cursor: "pointer" }} key={x.id} onClick={() => openUpdateModal(x.user.toLowerCase(), x.post.toLowerCase(), x.comment, x.active)}>
+            <tr
+                style={{ cursor: "pointer" }}
+                key={x.id}
+                onClick={() => openUpdateModal(x.user.toLowerCase(), x.post.toLowerCase(), x.comment, x.active)}>
                 <td>{x.user}</td>
                 <td>{x.post.substring(0, 20) + "..."}</td>
                 <td>{x.parent || "NULL"}</td>
                 <td>{x.comment}</td>
                 <td>{x.active.toString()}</td>
             </tr>
-            )
-    })
+        );
+    });
     return (
         <MainLayout>
             <Modal
@@ -130,14 +133,14 @@ const Comments = () => {
                 submitForm={SubmitForm}
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
-                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+                <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Comment" openCreateModal={openCreateModal} />
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={tableBody} />
             </ComponentWrapper>
         </MainLayout>
     );

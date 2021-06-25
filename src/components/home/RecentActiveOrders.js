@@ -1,6 +1,6 @@
 import style from "../../style/index.module.scss";
 import ListTable from "../common/ListTable";
-import NewLink from '../common/Link'
+import NewLink from "../common/Link";
 const recentActiveOrders = () => {
     const tableData = [
         {
@@ -71,7 +71,7 @@ const recentActiveOrders = () => {
                 <h3>Recent Active Orders</h3>
             </div>
             <div className={style["active-orders-body"]}>
-                <ListTable headData={tableHead} bodyData={tableBody}/>
+                <ListTable headData={tableHead} bodyData={tableBody} />
             </div>
             <div className={style["active-orders-footer"]}>
                 <NewLink className="ui button" to="/orders">

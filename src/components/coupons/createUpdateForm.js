@@ -1,5 +1,13 @@
-import DatePicker from '../common/DatePicker'
-const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidityFrom , setCouponValidityFrom, couponValidityTo, setCouponValidityTo }) => {
+import DatePicker from "../common/DatePicker";
+const CreateUpdateForm = ({
+    register,
+    formErrors,
+    serverErrors,
+    couponValidityFrom,
+    setCouponValidityFrom,
+    couponValidityTo,
+    setCouponValidityTo,
+}) => {
     return (
         <>
             <div className={`field ${formErrors.CODE && "error"}`}>
@@ -32,7 +40,9 @@ const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidityFr
             </div>
             <div className={`field ${formErrors.category && "error"}`}>
                 <label>Employee Category</label>
-                <select className="ui fluid dropdown" {...register('category', {required: {value: true, message: "Employee Category is required"}})}>
+                <select
+                    className="ui fluid dropdown"
+                    {...register("category", { required: { value: true, message: "Employee Category is required" } })}>
                     <option value="">Select Category</option>
                     <option value="all">All</option>
                     <option value="electrician">Electrician</option>
@@ -52,20 +62,23 @@ const CreateUpdateForm = ({register , formErrors, serverErrors, couponValidityFr
                 </div>
                 <div className={`field ${formErrors.last_name && "error"}`}>
                     <label>Valid To</label>
-                    <DatePicker selectedDate={couponValidityTo} setSelectedDate={setCouponValidityTo}/>
+                    <DatePicker selectedDate={couponValidityTo} setSelectedDate={setCouponValidityTo} />
                 </div>
-            </div>  
+            </div>
             <div className="field">
                 <div className="ui checkbox">
-                <input type="checkbox" {...register('is_active')}/>
-                <label>Is Active</label>
+                    <input type="checkbox" {...register("is_active")} />
+                    <label>Is Active</label>
                 </div>
             </div>
-            <div className={`ui red message ${formErrors.CODE || formErrors.discount || formErrors.category || serverErrors ? "visible" : "hidden"}`}>
-                    {formErrors.CODE?.message || formErrors.discount?.message || formErrors.category?.message || serverErrors}
+            <div
+                className={`ui red message ${
+                    formErrors.CODE || formErrors.discount || formErrors.category || serverErrors ? "visible" : "hidden"
+                }`}>
+                {formErrors.CODE?.message || formErrors.discount?.message || formErrors.category?.message || serverErrors}
             </div>
         </>
-        )   
-}
+    );
+};
 
-export default CreateUpdateForm
+export default CreateUpdateForm;

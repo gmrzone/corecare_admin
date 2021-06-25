@@ -10,7 +10,11 @@ import CreateUpdateUserForm from "../components/user/CreateUpdateUserForm";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 const Users = () => {
-    const fetcher = (...args) => axios.get(...args).then((response) => response.data).catch();
+    const fetcher = (...args) =>
+        axios
+            .get(...args)
+            .then((response) => response.data)
+            .catch();
     const { data: userData } = useSWR("administrator/get_all_user/", fetcher, { shouldRetryOnError: false });
     const {
         register,
@@ -20,7 +24,7 @@ const Users = () => {
     } = useForm();
     const [createUpdateModal, setCreateUpdateModal] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
-    const [deleteModal, setDeleteModal] = useState({active: false, id: null})
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
     console.log(userData);
     const openCreateModal = () => {
         setFormType({ type: "create", header: "Create User" });
@@ -60,26 +64,26 @@ const Users = () => {
     };
     const submitForm = (formValues, e) => {
         e.target.reset();
-        setFormType(s => {
-            return {...s, error: "You are not authorized to use this form please contact Super User."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to use this form please contact Super User." };
+        });
         console.log(formValues);
     };
-    const openDeleteModal =(e, id) => {
-        e.stopPropagation()
-        setFormType({type: 'delete', header: `Are you sure you want to delete User with id ${id}`})
-        setDeleteModal({active: true, id: id})
-    }
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to delete User with id ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
     const closeDeleteModal = () => {
-        setDeleteModal({active: false, id: null})
-    }
+        setDeleteModal({ active: false, id: null });
+    };
     const deleteAction = () => {
-        setFormType(s => {
-            return {...s, error: "You are not authorized to to delete any Data."}
-        })
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
 
-        console.log("delete", deleteModal.id)
-    }
+        console.log("delete", deleteModal.id);
+    };
     const tableData = [
         {
             id: 1,
@@ -149,14 +153,18 @@ const Users = () => {
                         "Maharashtra",
                         "Mumbai",
                         "400070",
-                        true
+                        true,
                     )
                 }>
                 <td>{x.number}</td>
                 <td>{x.name}</td>
                 <td>{x.email}</td>
                 <td>{x.last_seen}</td>
-                <td><button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}><i className="trash icon" data-id={x.id}/></button></td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
@@ -184,7 +192,11 @@ const Users = () => {
                 <td>{x.first_name + " " + x.last_name || x.username}</td>
                 <td>{x.email || "-----"}</td>
                 <td>{x.last_login || x.date_joined}</td>
-                <td><button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}><i className="trash icon" data-id={x.id}/></button></td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
@@ -197,12 +209,15 @@ const Users = () => {
                 closeModal={closeCreateModal}
                 submitForm={submitForm}
                 handleSubmit={handleSubmit}>
-                <CreateUpdateUserForm register={register} formErrors={formErrors} serverErrors={formType.error}/>
+                <CreateUpdateUserForm register={register} formErrors={formErrors} serverErrors={formType.error} />
             </Modal>
-            <Modal isForm={false} header={formType.header} active={deleteModal.active} closeModal={closeDeleteModal} handleNoFormClick={deleteAction}>
-                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>
-                    {formType.error}
-                </div>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="User" openCreateModal={openCreateModal} />

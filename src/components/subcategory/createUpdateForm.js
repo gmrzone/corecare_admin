@@ -1,4 +1,4 @@
-const createUpdateForm = ({register, formErrors, serverErrors}) => {
+const createUpdateForm = ({ register, formErrors, serverErrors }) => {
     return (
         <>
             <div className={`field ${formErrors.name && "error"}`}>
@@ -14,15 +14,13 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
             </div>
             <div className={`field ${formErrors.slug && "error"}`}>
                 <label>Slug</label>
-                <input
-                    type="text"
-                    placeholder="slug"
-                    {...register("slug")}
-                />
+                <input type="text" placeholder="slug" {...register("slug")} />
             </div>
             <div className={`field ${formErrors.service_specialist && "error"}`}>
                 <label>Employee Category</label>
-                <select className="ui fluid dropdown" {...register('service_specialist', {required: {value: true, message: "Employee Category is required"}})}>
+                <select
+                    className="ui fluid dropdown"
+                    {...register("service_specialist", { required: { value: true, message: "Employee Category is required" } })}>
                     <option value="">Select Category</option>
                     <option value="electrician">Electrician</option>
                     <option value="carpenter">Carpenter</option>
@@ -35,10 +33,10 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
                 </select>
             </div>
             <div className={`ui red message ${formErrors.name || formErrors.service_specialist || serverErrors ? "visible" : "hidden"}`}>
-                    {formErrors.name?.message || formErrors.service_specialist?.message || serverErrors}
+                {formErrors.name?.message || formErrors.service_specialist?.message || serverErrors}
             </div>
         </>
-    )
-}
+    );
+};
 
-export default createUpdateForm
+export default createUpdateForm;

@@ -1,4 +1,4 @@
-const createUpdateForm = ({register, formErrors, serverErrors}) => {
+const createUpdateForm = ({ register, formErrors, serverErrors }) => {
     return (
         <>
             <div className={`field ${formErrors.name && "error"}`}>
@@ -14,27 +14,21 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
             </div>
             <div className={`field ${formErrors.slug && "error"}`}>
                 <label>Slug</label>
-                <input
-                    type="text"
-                    placeholder="slug"
-                    {...register("slug")}
-                />
+                <input type="text" placeholder="slug" {...register("slug")} />
             </div>
             <div className={`field ${formErrors.price && "error"}`}>
                 <label>Price</label>
-                <input
-                    type="number"
-                    {...register("price", {require: {value: true, message: "Price is required"}})}
-                    step="0.01"
-                />
+                <input type="number" {...register("price", { require: { value: true, message: "Price is required" } })} step="0.01" />
             </div>
             <div className={`field ${formErrors.description && "error"}`}>
                 <label>Description</label>
-                <textarea placeholder="Service Description"{...register('description')}/>
+                <textarea placeholder="Service Description" {...register("description")} />
             </div>
             <div className={`field ${formErrors.subcategory && "error"}`}>
                 <label>SubCategory</label>
-                <select className="ui fluid dropdown" {...register('subcategory', {required: {value: true, message: "Employee Category is required"}})}>
+                <select
+                    className="ui fluid dropdown"
+                    {...register("subcategory", { required: { value: true, message: "Employee Category is required" } })}>
                     <option value="">Select Category</option>
                     <option value="appliances">Appliances</option>
                     <option value="switch/socket">Switch/Socket</option>
@@ -47,15 +41,18 @@ const createUpdateForm = ({register, formErrors, serverErrors}) => {
             </div>
             <div className="field">
                 <div className="ui checkbox">
-                <input type="checkbox" {...register('active')} />
-                <label>Active</label>
+                    <input type="checkbox" {...register("active")} />
+                    <label>Active</label>
                 </div>
             </div>
-            <div className={`ui red message ${formErrors.name || formErrors.price || formErrors.subcategory || serverErrors ? "visible" : "hidden"}`}>
-                    {formErrors.name?.message || formErrors.price?.message || formErrors.subcategory?.message || serverErrors}
+            <div
+                className={`ui red message ${
+                    formErrors.name || formErrors.price || formErrors.subcategory || serverErrors ? "visible" : "hidden"
+                }`}>
+                {formErrors.name?.message || formErrors.price?.message || formErrors.subcategory?.message || serverErrors}
             </div>
         </>
-    )
-}
+    );
+};
 
-export default createUpdateForm
+export default createUpdateForm;

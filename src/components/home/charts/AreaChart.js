@@ -63,7 +63,7 @@ const AreaChart = ({ heading, data, target, chartBG, chartBorder, LineColor }) =
     }, [data, LineColor, chartBG, chartBorder, target, heading]);
     return (
         <div className={style["area-chart-container"]}>
-            <div className={style['main-container']}>
+            <div className={style["main-container"]}>
                 <canvas id="orders-chart" width="700" height="400" ref={ctx} />
             </div>
         </div>

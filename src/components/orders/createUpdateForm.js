@@ -1,8 +1,5 @@
 const CreateUpdateForm = () => {
-    return (
-        <>
-        </>
-    )
-}
+    return <></>;
+};
 
-export default CreateUpdateForm
+export default CreateUpdateForm;

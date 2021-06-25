@@ -48,6 +48,7 @@ const Subcategory = () => {
 
     const [modalActive, setModalActive] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
     const {
         register,
         setValue,
@@ -81,7 +82,21 @@ const Subcategory = () => {
         });
         console.log(formValues);
     };
-    const tableHead = ["Name", "Category", "Created"];
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Subcategory with ID ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
+    const closeDeleteModal = () => {
+        setDeleteModal({ active: false, id: null });
+    };
+    const deleteAction = () => {
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
+        console.log();
+    };
+    const tableHead = ["Name", "Category", "Created", "Delete"];
     const tableBody = tableData.map((x, i) => {
         return (
             <tr
@@ -97,12 +112,18 @@ const Subcategory = () => {
                 <td>{x.name}</td>
                 <td>{x.service_specialist}</td>
                 <td>{x.created}</td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
     return (
         <MainLayout>
-                <Modal
+            <Modal
+                isForm={true}
                 header={formType.header}
                 active={modalActive}
                 closeModal={closeModal}
@@ -110,6 +131,14 @@ const Subcategory = () => {
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
                 <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
+            </Modal>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Subcategory" openCreateModal={openCreateModal} />

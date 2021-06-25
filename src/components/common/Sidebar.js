@@ -29,7 +29,10 @@ const Sidebar = () => {
                 <span></span>
                 <span></span>
             </div>
-            <div className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`} onMouseOver={DesktopSliderMouseOver} onMouseOut={DesktopSliderMouseOut}>
+            <div
+                className={`${style.slider} ${sideDrawerActive && style["slider-active"]}`}
+                onMouseOver={DesktopSliderMouseOver}
+                onMouseOut={DesktopSliderMouseOut}>
                 <ul className={style["slider-items-list"]} onClick={itemClick}>
                     <li>
                         <NewLink className={`${style["slider-item"]} ${history.location.pathname === "/" && style["active-item"]}`} to="/">
