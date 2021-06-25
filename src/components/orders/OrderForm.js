@@ -86,7 +86,7 @@ const OrderForm = ({ register, formErrors }) => {
                     <div className={`field ${formErrors.discount && "error"}`}>
                         <label>Discount</label>
                         <input
-                            type="text"
+                            type="number" step="0.1"
                             placeholder="Discount"
                             {...register("discount")}
                         />
@@ -94,11 +94,34 @@ const OrderForm = ({ register, formErrors }) => {
                     <div className={`field ${formErrors.total && "error"}`}>
                         <label>Total</label>
                         <input
-                            type="text"
+                            type="number"
+                            step="0.01"
                             placeholder="Total"
                             {...register("total")}
                         />
                     </div>
+            </div>
+            <div className={`field ${formErrors.coupon && "error"}`}>
+                <label>Coupon</label>
+                <select
+                    className="ui fluid dropdown"
+                    {...register("coupon")}>
+                    <option value="">No Coupon</option>
+                    <option value="corecr">CORECR</option>
+                    <option value="newyear21">NEWYEAR21</option>
+                    <option value="electro15">ELECTRO15</option>
+                    <option value="cleaner15">CLEANER15</option>
+                    <option value="plumber15">PLUMBER15</option>
+                    <option value="carpenter15">CARPENTER15</option>
+                    <option value="pest15">PEST15</option>
+                    <option value="ac15">AC15</option>
+                </select>
+            </div>
+            <div className="field">
+                <div className="ui checkbox">
+                    <input type="checkbox" {...register("paid")} />
+                    <label>Paid</label>
+                </div>
             </div>
         </>
     )

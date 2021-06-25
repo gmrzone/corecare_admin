@@ -7,9 +7,11 @@ import Coupons from "./pages/coupons";
 import Comments from "./pages/comments";
 import Services from "./pages/services";
 import Posts from "./pages/posts";
+import OrderDetail from './pages/orderDetail'
 import Subcategory from "./pages/subcategory";
 import { Route, Switch } from "react-router-dom";
 import { SideDrawerProvider } from "./context/SideDrawerContext";
+
 
 function App() {
     return (
@@ -19,6 +21,8 @@ function App() {
                 <Route component={User} path="/users" exact />
                 <Route component={Employee} path="/employees" exact />
                 <Route component={Orders} path="/orders" exact />
+                <Route component={OrderDetail} path="/orders/:order_id(ORD[a-zA-Z0-9]{18})" exact />
+                <Route component={OrderDetail} path="/orders/create" exact />
                 <Route component={Services} path="/services" exact />
                 <Route component={Coupons} path="/coupons" exact />
                 <Route component={Comments} path="/comments" exact />
