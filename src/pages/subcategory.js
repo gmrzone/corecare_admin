@@ -94,7 +94,7 @@ const Subcategory = () => {
         setFormType((s) => {
             return { ...s, error: "You are not authorized to to delete any Data." };
         });
-        console.log();
+        console.log(deleteModal.id);
     };
     const tableHead = ["Name", "Category", "Created", "Delete"];
     const tableBody = tableData.map((x, i) => {

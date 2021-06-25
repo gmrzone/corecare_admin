@@ -9,7 +9,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 const Services = () => {
     const tableData = [
-        {
+        {   
+            id: 1,
             name: "Window AC Service",
             subcategory: "AC Service",
             price: "449.00",
@@ -17,6 +18,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 2,
             name: "Wallpaper / Stencils Consultation",
             subcategory: "Wallpaper / Stencils",
             price: "2600.56",
@@ -24,6 +26,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 3,
             name: "Wood Polishing Consultation",
             subcategory: "Wood Polishing",
             price: "999.00",
@@ -31,6 +34,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 4,
             name: "Drill and Hang",
             subcategory: "Drill/Hang",
             price: "256.00",
@@ -38,6 +42,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 5,
             name: "Channel Repair",
             subcategory: "Cupboard / Drawer",
             price: "149.00",
@@ -45,6 +50,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 6,
             name: "AC Switchbox Installation",
             subcategory: "Switch/Socket",
             price: "319.00",
@@ -52,6 +58,7 @@ const Services = () => {
             created: "1 Day ago",
         },
         {
+            id: 7,
             name: "Geyser Installation",
             subcategory: "Appliances",
             price: "650.00",
@@ -61,6 +68,7 @@ const Services = () => {
     ];
     const [modalActive, setModalActive] = useState(false);
     const [formType, setFormType] = useState({ type: null, header: null, error: null });
+    const [deleteModal, setDeleteModal] = useState({ active: false, id: null });
     const {
         register,
         setValue,
@@ -98,8 +106,21 @@ const Services = () => {
         });
         console.log(formValues);
     };
-
-    const tableHead = ["Name", "Category", "Price", "Active", "Created"];
+    const openDeleteModal = (e, id) => {
+        e.stopPropagation();
+        setFormType({ type: "delete", header: `Are you sure you want to Delete Service with ID ${id}` });
+        setDeleteModal({ active: true, id: id });
+    };
+    const closeDeleteModal = () => {
+        setDeleteModal({ active: false, id: null });
+    };
+    const deleteAction = () => {
+        setFormType((s) => {
+            return { ...s, error: "You are not authorized to to delete any Data." };
+        });
+        console.log(deleteModal.id);
+    };
+    const tableHead = ["Name", "Category", "Price", "Active", "Created", "Delete"];
     const tableBody = tableData.map((x, i) => {
         return (
             <tr
@@ -119,12 +140,18 @@ const Services = () => {
                 <td>{x.price}</td>
                 <td>{x.active}</td>
                 <td>{x.created}</td>
+                <td>
+                    <button className="ui negative small button icon compact" onClick={(e) => openDeleteModal(e, x.id)} data-id={x.id}>
+                        <i className="trash icon" data-id={x.id} />
+                    </button>
+                </td>
             </tr>
         );
     });
     return (
         <MainLayout>
             <Modal
+                isForm={true}
                 header={formType.header}
                 active={modalActive}
                 closeModal={closeModal}
@@ -132,6 +159,14 @@ const Services = () => {
                 handleSubmit={handleSubmit}
                 formError={formErrors}>
                 <CreateUpdateForm register={register} formErrors={formErrors} serverErrors={formType.error} />
+            </Modal>
+            <Modal
+                isForm={false}
+                header={formType.header}
+                active={deleteModal.active}
+                closeModal={closeDeleteModal}
+                handleNoFormClick={deleteAction}>
+                <div className={`ui red message ${formType.error ? "visible" : "hidden"}`}>{formType.error}</div>
             </Modal>
             <ComponentWrapper>
                 <CreateAction forPage="Service" openCreateModal={openCreateModal} />
