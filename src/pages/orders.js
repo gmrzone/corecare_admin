@@ -3,7 +3,9 @@ import CreateAction from "../components/common/CreateAction";
 import ListTable from "../components/common/ListTable";
 import ComponentWrapper from "../components/common/ComponentWrapper";
 import DateRangePicker from "../components/common/DateRangeFilter";
+import { useHistory } from 'react-router-dom'
 const Orders = () => {
+    const history = useHistory()
     const tableData = [
         {
             order_id: 1234546,
@@ -67,10 +69,13 @@ const Orders = () => {
             </tr>
         );
     });
+    const createOrder = () => {
+        history.push('/orders/create/')
+    }
     return (
         <MainLayout>
             <ComponentWrapper>
-                <CreateAction forPage="Order" />
+                <CreateAction forPage="Order" openCreateModal={createOrder}/>
             </ComponentWrapper>
             <DateRangePicker />
             <ComponentWrapper>
