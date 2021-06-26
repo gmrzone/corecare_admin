@@ -4,7 +4,7 @@ const OrderForm = ({ register, formErrors }) => {
 
     return (
         <div className={style['form-fields']}>
-            <div className="two fields">
+            <div className="three fields">
                 <div className={`field ${formErrors.category && "error"}`}>
                     <label>Employee Category</label>
                     <select

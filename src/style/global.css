@@ -70,7 +70,7 @@ a {
         margin-top: 100px;
         margin-bottom: 20px;
         height: calc(100% - 66px - 61px);
-        overflow-y: auto;
+
     }
     .ui.container.main.drawer-active {
         /* margin-left: calc(1.5em + 256px) !important; */

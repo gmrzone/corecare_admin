@@ -4,7 +4,7 @@ import OrderItemForm from './OrderItemForm'
 import {useState} from 'react';
 import WrapperWithHeading from './WrapperWithHeading'
 import style from '../../style/orderDetail.module.scss';
-const MainForm = ({ItemCount=1}) => {
+const MainForm = ({ ItemCount=1 }) => {
     const {register, handleSubmit, formState: {errors: formErrors}} = useForm()
     const [orderItemCount, setOrderItemCount] = useState(ItemCount)
     const onSubmit = (formValues, e) => {
@@ -23,7 +23,7 @@ const MainForm = ({ItemCount=1}) => {
     }
     return (
         <form className={`ui large form ${style["main-form"]}`} onSubmit={handleSubmit(onSubmit)}>
-            <WrapperWithHeading heading="Order Detail">
+            <WrapperWithHeading heading="Order">
                 <OrderForm register={register} formErrors={formErrors}/>
             </WrapperWithHeading>
             <div>

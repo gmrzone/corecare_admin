@@ -18,18 +18,20 @@ const OrderItemForm = ({ register, formErrors, count }) => {
                     <option value="geyser installation">Geyser Installation</option>
                 </select>
             </div>
-            <div className={`field ${formErrors.service && "error"}`}>
-                <label>Quantity</label>
-                <input type="number" min="0" max="50" {...register('quantity')} />
-            </div>
-            <div className={`field ${formErrors.total && "error"}`}>
-                <label>Total</label>
-                <input
-                    type="number"
-                    step="0.01"
-                    placeholder="Total"
-                    {...register("total")}
-                />
+            <div className="two fields">
+                <div className={`field ${formErrors.service && "error"}`}>
+                    <label>Quantity</label>
+                    <input type="number" min="0" max="50" {...register('quantity')} />
+                </div>
+                <div className={`field ${formErrors.total && "error"}`}>
+                    <label>Total</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        placeholder="Total"
+                        {...register("total")}
+                    />
+                </div>
             </div>
         </div>
     )
