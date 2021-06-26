@@ -7,6 +7,18 @@
         justify-content: space-between;
         margin-top: 20px;
     }
+    .order-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            margin: 0;
+        }
+    }
+    .form-fields-order-item {
+        margin: 15px 0 30px 0;
+    }
 
 
 }

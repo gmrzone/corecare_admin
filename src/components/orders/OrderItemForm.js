@@ -1,7 +1,8 @@
 import style from '../../style/orderDetail.module.scss';
-const OrderItemForm = ({ register, formErrors }) => {
+const OrderItemForm = ({ register, formErrors, count }) => {
     return (
-        <div className={style['form-fields']}>
+        <div className={style['form-fields-order-item']}>
+            <h3>Order Item {count}</h3>
             <div className={`field ${formErrors.service && "error"}`}>
                 <label>Service</label>
                 <select

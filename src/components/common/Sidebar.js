@@ -59,7 +59,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NewLink
-                            className={`${style["slider-item"]} ${history.location.pathname === "/orders" && style["active-item"]}`}
+                            className={`${style["slider-item"]} ${(history.location.pathname === "/orders" || history.location.pathname === "/orders/create") && style["active-item"]}`}
                             to="/orders">
                             <i className="phone icon" />
                             <span className={style["slider-item--text"]}>Orders</span>

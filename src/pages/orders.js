@@ -70,7 +70,7 @@ const Orders = () => {
         );
     });
     const createOrder = () => {
-        history.push('/orders/create/')
+        history.push('/orders/create')
     }
     return (
         <MainLayout>
