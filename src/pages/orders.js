@@ -57,10 +57,16 @@ const Orders = () => {
             created: "1 Day ago",
         },
     ];
+    const createOrder = () => {
+        history.push('/orders/create')
+    }
+    const updateOrder = (order_id) => {
+        history.push(`/orders/update/${order_id}`)
+    }
     const tableHead = ["Order ID", "User", "Status", "Total", "Created"];
     const tableBody = tableData.map((x) => {
         return (
-            <tr style={{ cursor: "pointer" }} key={x.order_id}>
+            <tr style={{ cursor: "pointer" }} key={x.order_id} onClick={() => updateOrder(x.order_id)}>
                 <td>{x.order_id}</td>
                 <td>{x.user}</td>
                 <td>{x.status}</td>
@@ -69,9 +75,7 @@ const Orders = () => {
             </tr>
         );
     });
-    const createOrder = () => {
-        history.push('/orders/create')
-    }
+
     return (
         <MainLayout>
             <ComponentWrapper>

@@ -21,7 +21,8 @@ function App() {
                 <Route component={User} path="/users" exact />
                 <Route component={Employee} path="/employees" exact />
                 <Route component={Orders} path="/orders" exact />
-                <Route component={OrderDetail} path="/orders/:order_id(ORD[a-zA-Z0-9]{18})" exact />
+                {/* <Route component={OrderDetail} path="/orders/:order_id(ORD[a-zA-Z0-9]{18})" exact /> */}
+                <Route component={OrderDetail} path="/orders/update/:order_id(\d{7})" exact />
                 <Route component={OrderDetail} path="/orders/create" exact />
                 <Route component={Services} path="/services" exact />
                 <Route component={Coupons} path="/coupons" exact />
