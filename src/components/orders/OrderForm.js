@@ -23,7 +23,7 @@ const OrderForm = ({ register, formErrors }) => {
                 </div>
                 <div className={`field ${formErrors.user && "error"}`}>
                     <label>User</label>
-                    <select className="ui fluid dropdown" {...register("author", { required: { value: true, message: "Author is required" } })}>
+                    <select className="ui fluid dropdown" {...register("user", { required: { value: true, message: "Author is required" } })}>
                         <option value="">Select User</option>
                         <option value="afzal saiyed">Afzal Saiyed</option>
                         <option value="zaid shailh">Zaid Shaikh</option>

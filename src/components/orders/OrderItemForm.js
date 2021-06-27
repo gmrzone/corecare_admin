@@ -23,13 +23,13 @@ const OrderItemForm = ({ register, formErrors, count }) => {
                     <label>Quantity</label>
                     <input type="number" min="0" max="50" {...register('quantity')} />
                 </div>
-                <div className={`field ${formErrors.total && "error"}`}>
+                <div className={`field ${formErrors.item_total && "error"}`}>
                     <label>Total</label>
                     <input
                         type="number"
                         step="0.01"
                         placeholder="Total"
-                        {...register("total")}
+                        {...register("item_total")}
                     />
                 </div>
             </div>

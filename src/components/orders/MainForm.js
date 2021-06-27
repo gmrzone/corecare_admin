@@ -1,11 +1,33 @@
-import { useForm } from 'react-hook-form'
-import OrderForm from './OrderForm'
-import OrderItemForm from './OrderItemForm'
-import {useState} from 'react';
-import WrapperWithHeading from './WrapperWithHeading'
+import { useForm } from 'react-hook-form';
+import OrderForm from './OrderForm';
+import OrderItemForm from './OrderItemForm';
+import { useState, useEffect } from 'react';
+import WrapperWithHeading from './WrapperWithHeading';
 import style from '../../style/orderDetail.module.scss';
+import { useLocation } from 'react-router-dom'
 const MainForm = ({ ItemCount=1 }) => {
-    const {register, handleSubmit, formState: {errors: formErrors}} = useForm()
+    const history = useLocation()
+    const path = history.pathname
+    const {register, handleSubmit, setValue, formState: {errors: formErrors}} = useForm()
+    useEffect(() => {
+        if (path.match(/\/orders\/update\/\d{7}/)){
+            setValue("category", 'electrician', {shouldValidate: false})
+            setValue("user", 'afzal saiyed', {shouldValidate: false})
+            setValue("razorpay_order_id", 'rzp_12356469584', {shouldValidate: false})
+            setValue("razorpay_payment_id", 'rzp_py12356469584', {shouldValidate: false})
+            setValue("razorpay_signature", 'rzp_sig12356469584', {shouldValidate: false})
+            setValue("subtotal", 452.00, {shouldValidate: false})
+            setValue("tax", 101.00, {shouldValidate: false})
+            setValue("total", 500.00, {shouldValidate: false})
+            setValue("coupon", 'newyear21', {shouldValidate: false})
+            setValue("discount", 53.00, {shouldValidate: false})
+            setValue("receipt", "ORD_1365478954156541", {shouldValidate: false})
+
+            setValue('service', 'window ac service', {shouldValidate: false})
+            setValue('quantity', 5, {shouldValidate: false})
+            setValue('item_total', 553.00, {shouldValidate: false})
+        }
+    }, [path, setValue])
     const [orderItemCount, setOrderItemCount] = useState(ItemCount)
     const onSubmit = (formValues, e) => {
         e.target.reset()
