@@ -256,11 +256,12 @@
                     overflow-y: auto;
                     right: 0;
                     width: 0px;
-                    display: block;
+                    display: none;
                     height: 100vh;
-                    // transform: translateX(300px);
-                    // transition: transform .3s ease-in-out;
-                    transition: width 0.3s ease-in-out;
+                    transform: translateX(300px);
+                    transition: transform .3s ease-in-out;
+                    width: 300px;
+                    // transition: width 0.3s ease-in-out;
                     border: 1px solid #ccc;
                     border-color: rgba(0, 0, 0, 0.2);
                     background: white;
@@ -368,10 +369,13 @@
                         border-bottom-right-radius: 6px;
                     }
 
+                    &.nav-right-dd-block__mobile {
+                        display: block;
+                    }
                     &.nav-right-dd__active {
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                        // transform: translateX(0);
-                        width: 300px;
+                        transform: translateX(0);
+                        // width: 300px;
 
                         @media (min-width: 768px) {
                             display: flex;

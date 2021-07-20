@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from "react";
 const BigDropDown = ({ iconClass, type, data }) => {
     const [dropDownActive, setDropDownActive] = useState(false);
     const backDrop = useRef();
+    const dropDownRef = useRef();
     useEffect(() => {
         const deactivateDropDown = () => {
-            if (dropDownActive && window.innerWidth > 768) {
+            if (dropDownActive) {
                 setDropDownActive(false);
             }
         };
@@ -14,7 +15,40 @@ const BigDropDown = ({ iconClass, type, data }) => {
             document.body.removeEventListener("click", deactivateDropDown);
         };
     }, [dropDownActive]);
+    
+    useEffect(() => {
+        const deactivateBackdrop = () => backDrop.current.classList.remove(style["make-block"]);
+        const activateBackBrop = () => backDrop.current.classList.add(style["make-visible"]);
+        const deactivateSideDropDownMobile = () => dropDownRef.current.classList.remove(style['nav-right-dd-block__mobile'])
+        const activateSideDropDownMobile = () => dropDownRef.current.classList.add(style['nav-right-dd__active'])
 
+        if (dropDownActive){
+            if (window.innerWidth < 768){
+                backDrop.current.classList.add(style["make-block"]);
+                dropDownRef.current.classList.add(style['nav-right-dd-block__mobile'])
+                setTimeout(activateBackBrop, 20);
+                setTimeout(activateSideDropDownMobile, 20)
+            }
+            else{
+                dropDownRef.current.classList.add(style['nav-right-dd__active'])
+            }
+        }
+        else{
+            if (window.innerWidth < 768){
+                backDrop.current.classList.remove(style["make-visible"]);
+                dropDownRef.current.classList.remove(style['nav-right-dd__active'])
+                setTimeout(deactivateBackdrop, 300);
+                setTimeout(deactivateSideDropDownMobile, 300)
+            }
+            else{
+                dropDownRef.current.classList.remove(style['nav-right-dd__active'])
+            }
+        }
+    }, [dropDownActive])
+    
+    const toggleDropDown = () => {
+        setDropDownActive((s) => !s);
+    };
     const renderNotification = () => {
         let notifications;
         if (type === "Notification") {
@@ -33,22 +67,7 @@ const BigDropDown = ({ iconClass, type, data }) => {
         }
         return null;
     };
-    const toggleDropDown = () => {
-        const deactivateBackdrop = () => backDrop.current.classList.remove(style["make-block"]);
-        const activateBackBrop = () => backDrop.current.classList.add(style["make-visible"]);
-        console.log("before", dropDownActive);
-        setDropDownActive((s) => !s);
-        console.log("after", dropDownActive);
-        if (window.innerWidth < 768) {
-            if (dropDownActive) {
-                backDrop.current.classList.remove(style["make-visible"]);
-                setTimeout(deactivateBackdrop, 300);
-            } else {
-                backDrop.current.classList.add(style["make-block"]);
-                setTimeout(activateBackBrop, 20);
-            }
-        }
-    };
+
     const renderMessages = () => {
         let messages;
         if (type === "Messages") {
@@ -75,7 +94,7 @@ const BigDropDown = ({ iconClass, type, data }) => {
                 <i className={iconClass} />
             </div>
             <div className={style["nav-right-item__backdrop"]} ref={backDrop} onClick={toggleDropDown}></div>
-            <div className={`${style["nav-right-dropdown"]} ${dropDownActive && style["nav-right-dd__active"]}`}>
+            <div className={`${style["nav-right-dropdown"]}`} ref={dropDownRef}>
                 <div className={style["dropdown-close-mobile"]} onClick={toggleDropDown}>
                     <i className="close icon" />
                     <span>{type}</span>
